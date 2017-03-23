@@ -1,0 +1,582 @@
+[
+    {
+        "outputFile": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-zh\\values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 862,
+                        "endColumn": 57,
+                        "endOffset": 915
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 57,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 619,
+                        "endColumn": 62,
+                        "endOffset": 677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 55,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 682,
+                        "endColumn": 60,
+                        "endOffset": 738
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 56,
+                    "endOffset": 274
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 561,
+                        "endColumn": 56,
+                        "endOffset": 613
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 279,
+                    "endColumn": 51,
+                    "endOffset": 326
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 509,
+                        "endColumn": 51,
+                        "endOffset": 556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 331,
+                    "endColumn": 54,
+                    "endOffset": 381
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 802,
+                        "endColumn": 59,
+                        "endOffset": 857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 386,
+                    "endColumn": 49,
+                    "endOffset": 431
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 220,
+                        "endColumn": 49,
+                        "endOffset": 265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 436,
+                    "endColumn": 62,
+                    "endOffset": 494
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 270,
+                        "endColumn": 62,
+                        "endOffset": 328
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 499,
+                    "endColumn": 47,
+                    "endOffset": 542
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 47,
+                        "endOffset": 99
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 547,
+                    "endColumn": 57,
+                    "endOffset": 600
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 104,
+                        "endColumn": 57,
+                        "endOffset": 157
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 605,
+                    "endColumn": 59,
+                    "endOffset": 660
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 449,
+                        "endColumn": 59,
+                        "endOffset": 504
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 665,
+                    "endColumn": 54,
+                    "endOffset": 715
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 394,
+                        "endColumn": 54,
+                        "endOffset": 444
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 720,
+                    "endColumn": 57,
+                    "endOffset": 773
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 162,
+                        "endColumn": 57,
+                        "endOffset": 215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 778,
+                    "endColumn": 60,
+                    "endOffset": 834
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 333,
+                        "endColumn": 60,
+                        "endOffset": 389
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 839,
+                    "endColumn": 53,
+                    "endOffset": 888
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 743,
+                        "endColumn": 58,
+                        "endOffset": 797
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\res\\merged\\release\\values-zh\\values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 862,
+                        "endColumn": 57,
+                        "endOffset": 915
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 57,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 619,
+                        "endColumn": 62,
+                        "endOffset": 677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 55,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 682,
+                        "endColumn": 60,
+                        "endOffset": 738
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 56,
+                    "endOffset": 274
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 561,
+                        "endColumn": 56,
+                        "endOffset": 613
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 279,
+                    "endColumn": 51,
+                    "endOffset": 326
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 509,
+                        "endColumn": 51,
+                        "endOffset": 556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 331,
+                    "endColumn": 54,
+                    "endOffset": 381
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 802,
+                        "endColumn": 59,
+                        "endOffset": 857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 386,
+                    "endColumn": 49,
+                    "endOffset": 431
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 220,
+                        "endColumn": 49,
+                        "endOffset": 265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 436,
+                    "endColumn": 62,
+                    "endOffset": 494
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 270,
+                        "endColumn": 62,
+                        "endOffset": 328
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 499,
+                    "endColumn": 47,
+                    "endOffset": 542
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 47,
+                        "endOffset": 99
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 547,
+                    "endColumn": 57,
+                    "endOffset": 600
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 104,
+                        "endColumn": 57,
+                        "endOffset": 157
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 605,
+                    "endColumn": 59,
+                    "endOffset": 660
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 449,
+                        "endColumn": 59,
+                        "endOffset": 504
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 665,
+                    "endColumn": 54,
+                    "endOffset": 715
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 394,
+                        "endColumn": 54,
+                        "endOffset": 444
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 720,
+                    "endColumn": 57,
+                    "endOffset": 773
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 162,
+                        "endColumn": 57,
+                        "endOffset": 215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 778,
+                    "endColumn": 60,
+                    "endOffset": 834
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 333,
+                        "endColumn": 60,
+                        "endOffset": 389
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 839,
+                    "endColumn": 53,
+                    "endOffset": 888
+                },
+                "from": {
+                    "file": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\src\\main\\res\\values-zh\\cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 743,
+                        "endColumn": 58,
+                        "endOffset": 797
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="TransAcActivity" parent="@style/ActivityTrans"></style>
+    <style name="NonTransActivity" parent="@style/ActivityNonTrans"></style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ActivityTrans" parent="@style/AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="ActivityNonTrans" parent="@style/AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+</resources>

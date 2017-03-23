@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- 通用背景颜色 -->
+    <color name="common_background">#e4e4e4</color>
+
+    <!-- 通用1px分割线颜色 -->
+    <color name="common_depart_line_1_px">#ccc</color>
+
+    <!-- 字体颜色 -->
+    <color name="title_color">#333333</color>
+    <color name="content_color">#666666</color>
+    <color name="small_color">#999999</color>
+</resources>

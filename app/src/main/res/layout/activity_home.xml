@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/home_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_layout_size"
+        android:background="#F5F5F5"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_layout_size"
+            android:layout_weight="1"
+            android:background="@drawable/home_index_button"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_layout_size"
+            android:layout_weight="1"
+            android:background="@drawable/home_reading_button"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_layout_size"
+            android:layout_weight="1"
+            android:background="@drawable/home_music_button"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_layout_size"
+            android:layout_weight="1"
+            android:background="@drawable/home_movie_button"
+            android:button="@null" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/spare_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignTop="@id/home_radio_group"
+        android:background="@color/common_depart_line_1_px" />
+
+    <FrameLayout
+        android:id="@+id/temp_fragment"
+        android:layout_above="@id/spare_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

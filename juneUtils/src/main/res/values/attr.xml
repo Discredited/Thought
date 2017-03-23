@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScaleImageView">
+        <attr name="width_scale" format="integer" />
+        <attr name="height_scale" format="integer" />
+        <attr name="fix_mode" format="integer">
+            <enum name="fix_width" value="1" />
+            <enum name="fix_height" value="2" />
+            <enum name="none" value="0" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="JuneButton">
+        <attr name="lt_radius" format="dimension" />
+        <attr name="rt_radius" format="dimension" />
+        <attr name="lb_radius" format="dimension" />
+        <attr name="rb_radius" format="dimension" />
+
+        <attr name="normal_color" format="color" />
+        <attr name="press_color" format="color" />
+        <attr name="disable_color" format="color" />
+        <attr name="ripple_color" format="color" />
+    </declare-styleable>
+</resources>

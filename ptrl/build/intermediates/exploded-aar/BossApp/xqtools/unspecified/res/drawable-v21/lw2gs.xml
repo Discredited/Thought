@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/image_button_ripple">//水波纹的颜色
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <shape>
+                    <corners android:radius="2dp"></corners>
+                    <solid android:color="@color/xq_line_deep_color"></solid>
+                </shape>
+            </item>
+            <item android:state_pressed="false">
+                <shape>
+                    <corners android:radius="2dp"></corners>
+                    <solid android:color="@color/white"></solid>
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
+        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    }
+]
