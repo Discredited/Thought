@@ -8,7 +8,7 @@ import android.view.View;
  *
  * @author Administrator
  */
-public class JuneViewHodler {
+public class JuneViewHolder {
 
     /**
      * ImageView view = AbViewHolder.get(convertView, R.id.imageView);

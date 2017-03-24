@@ -15,15 +15,15 @@ import com.project.june.thought.model.OneIndexVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
-import com.project.xujun.juneutils.listview.JuneViewHodler;
+import com.project.xujun.juneutils.listview.JuneViewHolder;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -42,6 +42,7 @@ public class IndexOneFragment extends BaseFragment {
 
     private String itemId;
     private JuneBaseAdapter<OneIndexVo.DataBean.ContentListBean> adapter;
+    private OneIndexVo.DataBean.WeatherBean weather;
 
     @Override
     protected int getContentViewId() {
@@ -97,39 +98,63 @@ public class IndexOneFragment extends BaseFragment {
 
             @Override
             public void bindData(int position, View convertView, OneIndexVo.DataBean.ContentListBean itemData) {
+                //"category":"0"  图文
+                //"category":"1"  阅读
+                //"category":"1"  动漫
+                //"category":"2"  连载
+                //"category":"3"  问答
+                //"category":"4"  电台
+                //"category":"4"  音乐
+                //"category":"5"  影视
+
                 ImageView image;
                 TextView content, laud_number;
 
                 if (position == IMAGE_TEXT) {
                     //图文
-                    TextView one_date = JuneViewHodler.get(convertView, R.id.one_date);
-                    TextView one_position = JuneViewHodler.get(convertView, R.id.one_position);
-                    TextView one_number = JuneViewHodler.get(convertView, R.id.one_number);
-                    TextView one_draw = JuneViewHodler.get(convertView, R.id.one_draw);
-                    image = JuneViewHodler.get(convertView, R.id.one_img);
-                    content = JuneViewHodler.get(convertView, R.id.one_content);
-                    TextView one_author = JuneViewHodler.get(convertView, R.id.one_author);
-                    laud_number = JuneViewHodler.get(convertView, R.id.laud_count);
+                    TextView one_date = JuneViewHolder.get(convertView, R.id.one_date);
+                    TextView one_position = JuneViewHolder.get(convertView, R.id.one_position);
+                    TextView one_number = JuneViewHolder.get(convertView, R.id.one_number);
+                    TextView one_draw = JuneViewHolder.get(convertView, R.id.one_draw);
+                    image = JuneViewHolder.get(convertView, R.id.one_img);
+                    content = JuneViewHolder.get(convertView, R.id.one_content);
+                    TextView one_author = JuneViewHolder.get(convertView, R.id.one_author);
+                    laud_number = JuneViewHolder.get(convertView, R.id.laud_count);
 
-                    one_date.setText("年");
-                    one_position.setText("天气" + "    " + "城市");
+                    if (null != weather) {
+                        one_date.setText(weather.getDate());
+                        one_position.setText(weather.getClimate() + "    " + weather.getCity_name());
+                    }
                     one_number.setText(itemData.getVolume());
                     one_draw.setText(itemData.getTitle() + " | " + itemData.getPic_info());
                     one_author.setText(itemData.getWords_info());
                 } else {
-                    TextView item_type = JuneViewHodler.get(convertView, R.id.item_type);
-                    TextView item_title = JuneViewHodler.get(convertView, R.id.item_title);
-                    TextView item_author = JuneViewHodler.get(convertView, R.id.item_author);
-                    image = JuneViewHodler.get(convertView, R.id.item_image);
-                    content = JuneViewHodler.get(convertView, R.id.item_content);
-                    laud_number = JuneViewHodler.get(convertView, R.id.laud_count);
+                    TextView item_type = JuneViewHolder.get(convertView, R.id.item_type);
+                    TextView item_title = JuneViewHolder.get(convertView, R.id.item_title);
+                    TextView item_author = JuneViewHolder.get(convertView, R.id.item_author);
+                    image = JuneViewHolder.get(convertView, R.id.item_image);
+                    //TextView item_sub_content = JuneViewHolder.get(convertView, R.id.item_content);
+                    content = JuneViewHolder.get(convertView, R.id.item_sub_content);
+                    laud_number = JuneViewHolder.get(convertView, R.id.laud_count);
 
-                    item_type.setText("- item类型 -");
+                    if (itemData.getCategory().equals("1")) {
+                        //阅读  漫画/one story/实验室 ...
+                        if (null != itemData.getTag_list() && itemData.getTag_list().size() > 0) {
+                            item_type.setText("- " + itemData.getTag_list().get(0).getTitle() + " -");
+                        }
+                    } else if (itemData.getCategory().equals("2")) {
+                        //连载
+                        item_type.setText("- 连载 -");
+                    } else if (itemData.getCategory().equals("3")) {
+                        //问答
+                        item_type.setText("- 问答 -");
+                    }
+
                     item_title.setText(itemData.getTitle());
                     item_author.setText("文 / " + itemData.getAuthor().getUser_name());
                 }
 
-                //Picasso.with(mActivity).load(itemData.getImg_url()).placeholder(R.mipmap.opening_monday).error(R.mipmap.opening_monday).into(image);
+                Picasso.with(mActivity).load(itemData.getImg_url()).error(R.mipmap.opening_monday).into(image);
                 content.setText(itemData.getForward());
                 laud_number.setText(itemData.getLike_count() + "");
             }
@@ -189,8 +214,32 @@ public class IndexOneFragment extends BaseFragment {
     }
 
     private void fillData(OneIndexVo.DataBean data) {
+        weather = data.getWeather();
+
+        List<OneIndexVo.DataBean.ContentListBean> beanList = new ArrayList<>(0);
+        List<OneIndexVo.DataBean.ContentListBean> contentList = data.getContent_list();
+        for (OneIndexVo.DataBean.ContentListBean bean : contentList) {
+            String category = bean.getCategory();
+            //过滤音乐和影视
+            if (category.equals("4") || category.equals("5")){
+                continue;
+            }
+
+            //过滤阅读
+            if (category.equals("1") && bean.getTag_list().size() == 0){
+                continue;
+            }
+
+            //过滤连载
+            if (category.equals("2")){
+                continue;
+            }
+
+            beanList.add(bean);
+        }
+
         adapter.getItems().clear();
-        adapter.getItems().addAll(data.getContent_list());
+        adapter.getItems().addAll(beanList);
         adapter.notifyDataSetChanged();
     }
 
