@@ -31,4 +31,5 @@ dependencies {
     compile project(':juneUtils')
     compile project(':swipebacklayout')
     compile project(':ptrl')
+    compile 'com.android.support:design:25.0.1'
 }

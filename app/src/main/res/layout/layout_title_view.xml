@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/common_layout_size"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/title_img_left"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@color/transparent"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/return_image_gray" />
+
+    <TextView
+        android:id="@+id/title_text_left"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:text="标题"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/common_text_16"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="标题标题标题标题标题标题标题标题标题标题标题标题标题"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/common_text_20" />
+
+    <TextView
+        android:id="@+id/title_text_right"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:text="标题"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/common_text_16"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/title_img_right"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/transparent"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:visibility="gone" />
+</RelativeLayout>

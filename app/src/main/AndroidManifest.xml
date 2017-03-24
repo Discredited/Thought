@@ -22,8 +22,7 @@
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NonTransActivity">
-        </activity>
+            android:theme="@style/NonTransActivity"></activity>
         <activity
             android:name=".activity.StartActivity"
             android:screenOrientation="portrait"
@@ -34,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ToListActivity"></activity>
     </application>
 
 </manifest>

@@ -23,10 +23,11 @@
             android:cacheColorHint="@android:color/transparent"
             android:clipToPadding="false"
             android:divider="@color/common_background"
-            android:dividerHeight="1px"
+            android:dividerHeight="10dp"
             android:fadingEdge="none"
             android:footerDividersEnabled="true"
             android:listSelector="@android:color/transparent"
-            android:scrollbarStyle="outsideOverlay" />
+            android:scrollbars="none" />
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
 </LinearLayout>

@@ -227,6 +227,15 @@ public class OneIndexVo implements Serializable {
              */
 
             private List<TagListBean> tag_list;
+            private boolean isLaud = false;
+
+            public boolean isLaud() {
+                return isLaud;
+            }
+
+            public void setLaud(boolean laud) {
+                isLaud = laud;
+            }
 
             public String getId() {
                 return id;

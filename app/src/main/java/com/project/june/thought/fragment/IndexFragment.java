@@ -7,7 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.handmark.pulltorefresh.extras.viewpager.PullToRefreshViewPager;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.project.june.thought.R;
+import com.project.june.thought.activity.ToListActivity;
 import com.project.june.thought.adapter.IndexFragmentPagerAdapter;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexListVo;
@@ -44,6 +46,8 @@ public class IndexFragment extends BaseFragment {
 
         //初始化界面
         initUi();
+
+        initPtr();
         //请求数据
         requestData();
     }
@@ -55,6 +59,26 @@ public class IndexFragment extends BaseFragment {
         viewPager.setAdapter(adapter);
     }
 
+
+    private void initPtr() {
+        view_pager.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ViewPager>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ViewPager> refreshView) {
+                //刷新
+                requestData();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ViewPager> refreshView) {
+                //加载
+
+                ToListActivity.startThis(mActivity);
+                view_pager.onRefreshComplete();
+            }
+        });
+        view_pager.setMode(PullToRefreshBase.Mode.BOTH);
+    }
+
     private void requestData() {
         OkHttpUtils.get()
                 .url(HttpUtils.INDEX_LIST)
@@ -63,6 +87,7 @@ public class IndexFragment extends BaseFragment {
                     @Override
                     public void onResponse(OneIndexListVo response, int id) {
                         super.onResponse(response, id);
+                        view_pager.onRefreshComplete();
                         //请求数据成功
                         if (response.getRes() == 0) {
                             List<String> stringList = response.getData();
@@ -78,6 +103,7 @@ public class IndexFragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         super.onError(call, e, id);
+                        view_pager.onRefreshComplete();
                         Log.e(HttpUtils.TAG, "网络请求失败    " + e.toString());
                     }
                 });

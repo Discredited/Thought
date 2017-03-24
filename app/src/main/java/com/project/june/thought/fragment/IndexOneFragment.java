@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.base.BaseFragment;
@@ -97,7 +99,7 @@ public class IndexOneFragment extends BaseFragment {
             }
 
             @Override
-            public void bindData(int position, View convertView, OneIndexVo.DataBean.ContentListBean itemData) {
+            public void bindData(int position, View convertView, final OneIndexVo.DataBean.ContentListBean itemData) {
                 //"category":"0"  图文
                 //"category":"1"  阅读
                 //"category":"1"  动漫
@@ -108,7 +110,8 @@ public class IndexOneFragment extends BaseFragment {
                 //"category":"5"  影视
 
                 ImageView image;
-                TextView content, laud_number;
+                TextView content;
+                final TextView laud_number;
 
                 if (position == IMAGE_TEXT) {
                     //图文
@@ -119,7 +122,11 @@ public class IndexOneFragment extends BaseFragment {
                     image = JuneViewHolder.get(convertView, R.id.one_img);
                     content = JuneViewHolder.get(convertView, R.id.one_content);
                     TextView one_author = JuneViewHolder.get(convertView, R.id.one_author);
+                    final ImageView laud_img = JuneViewHolder.get(convertView, R.id.laud_img);
                     laud_number = JuneViewHolder.get(convertView, R.id.laud_count);
+                    LinearLayout diary_layout = JuneViewHolder.get(convertView, R.id.diary_layout);
+                    LinearLayout laud_layout = JuneViewHolder.get(convertView, R.id.laud_layout);
+                    LinearLayout share_layout = JuneViewHolder.get(convertView, R.id.share_layout);
 
                     if (null != weather) {
                         one_date.setText(weather.getDate());
@@ -128,14 +135,51 @@ public class IndexOneFragment extends BaseFragment {
                     one_number.setText(itemData.getVolume());
                     one_draw.setText(itemData.getTitle() + " | " + itemData.getPic_info());
                     one_author.setText(itemData.getWords_info());
+                    content.setText(itemData.getForward());
+                    laud_number.setText(itemData.getLike_count() + "");
+
+                    diary_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //小记页面
+                            Toast.makeText(mActivity, "打开小记", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    laud_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //是否收藏
+                            if (itemData.isLaud()) {
+                                laud_img.setImageResource(R.mipmap.laud);
+                                laud_number.setText((Integer.parseInt(laud_number.getText().toString()) - 1) + "");
+                                itemData.setLaud(false);
+                            } else {
+                                laud_img.setImageResource(R.mipmap.laud_selected);
+                                laud_number.setText((Integer.parseInt(laud_number.getText().toString()) + 1) + "");
+                                itemData.setLaud(true);
+                            }
+                        }
+                    });
+
+                    share_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //分享页面
+                            Toast.makeText(mActivity, "分享页面", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
                     TextView item_type = JuneViewHolder.get(convertView, R.id.item_type);
                     TextView item_title = JuneViewHolder.get(convertView, R.id.item_title);
                     TextView item_author = JuneViewHolder.get(convertView, R.id.item_author);
                     image = JuneViewHolder.get(convertView, R.id.item_image);
-                    //TextView item_sub_content = JuneViewHolder.get(convertView, R.id.item_content);
-                    content = JuneViewHolder.get(convertView, R.id.item_sub_content);
+                    //TextView item_sub_content = JuneViewHolder.get(convertView, R.id.item_sub_content);
+                    content = JuneViewHolder.get(convertView, R.id.item_content);
                     laud_number = JuneViewHolder.get(convertView, R.id.laud_count);
+                    TextView item_time = JuneViewHolder.get(convertView, R.id.item_time);
+                    final ImageView laud_img = JuneViewHolder.get(convertView, R.id.laud_img);
+                    ImageView item_share = JuneViewHolder.get(convertView, R.id.item_share);
 
                     if (itemData.getCategory().equals("1")) {
                         //阅读  漫画/one story/实验室 ...
@@ -152,11 +196,35 @@ public class IndexOneFragment extends BaseFragment {
 
                     item_title.setText(itemData.getTitle());
                     item_author.setText("文 / " + itemData.getAuthor().getUser_name());
+                    content.setText(itemData.getForward());
+                    laud_number.setText(itemData.getLike_count() + "");
+
+                    item_time.setText("1天之前");
+                    laud_img.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //是否收藏
+                            if (itemData.isLaud()) {
+                                laud_img.setImageResource(R.mipmap.laud);
+                                laud_number.setText((Integer.parseInt(laud_number.getText().toString()) - 1) + "");
+                                itemData.setLaud(false);
+                            } else {
+                                laud_img.setImageResource(R.mipmap.laud_selected);
+                                laud_number.setText((Integer.parseInt(laud_number.getText().toString()) + 1) + "");
+                                itemData.setLaud(true);
+                            }
+                        }
+                    });
+                    item_share.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //分享页面
+                            Toast.makeText(mActivity, "分享页面", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
                 Picasso.with(mActivity).load(itemData.getImg_url()).error(R.mipmap.opening_monday).into(image);
-                content.setText(itemData.getForward());
-                laud_number.setText(itemData.getLike_count() + "");
             }
         };
         list_view.setAdapter(adapter);
@@ -221,17 +289,17 @@ public class IndexOneFragment extends BaseFragment {
         for (OneIndexVo.DataBean.ContentListBean bean : contentList) {
             String category = bean.getCategory();
             //过滤音乐和影视
-            if (category.equals("4") || category.equals("5")){
+            if (category.equals("4") || category.equals("5")) {
                 continue;
             }
 
             //过滤阅读
-            if (category.equals("1") && bean.getTag_list().size() == 0){
+            if (category.equals("1") && bean.getTag_list().size() == 0) {
                 continue;
             }
 
             //过滤连载
-            if (category.equals("2")){
+            if (category.equals("2")) {
                 continue;
             }
 
