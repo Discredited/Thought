@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
         "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\need_this_for_maven.xml",
         "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\bundles\\debug\\res\\layout\\need_this_for_maven.xml"
     },
@@ -8,7 +12,15 @@
         "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
     },
     {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\need_this_for_maven.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\bundles\\debug\\res\\layout\\need_this_for_maven.xml"
+    },
+    {
         "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
         "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     }
 ]
