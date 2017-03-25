@@ -17,7 +17,17 @@
             <option value="$PROJECT_DIR$/swipebacklayout" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/juneUtils" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/ptrl" />
+            <option value="$PROJECT_DIR$/pullToRefreshViewPager" />
+            <option value="$PROJECT_DIR$/swipebacklayout" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
