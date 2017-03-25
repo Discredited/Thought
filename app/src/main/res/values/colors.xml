@@ -11,7 +11,7 @@
     <color name="common_background">#f4f4f4</color>
 
     <!-- 通用1px分割线颜色 -->
-    <color name="common_depart_line_1_px">#ccc</color>
+    <color name="common_depart_line_1_px">#aaa</color>
 
     <!-- 字体颜色 -->
     <color name="title_color">#333333</color>

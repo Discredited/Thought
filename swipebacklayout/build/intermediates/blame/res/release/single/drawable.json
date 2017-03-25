@@ -36,20 +36,20 @@
         "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
-        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_text_cursor_material.xml",
-        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_text_cursor_material.xml"
-    },
-    {
         "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
         "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_bg_low.xml"
     },
     {
-        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
+        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_text_cursor_material.xml",
+        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_search_api_material.xml",
         "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_tick_mark_material.xml",
