@@ -32,6 +32,10 @@
         "source": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_screen_simple.xml"
     },
     {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_ptr_classic_default_header.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_ptr_classic_default_header.xml"
+    },
+    {
         "merged": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
         "source": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_mode_bar.xml"
     },
@@ -96,6 +100,10 @@
         "source": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_ptr_simple_loading.xml"
     },
     {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_ptr_classic_default_footer.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_ptr_classic_default_footer.xml"
+    },
+    {
         "merged": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\layout_xqtitle.xml",
         "source": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\exploded-aar\\BossApp\\xqtools\\unspecified\\res\\layout\\layout_xqtitle.xml"
     },
@@ -138,6 +146,10 @@
     {
         "merged": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\layout_dialog_data_progress.xml",
         "source": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\exploded-aar\\BossApp\\xqtools\\unspecified\\res\\layout\\layout_dialog_data_progress.xml"
+    },
+    {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_ptr_simple_loading.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\ptrl\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_ptr_simple_loading.xml"
     },
     {
         "merged": "F:\\AllBread\\workspace\\AndroidStudio\\BossApp\\ptrl\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_layout.xml",
