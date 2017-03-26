@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.project.june.thought.R;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexVo;
+import com.project.june.thought.utils.DateTools;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
@@ -129,7 +130,7 @@ public class IndexOneFragment extends BaseFragment {
                     LinearLayout share_layout = JuneViewHolder.get(convertView, R.id.share_layout);
 
                     if (null != weather) {
-                        one_date.setText(weather.getDate());
+                        one_date.setText(DateTools.dateString(weather.getDate()));
                         one_position.setText(weather.getClimate() + "    " + weather.getCity_name());
                     }
                     one_number.setText(itemData.getVolume());

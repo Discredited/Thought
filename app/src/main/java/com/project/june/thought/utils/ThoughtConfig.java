@@ -6,7 +6,7 @@ package com.project.june.thought.utils;
 public class ThoughtConfig {
 
 
-
+    public static String CATEGORY = "category";
     public static String IMAGE_TEXT_CATEGORY = "0";  //图文
     public static String READING_CATEGORY = "1";  //图文
     public static String SERIALIZE_CATEGORY = "2";  //图文

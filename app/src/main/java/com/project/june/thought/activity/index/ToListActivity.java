@@ -1,28 +1,22 @@
-package com.project.june.thought.activity;
+package com.project.june.thought.activity.index;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
-import com.project.june.thought.adapter.ToListPagerAdapter;
+import com.project.june.thought.adapter.pager.ToListPagerAdapter;
 import com.project.june.thought.base.BaseActivity;
-import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.fragment.ToListFragment;
 import com.project.june.thought.utils.ThoughtConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -31,8 +25,6 @@ import butterknife.OnClick;
  */
 public class ToListActivity extends BaseActivity {
 
-    @InjectView(R.id.title_img_left)
-    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.tab_layout)
@@ -70,28 +62,28 @@ public class ToListActivity extends BaseActivity {
         tabStringList.add("图文");
         tabStringList.add("阅读");
         tabStringList.add("连载");
+        tabStringList.add("问答");
         tabStringList.add("音乐");
-        tabStringList.add("影视");
 
         Bundle bundle = new Bundle();
         //图文
-        bundle.putString(ThoughtConfig.IMAGE_TEXT, ThoughtConfig.IMAGE_TEXT_CATEGORY);
+        bundle.putString(ThoughtConfig.CATEGORY, ThoughtConfig.IMAGE_TEXT_CATEGORY);
         fragments.add(ToListFragment.newInstance(bundle));
         //阅读
         bundle = new Bundle();
-        bundle.putString(ThoughtConfig.READING, ThoughtConfig.READING_CATEGORY);
+        bundle.putString(ThoughtConfig.CATEGORY, ThoughtConfig.READING_CATEGORY);
         fragments.add(ToListFragment.newInstance(bundle));
         //连载
         bundle = new Bundle();
-        bundle.putString(ThoughtConfig.SERIALIZE, ThoughtConfig.SERIALIZE_CATEGORY);
+        bundle.putString(ThoughtConfig.CATEGORY, ThoughtConfig.SERIALIZE_CATEGORY);
+        fragments.add(ToListFragment.newInstance(bundle));
+        //问答
+        bundle = new Bundle();
+        bundle.putString(ThoughtConfig.CATEGORY, ThoughtConfig.QUESTION_CATEGORY);
         fragments.add(ToListFragment.newInstance(bundle));
         //音乐
         bundle = new Bundle();
-        bundle.putString(ThoughtConfig.MUSIC, ThoughtConfig.MUSIC_CATEGORY);
-        fragments.add(ToListFragment.newInstance(bundle));
-        //影视
-        bundle = new Bundle();
-        bundle.putString(ThoughtConfig.VIDEO, ThoughtConfig.VIDEO_CATEGORY);
+        bundle.putString(ThoughtConfig.CATEGORY, ThoughtConfig.MUSIC_CATEGORY);
         fragments.add(ToListFragment.newInstance(bundle));
 
         adapter = new ToListPagerAdapter(getSupportFragmentManager(), fragments, tabStringList);
@@ -101,9 +93,10 @@ public class ToListActivity extends BaseActivity {
     }
 
     @OnClick(R.id.title_img_left)
-    public void onClick(View view){
+    public void onClick(View view) {
         onBackPressed();
     }
+
 
     @Override
     protected boolean enableSwipeBack() {

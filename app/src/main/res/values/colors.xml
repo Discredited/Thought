@@ -10,6 +10,8 @@
     <!-- 通用背景颜色 -->
     <color name="common_background">#f4f4f4</color>
 
+    <color name="common_blue">#6084be</color>
+
     <!-- 通用1px分割线颜色 -->
     <color name="common_depart_line_1_px">#aaa</color>
 

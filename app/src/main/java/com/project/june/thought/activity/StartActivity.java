@@ -41,13 +41,15 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         calendar = Calendar.getInstance();
-        weekDay = new int[]{R.mipmap.opening_monday,
+        weekDay = new int[]{
+                R.mipmap.opening_sunday,
+                R.mipmap.opening_monday,
                 R.mipmap.opening_tuesday,
                 R.mipmap.opening_wednesday,
                 R.mipmap.opening_thursday,
                 R.mipmap.opening_friday,
                 R.mipmap.opening_saturday,
-                R.mipmap.opening_sunday};
+        };
         years = new String[]{"二〇一七年", "二〇一八年", "二〇一九年", "二〇二〇年", "二〇二一年", "二〇二二年", "二〇二三年", "二〇二四年", "二〇二五年"};
         months = new String[]{"一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"};
         days = new String[]{"一日", "二日", "三日", "四日", "五日", "六日", "七日", "八日", "九日", "十日", "十一日", "十二日",
@@ -84,7 +86,6 @@ public class StartActivity extends BaseActivity {
 
     private void weekdayToday() {
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        Log.e(HttpUtils.TAG, "今天星期：" + dayOfWeek);
         Picasso.with(mActivity).load(weekDay[dayOfWeek - 1]).into(start_image);
     }
 

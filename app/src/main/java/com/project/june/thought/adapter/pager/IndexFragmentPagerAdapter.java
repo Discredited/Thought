@@ -1,4 +1,4 @@
-package com.project.june.thought.adapter;
+package com.project.june.thought.adapter.pager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -4,12 +4,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.index.ImageTextListActivity;
+import com.project.june.thought.activity.index.MusicListActivity;
+import com.project.june.thought.activity.index.QuestionListActivity;
+import com.project.june.thought.activity.index.ReadingListActivity;
+import com.project.june.thought.activity.index.SerializeListActivity;
 import com.project.june.thought.base.BaseFragment;
+import com.project.june.thought.model.DateTypeVo;
+import com.project.june.thought.model.SerializeListVo;
 import com.project.june.thought.utils.DateTools;
+import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
 import com.project.xujun.juneutils.listview.JuneViewHolder;
 
@@ -26,7 +35,8 @@ public class ToListFragment extends BaseFragment {
 
     @InjectView(R.id.list_view)
     ListView list_view;
-    private JuneBaseAdapter<String> adapter;
+    private JuneBaseAdapter<DateTypeVo> adapter;
+    private String category;
 
     @Override
     protected int getContentViewId() {
@@ -37,12 +47,15 @@ public class ToListFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        Bundle bundle = getArguments();
+        category = bundle.getString(ThoughtConfig.CATEGORY);
+
         initListView();
         requestData();
     }
 
     private void initListView() {
-        adapter = new JuneBaseAdapter<String>(mActivity) {
+        adapter = new JuneBaseAdapter<DateTypeVo>(mActivity) {
 
             @Override
             public View getConvertView(int position, View convertView, ViewGroup parent) {
@@ -53,13 +66,38 @@ public class ToListFragment extends BaseFragment {
             }
 
             @Override
-            public void bindData(int position, View convertView, String itemData) {
+            public void bindData(int position, View convertView, DateTypeVo itemData) {
                 TextView date_text = JuneViewHolder.get(convertView, R.id.date_text);
 
-                date_text.setText(itemData);
+                date_text.setText(itemData.getMonthDateType());
             }
         };
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DateTypeVo dateTypeVo = adapter.getItems().get(i);
+                switch (category) {
+                    case "0":
+                        ImageTextListActivity.startThis(mActivity, dateTypeVo.getMonthDateType(), dateTypeVo.getYearMonthType());
+                        break;
+                    case "1":
+                        //阅读
+                        ReadingListActivity.startThis(mActivity, dateTypeVo.getMonthDateType(),dateTypeVo.getYearMonthType());
+                        break;
+                    case "2":
+                        SerializeListActivity.startThis(mActivity, dateTypeVo.getMonthDateType(),dateTypeVo.getYearMonthType());
+                        break;
+                    case "3":
+                        QuestionListActivity.startThis(mActivity, dateTypeVo.getMonthDateType(),dateTypeVo.getYearMonthType());
+                        break;
+                    case "4":
+                        //音乐
+                        MusicListActivity.startThis(mActivity, dateTypeVo.getMonthDateType(), dateTypeVo.getYearMonthType());
+                        break;
+                }
+            }
+        });
     }
 
 
@@ -68,21 +106,29 @@ public class ToListFragment extends BaseFragment {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
 
-        List<String> list = new ArrayList<>(0);
+        List<DateTypeVo> list = new ArrayList<>(0);
+        DateTypeVo vo;
         for (int i = year; i >= 2012; i--) {
             int minMonth = 0;
-            if (i != year){
+            if (i != year) {
                 month = 11;
             }
             if (i == 2012) {
                 minMonth = 9;
             }
+            if (category.equals(ThoughtConfig.MUSIC_CATEGORY) && i == 2015){
+                break;
+            }
             for (int j = month; j >= minMonth; j--) {
-                if (i == year && j == month){
-                    list.add("本月");
-                }else {
-                    list.add(DateTools.monthType(j) + i);
+                vo = new DateTypeVo();
+                if (i == year && j == month) {
+                    vo.setMonthDateType("本月");
+                    vo.setYearMonthType(i + "-" + (j + 1) + "-01");
+                } else {
+                    vo.setMonthDateType(DateTools.monthType(j) + i);
+                    vo.setYearMonthType(i + "-" + (j + 1) + "-01");
                 }
+                list.add(vo);
             }
         }
         adapter.getItems().addAll(list);
