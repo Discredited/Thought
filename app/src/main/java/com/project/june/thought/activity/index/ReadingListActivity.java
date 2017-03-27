@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.MusicListVo;
+import com.project.june.thought.model.ReadingDetailVo;
 import com.project.june.thought.model.ReadingListVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
@@ -95,6 +98,13 @@ public class ReadingListActivity extends BaseActivity {
             }
         };
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ReadingListVo.DataBean dataBean = adapter.getItems().get(i);
+                ReadingDetailActivity.startThis(mActivity, dataBean.getContent_id());
+            }
+        });
     }
 
     private void requestData() {

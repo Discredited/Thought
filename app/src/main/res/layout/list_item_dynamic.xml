@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/dynamic_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/praise_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="hush"
+                android:textColor="@color/small_color"
+                android:textSize="@dimen/common_text" />
+
+            <TextView
+                android:id="@+id/praise_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017.03.27 19:30"
+                android:textColor="@color/small_color"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/praise_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/content_color"
+            android:textSize="@dimen/common_text" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/praise_count"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/small_color"
+                android:textSize="@dimen/small_text" />
+
+            <ImageView
+                android:id="@+id/praise_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@id/praise_count"
+                android:src="@mipmap/comment_laud" />
+
+            <ImageView
+                android:id="@+id/comment_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_toLeftOf="@id/praise_image"
+                android:src="@mipmap/comment_image" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
