@@ -29,4 +29,8 @@ public class HttpUtils {
     public static String IMAGE_TEXT_DETAIL = HEADER + "/hp/feeds/{0}/0?version=4.1.0&platform=android";
     //阅读详情
     public static String READING_DETAIL = HEADER + "/essay/{0}?source=channel_reading&source_id=10683&version=4.0.7&platform=android";
+
+
+    //阅读动态
+    public static String READING_DYNAMIC = HEADER + "/comment/praiseandtime/essay/{0}/{1}?version=4.0.7&platform=android";
 }

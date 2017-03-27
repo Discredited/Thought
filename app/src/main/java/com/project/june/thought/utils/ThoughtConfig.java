@@ -20,4 +20,8 @@ public class ThoughtConfig {
     public static String QUESTION = "question";  //问答
     public static String MUSIC = "music";  //音乐
     public static String VIDEO = "video";  //影视
+
+
+    //网络异常提示
+    public static String NETWORK_ERROR = "网络异常，请重试";
 }
