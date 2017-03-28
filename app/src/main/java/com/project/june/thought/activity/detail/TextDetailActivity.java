@@ -32,7 +32,7 @@ import java.text.MessageFormat;
 import butterknife.InjectView;
 import okhttp3.Call;
 
-public class ReadingDetailActivity extends BaseActivity {
+public class TextDetailActivity extends BaseActivity {
 
     @InjectView(R.id.header_view)
     View header_view;
@@ -51,10 +51,12 @@ public class ReadingDetailActivity extends BaseActivity {
 
     private String essayId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
+    private String category;
 
-    public static void startThis(Context context, String id) {
-        Intent intent = new Intent(context, ReadingDetailActivity.class);
+    public static void startThis(Context context, String id, String category) {
+        Intent intent = new Intent(context, TextDetailActivity.class);
         intent.putExtra("ESSAY_ID", id);
+        intent.putExtra("CATEGORY", category);
         context.startActivity(intent);
     }
 
@@ -72,7 +74,8 @@ public class ReadingDetailActivity extends BaseActivity {
     protected void handleIntent(Intent intent) {
         super.handleIntent(intent);
         essayId = getIntent().getStringExtra("ESSAY_ID");
-        if (null == essayId) {
+        category = getIntent().getStringExtra("CATEGORY");
+        if (null == essayId || null == category) {
             finish();
             return;
         }
@@ -123,7 +126,12 @@ public class ReadingDetailActivity extends BaseActivity {
                 TextView praise_content = JuneViewHolder.get(convertView, R.id.praise_content);
                 TextView praise_count = JuneViewHolder.get(convertView, R.id.praise_count);
 
-                Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
+                if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()){
+                    Picasso.with(mActivity).load(R.mipmap.user_default_image).transform(new CircleTransform()).into(dynamic_image);
+                }else {
+                    Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
+                }
+
                 praise_name.setText(itemData.getUser().getUser_name());
                 praise_time.setText(itemData.getCreated_at());
                 praise_content.setText(itemData.getContent());
@@ -133,8 +141,28 @@ public class ReadingDetailActivity extends BaseActivity {
         list_view.setAdapter(adapter);
     }
 
+    //请求动态列表
     private void requestDynamic() {
-        String path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, 0);
+        String path = null;
+        switch (category) {
+            case "1":
+                path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, 0);
+                break;
+            case "2":
+                path = MessageFormat.format(HttpUtils.SERIALIZE_DYNAMIC, essayId, 0);
+                break;
+            case "3":
+                path = MessageFormat.format(HttpUtils.QUESTION_DYNAMIC, essayId, 0);
+                break;
+            case "4":
+                path = MessageFormat.format(HttpUtils.MUSIC_DYNAMIC, essayId, 0);
+                break;
+            case "5":
+                path = MessageFormat.format(HttpUtils.VIDEO_DYNAMIC, essayId, 0);
+                break;
+        }
+
+
         OkHttpUtils.get()
                 .url(path)
                 .build()
@@ -195,9 +223,9 @@ public class ReadingDetailActivity extends BaseActivity {
 
         String string1 = vo.getHp_content();
         String string2 = string1.replace("width:394px", "width:100%");
-        String string3 = string2.replace("w/394","w/344");
-        String string4 = string3.replace("<br>","<br><br>");
-        String hp_content = string4.replace("100%\"><img","100%\"><br><br><img");
+        String string3 = string2.replace("w/394", "w/344");
+        String string4 = string3.replace("<br>", "<br><br>");
+        String hp_content = string4.replace("100%\"><img", "100%\"><br><br><img");
 
         text_content.loadDataWithBaseURL(null, hp_content, "text/html", "utf-8", null);
     }

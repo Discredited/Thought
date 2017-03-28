@@ -61,7 +61,7 @@
             android:name=".activity.index.MusicListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
-        <activity android:name=".activity.detail.ReadingDetailActivity"></activity>
+        <activity android:name=".activity.detail.TextDetailActivity"></activity>
     </application>
 
 </manifest>

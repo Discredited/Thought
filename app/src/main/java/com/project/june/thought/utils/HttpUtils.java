@@ -29,8 +29,23 @@ public class HttpUtils {
     public static String IMAGE_TEXT_DETAIL = HEADER + "/hp/feeds/{0}/0?version=4.1.0&platform=android";
     //阅读详情
     public static String READING_DETAIL = HEADER + "/essay/{0}?source=channel_reading&source_id=10683&version=4.0.7&platform=android";
-
+    //连载详情
+    public static String SERIALIZE_DETAIL = HEADER + "/serialcontent/{0}?source=summary&source_id=10668&version=4.0.7&platform=android";
+    //问答详情
+    public static String QUESTION_DETAIL = "";
+    //音乐详情
+    public static String MUSIC_DETAIL = "";
+    //影视详情
+    public static String VIDEO_DETAIL = "";
 
     //阅读动态
     public static String READING_DYNAMIC = HEADER + "/comment/praiseandtime/essay/{0}/{1}?version=4.0.7&platform=android";
+    //连载动态
+    public static String SERIALIZE_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
+    //问答动态
+    public static String QUESTION_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
+    //音乐动态
+    public static String MUSIC_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
+    //视频动态
+    public static String VIDEO_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
 }

@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.detail.TextDetailActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.MusicListVo;
 import com.project.june.thought.model.SerializeListVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
+import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
 import com.project.xujun.juneutils.listview.JuneViewHolder;
 import com.squareup.picasso.Picasso;
@@ -91,6 +94,13 @@ public class SerializeListActivity extends BaseActivity {
             }
         };
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SerializeListVo.DataBean dataBean = adapter.getItems().get(position);
+                TextDetailActivity.startThis(mActivity, dataBean.getId(), ThoughtConfig.SERIALIZE_CATEGORY);
+            }
+        });
     }
 
     private void requestData() {
