@@ -32,7 +32,7 @@ import java.text.MessageFormat;
 import butterknife.InjectView;
 import okhttp3.Call;
 
-public class TextDetailActivity extends BaseActivity {
+public class ReadingDetailActivity extends BaseActivity {
 
     @InjectView(R.id.header_view)
     View header_view;
@@ -51,18 +51,16 @@ public class TextDetailActivity extends BaseActivity {
 
     private String essayId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
-    private String category;
 
-    public static void startThis(Context context, String id, String category) {
-        Intent intent = new Intent(context, TextDetailActivity.class);
+    public static void startThis(Context context, String id) {
+        Intent intent = new Intent(context, ReadingDetailActivity.class);
         intent.putExtra("ESSAY_ID", id);
-        intent.putExtra("CATEGORY", category);
         context.startActivity(intent);
     }
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_text_detail;
+        return R.layout.activity_reading_detail;
     }
 
     @Override
@@ -74,8 +72,7 @@ public class TextDetailActivity extends BaseActivity {
     protected void handleIntent(Intent intent) {
         super.handleIntent(intent);
         essayId = getIntent().getStringExtra("ESSAY_ID");
-        category = getIntent().getStringExtra("CATEGORY");
-        if (null == essayId || null == category) {
+        if (null == essayId) {
             finish();
             return;
         }
@@ -102,11 +99,11 @@ public class TextDetailActivity extends BaseActivity {
         settings.setSupportZoom(true);
         settings.setDefaultFontSize(14);
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL.SINGLE_COLUMN);
-        //settings.setDefaultTextEncodingName("UTF-8");
-        //settings.setAppCacheEnabled(true);
-        //settings.setLoadsImagesAutomatically(true);//自动加载图片
-        //settings.setCacheMode(WebSettings.LOAD_DEFAULT | WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        //settings.setLoadWithOverviewMode(true);//适应屏幕
+        settings.setDefaultTextEncodingName("UTF-8");
+        settings.setAppCacheEnabled(true);
+        settings.setLoadsImagesAutomatically(true);//自动加载图片
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT | WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        settings.setLoadWithOverviewMode(true);//适应屏幕
 
         adapter = new JuneBaseAdapter<DynamicVo.DataBeanX.DataBean>(mActivity) {
 
@@ -143,25 +140,7 @@ public class TextDetailActivity extends BaseActivity {
 
     //请求动态列表
     private void requestDynamic() {
-        String path = null;
-        switch (category) {
-            case "1":
-                path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, 0);
-                break;
-            case "2":
-                path = MessageFormat.format(HttpUtils.SERIALIZE_DYNAMIC, essayId, 0);
-                break;
-            case "3":
-                path = MessageFormat.format(HttpUtils.QUESTION_DYNAMIC, essayId, 0);
-                break;
-            case "4":
-                path = MessageFormat.format(HttpUtils.MUSIC_DYNAMIC, essayId, 0);
-                break;
-            case "5":
-                path = MessageFormat.format(HttpUtils.VIDEO_DYNAMIC, essayId, 0);
-                break;
-        }
-
+        String path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, 0);
 
         OkHttpUtils.get()
                 .url(path)

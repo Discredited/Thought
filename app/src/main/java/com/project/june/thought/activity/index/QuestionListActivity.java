@@ -4,19 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.detail.QuestionDetailActivity;
+import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.base.BaseActivity;
-import com.project.june.thought.model.MusicListVo;
 import com.project.june.thought.model.QuestionListVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
+import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
 import com.project.xujun.juneutils.listview.JuneViewHolder;
-import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.text.MessageFormat;
@@ -93,6 +94,13 @@ public class QuestionListActivity extends BaseActivity {
             }
         };
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                QuestionListVo.DataBean bean = adapter.getItems().get(i);
+                QuestionDetailActivity.startThis(mActivity, bean.getQuestion_id());
+            }
+        });
     }
 
     private void requestData() {

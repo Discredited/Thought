@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="#fff">
+    android:orientation="vertical">
 
     <!-- 日期·地区 -->
     <LinearLayout
@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             app:fix_mode="fix_width"
-            app:width_scale="690"
-            app:height_scale="450"/>
+            app:height_scale="450"
+            app:width_scale="690" />
 
         <TextView
             android:id="@+id/one_number"
@@ -68,6 +68,8 @@
         android:id="@+id/one_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lineSpacingExtra="2dp"
+        android:lineSpacingMultiplier="1.2"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColor="@color/content_color"
@@ -85,6 +87,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_layout_size">
+
         <LinearLayout
             android:id="@+id/diary_layout"
             android:layout_width="wrap_content"
@@ -92,11 +95,12 @@
             android:background="@drawable/selector_white_press_gray"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:scaleType="fitXY"
                 android:padding="@dimen/icon_image_padding"
+                android:scaleType="fitXY"
                 android:src="@mipmap/diary" />
 
             <TextView
@@ -117,11 +121,12 @@
             android:background="@drawable/selector_white_press_gray"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:scaleType="fitXY"
                 android:padding="@dimen/icon_image_padding"
+                android:scaleType="fitXY"
                 android:src="@mipmap/share" />
         </LinearLayout>
 
@@ -129,8 +134,8 @@
             android:id="@+id/temp_text"
             android:layout_width="20dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_toLeftOf="@id/share_layout"
+            android:gravity="center"
             android:text="·"
             android:textColor="@color/small_color"
             android:textSize="@dimen/common_text_20" />
@@ -139,18 +144,18 @@
             android:id="@+id/laud_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
             android:layout_toLeftOf="@id/temp_text"
             android:background="@drawable/selector_white_press_gray"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingRight="10dp">
 
             <ImageView
                 android:id="@+id/laud_img"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:scaleType="fitXY"
                 android:padding="@dimen/icon_image_padding"
+                android:scaleType="fitXY"
                 android:src="@mipmap/laud" />
 
             <TextView

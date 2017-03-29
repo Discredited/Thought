@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
-import com.project.june.thought.activity.detail.TextDetailActivity;
+import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.ReadingListVo;
 import com.project.june.thought.utils.HttpUtils;
@@ -97,7 +97,7 @@ public class ReadingListActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ReadingListVo.DataBean dataBean = adapter.getItems().get(i);
-                TextDetailActivity.startThis(mActivity, dataBean.getContent_id(), ThoughtConfig.READING_CATEGORY);
+                ReadingDetailActivity.startThis(mActivity, dataBean.getContent_id());
             }
         });
     }

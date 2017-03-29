@@ -32,7 +32,7 @@ public class HttpUtils {
     //连载详情
     public static String SERIALIZE_DETAIL = HEADER + "/serialcontent/{0}?source=summary&source_id=10668&version=4.0.7&platform=android";
     //问答详情
-    public static String QUESTION_DETAIL = "";
+    public static String QUESTION_DETAIL = "/question/{0}?source=summary&source_id=10666&version=4.0.7&platform=android";
     //音乐详情
     public static String MUSIC_DETAIL = "";
     //影视详情

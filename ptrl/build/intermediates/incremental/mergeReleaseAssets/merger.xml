@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\June\Desktop\Thought\ptrl\src\main\assets"/><source path="C:\Users\June\Desktop\Thought\ptrl\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="C:\Users\June\Desktop\Thought\ptrl\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\AllRice\mine\MyAndroidProject\Thought\ptrl\src\main\assets"/><source path="F:\AllRice\mine\MyAndroidProject\Thought\ptrl\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="F:\AllRice\mine\MyAndroidProject\Thought\ptrl\src\release\assets"/></dataSet></merger>

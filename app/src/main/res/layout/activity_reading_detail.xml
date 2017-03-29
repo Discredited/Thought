@@ -9,18 +9,18 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/common_depart_line_1_px"/>
+        android:background="@color/common_depart_line_1_px" />
 
     <include
         android:id="@+id/header_view"
-        layout="@layout/activity_text_detail_header"/>
+        layout="@layout/activity_text_detail_header" />
 
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
         android:divider="@color/common_depart_line_1_px"
         android:dividerHeight="1px"
-        android:headerDividersEnabled="false"/>
+        android:headerDividersEnabled="false"
+        android:scrollbars="none" />
 </LinearLayout>
