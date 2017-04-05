@@ -15,6 +15,9 @@ import android.widget.Button;
 
 import com.project.xujun.juneutils.R;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Type;
+
 /**
  * 自定义按下颜色，按钮失效颜色，正常状态颜色的Button
  */
@@ -92,12 +95,24 @@ public class JuneButton extends Button {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public RippleDrawable getRippleDrawable(Drawable drawable) {
+    public Drawable getRippleDrawable(Drawable drawable) {
         ColorStateList colorList = createColorStateList(Color.TRANSPARENT, rippleColor);
-        RippleDrawable rippleDrawable = new RippleDrawable(colorList, drawable, drawable);
-        return rippleDrawable;
+        try {
+            Class<?> aClass = Class.forName("android.graphics.drawable.RippleDrawable");
+            Constructor<?>[] constructors = aClass.getConstructors();
+            for (Constructor<?> c:constructors) {
+                if (c.getGenericParameterTypes().length==3){
+                    Type[] ts = c.getGenericParameterTypes();
+                    if (ts[0].equals(ColorStateList.class) &&ts[1].equals(Drawable.class)&&ts[2].equals(Drawable.class)){
+                        return (Drawable)c.newInstance(colorList, drawable, drawable);
+                    }
+                }
+            }
+        } catch (Exception ex){
+            return null;
+        }
+        return null;
     }
-
 
     private ColorStateList createColorStateList(int normal, int pressed) {
         int[] colors = new int[]{pressed, normal};
@@ -107,7 +122,6 @@ public class JuneButton extends Button {
         ColorStateList colorList = new ColorStateList(states, colors);
         return colorList;
     }
-
 
     private StateListDrawable getSelector(Drawable normalDraw, Drawable pressedDraw, Drawable disableDraw) {
         StateListDrawable stateListDrawable = new StateListDrawable();
