@@ -47,6 +47,14 @@ public class ReadingDetailActivity extends BaseActivity {
     TextView text_author;
     @InjectView(R.id.text_content)
     WebView text_content;
+    @InjectView(R.id.charge_edt)
+    TextView charge_edt;
+    @InjectView(R.id.author_image)
+    ImageView author_image;
+    @InjectView(R.id.author_name)
+    TextView author_name;
+    @InjectView(R.id.author_des)
+    TextView author_des;
     @InjectView(R.id.list_ptr)
     PtrClassicFrameLayout list_ptr;
     @InjectView(R.id.list_view)
@@ -130,17 +138,17 @@ public class ReadingDetailActivity extends BaseActivity {
                 TextView reply_content = JuneViewHolder.get(convertView, R.id.reply_content);
 
                 //设置头像
-                if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()){
+                if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()) {
                     Picasso.with(mActivity).load(R.mipmap.user_default_image).transform(new CircleTransform()).into(dynamic_image);
-                }else {
+                } else {
                     Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
                 }
 
-                if (null != itemData.getQuote() && null != itemData.getTouser()){
+                if (null != itemData.getQuote() && null != itemData.getTouser()) {
                     //存在评论
                     reply_layout.setVisibility(View.VISIBLE);
                     reply_content.setText(itemData.getTouser().getUser_name() + " : " + itemData.getQuote());
-                }else {
+                } else {
                     //不存在评论
                     reply_layout.setVisibility(View.GONE);
                 }
@@ -202,7 +210,7 @@ public class ReadingDetailActivity extends BaseActivity {
                                 if (response.getData().getData().size() > 0) {
                                     adapter.getItems().addAll(response.getData().getData());
                                     adapter.notifyDataSetChanged();
-                                }else {
+                                } else {
                                     //没有更多了
                                     Toast.makeText(mActivity, "没有更多了", Toast.LENGTH_SHORT).show();
                                     list_ptr.setMode(PtrFrameLayout.Mode.REFRESH);
@@ -252,16 +260,28 @@ public class ReadingDetailActivity extends BaseActivity {
 
     private void fillData(ReadingDetailVo.DataBean vo) {
         text_title.setText(vo.getHp_title());
-        text_author.setText("文 / " + vo.getAuthor().get(0).getUser_name());
         //text_content.setText(Html.fromHtml(vo.getHp_content()));
+        if (null != vo.getAuthor() && vo.getAuthor().size() > 0) {
+            ReadingDetailVo.DataBean.AuthorBean authorBean = vo.getAuthor().get(0);
+            if (null != authorBean) {
+                text_author.setText("文 / " + vo.getAuthor().get(0).getUser_name());
+                author_des.setText(authorBean.getDesc() + "    " + authorBean.getWb_name());
+                author_name.setText(authorBean.getUser_name());
+            }
+            if (null != authorBean.getWeb_url()){
+                Picasso.with(mActivity).load(authorBean.getWeb_url()).transform(new CircleTransform()).into(author_image);
+            }else {
+                Picasso.with(mActivity).load(R.mipmap.user_default_image).into(author_image);
+            }
+        }
 
         String string1 = vo.getHp_content();
         String string2 = string1.replace("width:394px", "width:100%");
         String string3 = string2.replace("w/394", "w/344");
         String string4 = string3.replace("<br>", "<br><br>");
         String hp_content = string4.replace("100%\"><img", "100%\"><br><br><img");
-
         text_content.loadDataWithBaseURL(null, hp_content, "text/html", "utf-8", null);
+        charge_edt.setText(vo.getHp_author_introduce() + "    " + vo.getEditor_email());
     }
 
     @Override

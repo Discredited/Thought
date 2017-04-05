@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.index.ToListActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexVo;
 import com.project.june.thought.utils.DateTools;
@@ -67,6 +69,10 @@ public class IndexOneFragment extends BaseFragment {
     }
 
     private void initListView() {
+        //添加底部item
+        View footerView = inflater.inflate(R.layout.layout_footer_to_list, list_view, false);
+        list_view.addFooterView(footerView);
+
         adapter = new JuneBaseAdapter<OneIndexVo.DataBean.ContentListBean>(mActivity) {
             private int IMAGE_TEXT = 0;  //图文
             private int CONTENT_TEXT = 1;  //其他文本
@@ -229,6 +235,15 @@ public class IndexOneFragment extends BaseFragment {
             }
         };
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == (adapter.getCount())){
+                    //最后一个item,前往往期列表
+                    ToListActivity.startThis(mActivity);
+                }
+            }
+        });
     }
 
     private void initPtr() {

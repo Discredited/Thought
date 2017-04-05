@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/question_ask"
+            android:id="@+id/serialize_author"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -41,6 +41,7 @@
             android:textSize="@dimen/common_text" />
 
         <ImageView
+            android:id="@+id/serialize_list"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:padding="14dp"
@@ -49,7 +50,7 @@
 
     <!-- 内容 -->
     <TextView
-        android:id="@+id/answer_content"
+        android:id="@+id/serialize_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="4dp"
@@ -62,6 +63,15 @@
     <!-- 编辑 -->
     <TextView
         android:id="@+id/charge_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="责任编辑"
+        android:textColor="@color/small_color"
+        android:textSize="@dimen/common_text" />
+
+    <TextView
+        android:id="@+id/copyright"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -139,8 +149,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/author_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@mipmap/user_default_image"/>
@@ -153,11 +165,13 @@
                 android:layout_marginRight="10dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/author_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="慢三"/>
 
                 <TextView
+                    android:id="@+id/author_des"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -167,7 +181,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_stroke_gray_1_px"
+                android:background="@drawable/shape_stroke_black_1_dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
@@ -203,6 +217,7 @@
 
 
         <LinearLayout
+            android:id="@+id/recommend_1_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -210,7 +225,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text"/>
+                android:textSize="@dimen/common_text"
+                android:text="连载"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -218,6 +234,7 @@
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/recommend_1_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/common_text"
@@ -225,6 +242,43 @@
                     android:text="暖气 · 第二十一章"/>
 
                 <TextView
+                    android:id="@+id/recommend_1_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="@dimen/common_text"
+                    android:textColor="@color/content_color"
+                    android:text="文 / 慢三"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recommend_2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text"
+                android:text="连载"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/recommend_2_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/common_text"
+                    android:textColor="@color/content_color"
+                    android:text="暖气 · 第二十一章"/>
+
+                <TextView
+                    android:id="@+id/recommend_2_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

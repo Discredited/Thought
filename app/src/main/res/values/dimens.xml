@@ -16,4 +16,11 @@
     <dimen name="common_text_20">20sp</dimen>
     <dimen name="common_text_30">30sp</dimen>
     <dimen name="small_text">12sp</dimen>
+
+    <!-- 文本内容字体格式 -->
+    <dimen name="text_content_title">20sp</dimen>
+    <dimen name="text_content_sub_title">16sp</dimen>
+    <dimen name="text_content_normal">14sp</dimen>
+    <dimen name="text_content_tips">12sp</dimen>
+    <dimen name="text_content_small">10sp</dimen>
 </resources>

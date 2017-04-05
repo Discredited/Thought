@@ -13,10 +13,12 @@
     <color name="common_blue">#6084be</color>
 
     <!-- 通用1px分割线颜色 -->
-    <color name="common_depart_line_1_px">#aaa</color>
+    <color name="common_depart_line_1_px">#cccccc</color>
+    <color name="light_depart_line_10_dp">#e4e4e4</color>
 
     <!-- 字体颜色 -->
     <color name="title_color">#333333</color>
     <color name="content_color">#666666</color>
-    <color name="small_color">#999999</color>
+    <color name="sub_content_color">#999999</color>
+    <color name="small_color">#cccccc</color>
 </resources>

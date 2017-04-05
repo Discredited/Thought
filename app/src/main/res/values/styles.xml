@@ -18,4 +18,37 @@
     <style name="ActivityNonTrans" parent="@style/AppTheme">
         <item name="android:windowIsTranslucent">false</item>
     </style>
+
+    <!-- ///////////////////////////////////////// -->
+    <!-- 文本内容详情页标题 -->
+    <style name="textContentTitle">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">@dimen/text_content_title</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- 文本内容详情页副标题 -->
+    <style name="textContentSubTitle">
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:textSize">@dimen/text_content_sub_title</item>
+    </style>
+
+    <!-- 文本内容详情页提示 -->
+    <style name="textContentTips">
+        <item name="android:textColor">@color/small_color</item>
+        <item name="android:textSize">@dimen/text_content_tips</item>
+    </style>
+
+    <!-- 文本内容详情页作者详情 -->
+    <style name="textContentAuthor">
+        <item name="android:textColor">@color/content_color</item>
+        <item name="android:textSize">@dimen/text_content_normal</item>
+    </style>
+
+    <!-- 文本内容详情页作者详情 -->
+    <style name="textContentAuthorDesc">
+        <item name="android:textColor">@color/small_color</item>
+        <item name="android:textSize">@dimen/text_content_small</item>
+    </style>
 </resources>

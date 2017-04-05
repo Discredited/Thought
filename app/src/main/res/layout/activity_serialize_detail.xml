@@ -13,14 +13,27 @@
 
     <include
         android:id="@+id/header_view"
-        layout="@layout/activity_reading_detail_header" />
+        layout="@layout/activity_serialize_detail_header" />
 
-    <ListView
-        android:id="@+id/list_view"
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list_ptr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/common_depart_line_1_px"
-        android:dividerHeight="1px"
-        android:headerDividersEnabled="false"
-        android:scrollbars="none" />
+        android:layout_weight="1000"
+        android:background="@color/white"
+        cube_ptr:ptr_duration_to_close_either="1000"
+        cube_ptr:ptr_keep_header_when_refresh="true"
+        cube_ptr:ptr_pull_to_fresh="false"
+        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+        cube_ptr:ptr_resistance="1.7">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/common_depart_line_1_px"
+            android:dividerHeight="1px"
+            android:headerDividersEnabled="false"
+            android:scrollbars="none" />
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 </LinearLayout>
