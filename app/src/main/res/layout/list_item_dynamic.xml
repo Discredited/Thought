@@ -15,7 +15,7 @@
 
     <View
         android:layout_width="10dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,14 +26,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
 
             <TextView
                 android:id="@+id/praise_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ellipsize="end"
                 android:text="hush"
                 android:textColor="@color/small_color"
                 android:textSize="@dimen/common_text" />
@@ -47,12 +48,35 @@
                 android:textSize="@dimen/small_text" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/reply_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_stroke_gray_1_px"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/reply_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:textColor="@color/content_color"
+                android:textSize="@dimen/common_text" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/praise_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
             android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:textColor="@color/content_color"
             android:textSize="@dimen/common_text" />
 
@@ -77,17 +101,17 @@
                 android:id="@+id/praise_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:padding="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_toLeftOf="@id/praise_count"
+                android:padding="5dp"
                 android:src="@mipmap/comment_laud" />
 
             <ImageView
                 android:id="@+id/comment_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:padding="5dp"
                 android:layout_toLeftOf="@id/praise_image"
+                android:padding="5dp"
                 android:src="@mipmap/comment_image" />
         </RelativeLayout>
     </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
@@ -128,6 +130,11 @@ public class ReadingListActivity extends BaseActivity {
                         }
                     }
                 });
+    }
+
+    @OnClick(R.id.title_img_left)
+    public void viewOnClick(View view){
+        onBackPressed();
     }
 
     @Override

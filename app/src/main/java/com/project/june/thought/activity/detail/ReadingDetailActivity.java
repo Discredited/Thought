@@ -30,6 +30,9 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 import okhttp3.Call;
 
 public class ReadingDetailActivity extends BaseActivity {
@@ -38,14 +41,14 @@ public class ReadingDetailActivity extends BaseActivity {
     View header_view;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
-    @InjectView(R.id.title_layout)
-    RelativeLayout title_layout;
     @InjectView(R.id.text_title)
     TextView text_title;
     @InjectView(R.id.text_author)
     TextView text_author;
     @InjectView(R.id.text_content)
     WebView text_content;
+    @InjectView(R.id.list_ptr)
+    PtrClassicFrameLayout list_ptr;
     @InjectView(R.id.list_view)
     ListView list_view;
 
@@ -80,11 +83,12 @@ public class ReadingDetailActivity extends BaseActivity {
 
     @Override
     protected void logicProgress() {
-        title_center_text.setText("......");
+        title_center_text.setText("阅读 · 短篇");
 
         initListView();
+        initPtr();
         requestData();
-        requestDynamic();
+        requestDynamic("0");
     }
 
     private void initListView() {
@@ -102,7 +106,6 @@ public class ReadingDetailActivity extends BaseActivity {
         settings.setDefaultTextEncodingName("UTF-8");
         settings.setAppCacheEnabled(true);
         settings.setLoadsImagesAutomatically(true);//自动加载图片
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT | WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setLoadWithOverviewMode(true);//适应屏幕
 
         adapter = new JuneBaseAdapter<DynamicVo.DataBeanX.DataBean>(mActivity) {
@@ -123,10 +126,23 @@ public class ReadingDetailActivity extends BaseActivity {
                 TextView praise_content = JuneViewHolder.get(convertView, R.id.praise_content);
                 TextView praise_count = JuneViewHolder.get(convertView, R.id.praise_count);
 
+                LinearLayout reply_layout = JuneViewHolder.get(convertView, R.id.reply_layout);
+                TextView reply_content = JuneViewHolder.get(convertView, R.id.reply_content);
+
+                //设置头像
                 if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()){
                     Picasso.with(mActivity).load(R.mipmap.user_default_image).transform(new CircleTransform()).into(dynamic_image);
                 }else {
                     Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
+                }
+
+                if (null != itemData.getQuote() && null != itemData.getTouser()){
+                    //存在评论
+                    reply_layout.setVisibility(View.VISIBLE);
+                    reply_content.setText(itemData.getTouser().getUser_name() + " : " + itemData.getQuote());
+                }else {
+                    //不存在评论
+                    reply_layout.setVisibility(View.GONE);
                 }
 
                 praise_name.setText(itemData.getUser().getUser_name());
@@ -138,9 +154,40 @@ public class ReadingDetailActivity extends BaseActivity {
         list_view.setAdapter(adapter);
     }
 
+    private void initPtr() {
+        //下拉刷新控件
+        list_ptr.setLastUpdateTimeRelateObject(this);
+        list_ptr.setPtrHandler(new PtrDefaultHandler2() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                requestDynamic("0");
+            }
+
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) {
+                DynamicVo.DataBeanX.DataBean dataBean = adapter.getItems().get(adapter.getCount() - 1);
+                requestDynamic(dataBean.getId());
+            }
+        });
+        list_ptr.setResistance(1.7f);
+        list_ptr.setRatioOfHeaderHeightToRefresh(1.2f);
+        list_ptr.setDurationToClose(200);
+        list_ptr.setDurationToCloseHeader(1000);
+        //默认为false
+        list_ptr.setPullToRefresh(false);
+        list_ptr.setKeepHeaderWhenRefresh(true);
+        //默认为true
+        list_ptr.setmOnlyShowHeaderOrFooter(true);
+        //默认为false
+        list_ptr.disableWhenHorizontalMove(true);
+        //默认没有任何加载方式
+        list_ptr.setMode(PtrFrameLayout.Mode.BOTH);
+        //list_ptr.autoRefresh(300);
+    }
+
     //请求动态列表
-    private void requestDynamic() {
-        String path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, 0);
+    private void requestDynamic(String dynamicId) {
+        String path = MessageFormat.format(HttpUtils.READING_DYNAMIC, essayId, dynamicId);
 
         OkHttpUtils.get()
                 .url(path)
@@ -149,10 +196,17 @@ public class ReadingDetailActivity extends BaseActivity {
                     @Override
                     public void onResponse(DynamicVo response, int id) {
                         super.onResponse(response, id);
+                        list_ptr.refreshComplete();
                         if (response.getRes() == 0) {
-                            if (null != response.getData() && null != response.getData().getData() && response.getData().getData().size() > 0) {
-                                adapter.getItems().addAll(response.getData().getData());
-                                adapter.notifyDataSetChanged();
+                            if (null != response.getData() && null != response.getData().getData()) {
+                                if (response.getData().getData().size() > 0) {
+                                    adapter.getItems().addAll(response.getData().getData());
+                                    adapter.notifyDataSetChanged();
+                                }else {
+                                    //没有更多了
+                                    Toast.makeText(mActivity, "没有更多了", Toast.LENGTH_SHORT).show();
+                                    list_ptr.setMode(PtrFrameLayout.Mode.REFRESH);
+                                }
                             }
                         } else {
                             //请求失败
@@ -162,6 +216,7 @@ public class ReadingDetailActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         super.onError(call, e, id);
+                        list_ptr.refreshComplete();
                         Toast.makeText(mActivity, ThoughtConfig.NETWORK_ERROR, Toast.LENGTH_SHORT).show();
                     }
                 });

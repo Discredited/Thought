@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
@@ -101,6 +103,11 @@ public class ImageTextListActivity extends BaseActivity {
                         Toast.makeText(mActivity, "网络异常，请重试", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @OnClick(R.id.title_img_left)
+    public void viewOnClick(View view) {
+        onBackPressed();
     }
 
     @Override

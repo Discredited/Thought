@@ -11,7 +11,7 @@ public class DynamicVo implements Serializable {
 
     /**
      * res : 0
-     * data : {"count":87,"data":[{"id":"43925","quote":"","content":"结局真的突然，结局要是陆倩就厉害了！","praisenum":1,"device_token":"","del_flag":"0","reviewed":"1","user_info_id":"10089","input_date":"2017-03-21 11:38:18","created_at":"2017-03-21 11:38:18","updated_at":"2017-03-21 13:59:45","user":{"user_id":"7652890","user_name":"拥者丿不珍","web_url":"http://image.wufazhuce.com/FgtohbgKUols7IvtYwSqST7gOHxv"},"touser":null,"type":1}]}
+     * data : {"count":41,"data":[{"id":"51172","quote":"一夫一妻制其实也够了，你想啊，一个夫人一个妻子，这就两个了，够你折腾了！","content":"此夫为丈夫","praisenum":2,"device_token":"","del_flag":"0","reviewed":"0","user_info_id":"0","input_date":"2017-04-05 13:15:10","created_at":"2017-04-05 13:15:10","updated_at":"0000-00-00 00:00:00","user":{"user_id":"7912761","user_name":"Ly.","web_url":"http://wx.qlogo.cn/mmopen/hLxK5cQqoPYVNUHbEY57ElLkdT1P0r2s4r7zu3ffLEyM5JotKz8vBBCsric5jsG4qcrfWY8AqeJ9kpT9WtQxqftpb2b97FTm8/0"},"touser":{"user_id":"5861167","user_name":"醇藝白","web_url":"http://q.qlogo.cn/qqapp/1104596227/921DED7DEDD141FFDD868B033BD109F8/100"},"type":1}]}
      */
 
     private int res;
@@ -35,8 +35,8 @@ public class DynamicVo implements Serializable {
 
     public static class DataBeanX {
         /**
-         * count : 87
-         * data : [{"id":"43925","quote":"","content":"结局真的突然，结局要是陆倩就厉害了！","praisenum":1,"device_token":"","del_flag":"0","reviewed":"1","user_info_id":"10089","input_date":"2017-03-21 11:38:18","created_at":"2017-03-21 11:38:18","updated_at":"2017-03-21 13:59:45","user":{"user_id":"7652890","user_name":"拥者丿不珍","web_url":"http://image.wufazhuce.com/FgtohbgKUols7IvtYwSqST7gOHxv"},"touser":null,"type":1}]
+         * count : 41
+         * data : [{"id":"51172","quote":"一夫一妻制其实也够了，你想啊，一个夫人一个妻子，这就两个了，够你折腾了！","content":"此夫为丈夫","praisenum":2,"device_token":"","del_flag":"0","reviewed":"0","user_info_id":"0","input_date":"2017-04-05 13:15:10","created_at":"2017-04-05 13:15:10","updated_at":"0000-00-00 00:00:00","user":{"user_id":"7912761","user_name":"Ly.","web_url":"http://wx.qlogo.cn/mmopen/hLxK5cQqoPYVNUHbEY57ElLkdT1P0r2s4r7zu3ffLEyM5JotKz8vBBCsric5jsG4qcrfWY8AqeJ9kpT9WtQxqftpb2b97FTm8/0"},"touser":{"user_id":"5861167","user_name":"醇藝白","web_url":"http://q.qlogo.cn/qqapp/1104596227/921DED7DEDD141FFDD868B033BD109F8/100"},"type":1}]
          */
 
         private int count;
@@ -60,19 +60,19 @@ public class DynamicVo implements Serializable {
 
         public static class DataBean {
             /**
-             * id : 43925
-             * quote :
-             * content : 结局真的突然，结局要是陆倩就厉害了！
-             * praisenum : 1
+             * id : 51172
+             * quote : 一夫一妻制其实也够了，你想啊，一个夫人一个妻子，这就两个了，够你折腾了！
+             * content : 此夫为丈夫
+             * praisenum : 2
              * device_token :
              * del_flag : 0
-             * reviewed : 1
-             * user_info_id : 10089
-             * input_date : 2017-03-21 11:38:18
-             * created_at : 2017-03-21 11:38:18
-             * updated_at : 2017-03-21 13:59:45
-             * user : {"user_id":"7652890","user_name":"拥者丿不珍","web_url":"http://image.wufazhuce.com/FgtohbgKUols7IvtYwSqST7gOHxv"}
-             * touser : null
+             * reviewed : 0
+             * user_info_id : 0
+             * input_date : 2017-04-05 13:15:10
+             * created_at : 2017-04-05 13:15:10
+             * updated_at : 0000-00-00 00:00:00
+             * user : {"user_id":"7912761","user_name":"Ly.","web_url":"http://wx.qlogo.cn/mmopen/hLxK5cQqoPYVNUHbEY57ElLkdT1P0r2s4r7zu3ffLEyM5JotKz8vBBCsric5jsG4qcrfWY8AqeJ9kpT9WtQxqftpb2b97FTm8/0"}
+             * touser : {"user_id":"5861167","user_name":"醇藝白","web_url":"http://q.qlogo.cn/qqapp/1104596227/921DED7DEDD141FFDD868B033BD109F8/100"}
              * type : 1
              */
 
@@ -88,7 +88,7 @@ public class DynamicVo implements Serializable {
             private String created_at;
             private String updated_at;
             private UserBean user;
-            private Object touser;
+            private TouserBean touser;
             private int type;
 
             public String getId() {
@@ -187,11 +187,11 @@ public class DynamicVo implements Serializable {
                 this.user = user;
             }
 
-            public Object getTouser() {
+            public TouserBean getTouser() {
                 return touser;
             }
 
-            public void setTouser(Object touser) {
+            public void setTouser(TouserBean touser) {
                 this.touser = touser;
             }
 
@@ -205,9 +205,45 @@ public class DynamicVo implements Serializable {
 
             public static class UserBean {
                 /**
-                 * user_id : 7652890
-                 * user_name : 拥者丿不珍
-                 * web_url : http://image.wufazhuce.com/FgtohbgKUols7IvtYwSqST7gOHxv
+                 * user_id : 7912761
+                 * user_name : Ly.
+                 * web_url : http://wx.qlogo.cn/mmopen/hLxK5cQqoPYVNUHbEY57ElLkdT1P0r2s4r7zu3ffLEyM5JotKz8vBBCsric5jsG4qcrfWY8AqeJ9kpT9WtQxqftpb2b97FTm8/0
+                 */
+
+                private String user_id;
+                private String user_name;
+                private String web_url;
+
+                public String getUser_id() {
+                    return user_id;
+                }
+
+                public void setUser_id(String user_id) {
+                    this.user_id = user_id;
+                }
+
+                public String getUser_name() {
+                    return user_name;
+                }
+
+                public void setUser_name(String user_name) {
+                    this.user_name = user_name;
+                }
+
+                public String getWeb_url() {
+                    return web_url;
+                }
+
+                public void setWeb_url(String web_url) {
+                    this.web_url = web_url;
+                }
+            }
+
+            public static class TouserBean {
+                /**
+                 * user_id : 5861167
+                 * user_name : 醇藝白
+                 * web_url : http://q.qlogo.cn/qqapp/1104596227/921DED7DEDD141FFDD868B033BD109F8/100
                  */
 
                 private String user_id;

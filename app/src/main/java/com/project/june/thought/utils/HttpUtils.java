@@ -32,18 +32,18 @@ public class HttpUtils {
     //连载详情
     public static String SERIALIZE_DETAIL = HEADER + "/serialcontent/{0}?source=summary&source_id=10668&version=4.0.7&platform=android";
     //问答详情
-    public static String QUESTION_DETAIL = "/question/{0}?source=summary&source_id=10666&version=4.0.7&platform=android";
+    public static String QUESTION_DETAIL = HEADER + "/question/{0}?source=summary&source_id=10666&version=4.0.7&platform=android";
     //音乐详情
-    public static String MUSIC_DETAIL = "";
+    public static String MUSIC_DETAIL = HEADER + "";
     //影视详情
-    public static String VIDEO_DETAIL = "";
+    public static String VIDEO_DETAIL = HEADER + "";
 
     //阅读动态
     public static String READING_DYNAMIC = HEADER + "/comment/praiseandtime/essay/{0}/{1}?version=4.0.7&platform=android";
     //连载动态
     public static String SERIALIZE_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
     //问答动态
-    public static String QUESTION_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
+    public static String QUESTION_DYNAMIC = HEADER + "/comment/praiseandtime/question/{0}/{1}?version=4.0.7&platform=android";
     //音乐动态
     public static String MUSIC_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
     //视频动态

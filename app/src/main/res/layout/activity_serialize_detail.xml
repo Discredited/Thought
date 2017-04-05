@@ -13,7 +13,7 @@
 
     <include
         android:id="@+id/header_view"
-        layout="@layout/activity_text_detail_header" />
+        layout="@layout/activity_reading_detail_header" />
 
     <ListView
         android:id="@+id/list_view"

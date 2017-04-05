@@ -23,6 +23,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
@@ -129,6 +130,11 @@ public class QuestionListActivity extends BaseActivity {
                         }
                     }
                 });
+    }
+
+    @OnClick(R.id.title_img_left)
+    public void viewOnClick(View view){
+        onBackPressed();
     }
 
     @Override

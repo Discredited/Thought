@@ -2,10 +2,10 @@ package com.project.june.thought.activity.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,8 +18,6 @@ import com.project.june.thought.R;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.QuestionDetailVo;
-import com.project.june.thought.model.QuestionListVo;
-import com.project.june.thought.model.ReadingDetailVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -31,26 +29,33 @@ import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.text.MessageFormat;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import okhttp3.Call;
 
 public class QuestionDetailActivity extends BaseActivity {
 
-
-    @InjectView(R.id.header_view)
-    View header_view;
-    @InjectView(R.id.title_center_text)
-    TextView title_center_text;
-    @InjectView(R.id.title_layout)
-    RelativeLayout title_layout;
-    @InjectView(R.id.text_title)
-    TextView text_title;
-    @InjectView(R.id.text_author)
-    TextView text_author;
-    @InjectView(R.id.text_content)
-    WebView text_content;
     @InjectView(R.id.list_view)
     ListView list_view;
+    @InjectView(R.id.title_center_text)
+    TextView title_center_text;
+    @InjectView(R.id.header_view)
+    View header_view;
+    @InjectView(R.id.question_title)
+    TextView question_title;
+    @InjectView(R.id.question_content)
+    TextView question_content;
+    @InjectView(R.id.question_ask)
+    TextView question_ask;
+    @InjectView(R.id.question_answer)
+    TextView question_answer;
+    @InjectView(R.id.answer_content)
+    TextView answer_content;
+    @InjectView(R.id.charge_edt)
+    TextView charge_edt;
+    @InjectView(R.id.list_ptr)
+    PtrClassicFrameLayout list_ptr;
 
     private String questionId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
@@ -83,30 +88,17 @@ public class QuestionDetailActivity extends BaseActivity {
 
     @Override
     protected void logicProgress() {
-        title_center_text.setText("阅读 · 问答");
-
         initListView();
         requestData();
-        requestDynamic();
+        requestDynamic("0");
     }
 
     private void initListView() {
         //设置头
-        ((LinearLayout) header_view.getParent()).removeView(header_view);
+        ((RelativeLayout) header_view.getParent()).removeView(header_view);
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(-1, -2);
         header_view.setLayoutParams(params);
         list_view.addHeaderView(header_view);
-
-        WebSettings settings = text_content.getSettings();
-        settings.setJavaScriptEnabled(false);
-        settings.setSupportZoom(true);
-        settings.setDefaultFontSize(14);
-        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL.SINGLE_COLUMN);
-        settings.setDefaultTextEncodingName("UTF-8");
-        settings.setAppCacheEnabled(true);
-        settings.setLoadsImagesAutomatically(true);//自动加载图片
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT | WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        settings.setLoadWithOverviewMode(true);//适应屏幕
 
         adapter = new JuneBaseAdapter<DynamicVo.DataBeanX.DataBean>(mActivity) {
 
@@ -126,10 +118,22 @@ public class QuestionDetailActivity extends BaseActivity {
                 TextView praise_content = JuneViewHolder.get(convertView, R.id.praise_content);
                 TextView praise_count = JuneViewHolder.get(convertView, R.id.praise_count);
 
+                LinearLayout reply_layout = JuneViewHolder.get(convertView, R.id.reply_layout);
+                TextView reply_content = JuneViewHolder.get(convertView, R.id.reply_content);
+
                 if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()) {
                     Picasso.with(mActivity).load(R.mipmap.user_default_image).transform(new CircleTransform()).into(dynamic_image);
                 } else {
                     Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
+                }
+
+                if (null != itemData.getQuote() && null != itemData.getTouser()){
+                    //存在评论
+                    reply_layout.setVisibility(View.VISIBLE);
+                    reply_content.setText(itemData.getTouser().getUser_name() + " : " + itemData.getQuote());
+                }else {
+                    //不存在评论
+                    reply_layout.setVisibility(View.GONE);
                 }
 
                 praise_name.setText(itemData.getUser().getUser_name());
@@ -142,8 +146,8 @@ public class QuestionDetailActivity extends BaseActivity {
     }
 
     //请求动态列表
-    private void requestDynamic() {
-        String path = MessageFormat.format(HttpUtils.READING_DYNAMIC, questionId, 0);
+    private void requestDynamic(String dynamicId) {
+        String path = MessageFormat.format(HttpUtils.QUESTION_DYNAMIC, questionId, dynamicId);
 
         OkHttpUtils.get()
                 .url(path)
@@ -199,11 +203,12 @@ public class QuestionDetailActivity extends BaseActivity {
     }
 
     private void fillData(QuestionDetailVo.DataBean vo) {
-        text_title.setText(vo.getQuestion_title());
-        text_author.setText("--" + vo.getAnswerer().getUser_name() + "问道");
-        //text_content.setText(Html.fromHtml(vo.getHp_content()));
-
-        text_content.loadDataWithBaseURL(null, vo.getAnswer_content(), "text/html", "utf-8", null);
+        question_title.setText(vo.getQuestion_title());
+        question_content.setText(vo.getQuestion_content());
+        question_ask.setText("——" + vo.getAsker().getUser_name());
+        question_answer.setText(vo.getAnswerer().getUser_name());
+        answer_content.setText(Html.fromHtml(vo.getAnswer_content()));
+        charge_edt.setText(vo.getCharge_edt());
     }
 
     @Override

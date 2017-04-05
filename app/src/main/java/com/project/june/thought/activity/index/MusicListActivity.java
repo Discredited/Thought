@@ -24,6 +24,7 @@ import java.text.MessageFormat;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 /***
@@ -42,7 +43,7 @@ public class MusicListActivity extends BaseActivity {
     private String dateString;
     private JuneBaseAdapter<MusicListVo.DataBean> adapter;
 
-    public static void startThis(Context context, String title,String date) {
+    public static void startThis(Context context, String title, String date) {
         Intent intent = new Intent(context, MusicListActivity.class);
         intent.putExtra("TITLE", title);
         intent.putExtra("REQUEST_DATE", date);
@@ -117,7 +118,7 @@ public class MusicListActivity extends BaseActivity {
                         super.onResponse(response, id);
                         if (response.getRes() == 0) {
                             //请求成功
-                            if (null != response.getData() && response.getData().size() > 0){
+                            if (null != response.getData() && response.getData().size() > 0) {
                                 adapter.getItems().addAll(response.getData());
                                 adapter.notifyDataSetChanged();
                             }
@@ -126,6 +127,11 @@ public class MusicListActivity extends BaseActivity {
                         }
                     }
                 });
+    }
+
+    @OnClick(R.id.title_img_left)
+    public void viewOnClick(View view) {
+        onBackPressed();
     }
 
     @Override

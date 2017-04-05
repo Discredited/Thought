@@ -97,7 +97,6 @@ public class ToListActivity extends BaseActivity {
         onBackPressed();
     }
 
-
     @Override
     protected boolean enableSwipeBack() {
         super.enableSwipeBack();
