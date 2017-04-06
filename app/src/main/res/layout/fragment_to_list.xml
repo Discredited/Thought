@@ -8,7 +8,7 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/common_depart_line_1_px"
+        android:divider="@color/light_depart_line_10_dp"
         android:dividerHeight="1px"
         android:scrollbars="none"/>
 </LinearLayout>

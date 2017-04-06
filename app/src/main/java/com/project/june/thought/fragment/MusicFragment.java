@@ -5,18 +5,17 @@ import android.os.Bundle;
 import com.project.june.thought.base.BaseFragment;
 
 /**
- * 阅读
- * Created by June on 2017/3/25.
+ * Created by June on 2017/4/6.
  */
-
-public class ReadFragment extends BaseFragment {
+public class MusicFragment extends BaseFragment {
     @Override
     protected int getContentViewId() {
         return 0;
     }
 
-    public static ReadFragment newInstance(Bundle bundle){
-        ReadFragment fragment = new ReadFragment();
+
+    public static MusicFragment newInstance(Bundle bundle){
+        MusicFragment fragment = new MusicFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
