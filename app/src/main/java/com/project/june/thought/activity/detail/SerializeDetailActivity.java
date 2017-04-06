@@ -3,7 +3,6 @@ package com.project.june.thought.activity.detail;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.text.MessageFormat;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
