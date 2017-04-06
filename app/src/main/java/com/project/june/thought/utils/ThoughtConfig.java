@@ -24,4 +24,9 @@ public class ThoughtConfig {
 
     //网络异常提示
     public static String NETWORK_ERROR = "网络异常，请重试";
+
+    //banner
+    //http://v3.wufazhuce.com:8000/api/reading/carousel/?platform=android
+    //banner详情
+    //http://v3.wufazhuce.com:8000/api/reading/carousel/125
 }

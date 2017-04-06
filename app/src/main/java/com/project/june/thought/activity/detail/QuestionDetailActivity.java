@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.adapter.list.DynamicAdapter;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.QuestionDetailVo;
@@ -127,48 +128,7 @@ public class QuestionDetailActivity extends BaseActivity {
         header_view.setLayoutParams(params);
         list_view.addHeaderView(header_view);
 
-        adapter = new JuneBaseAdapter<DynamicVo.DataBeanX.DataBean>(mActivity) {
-
-            @Override
-            public View getConvertView(int position, View convertView, ViewGroup parent) {
-                if (null == convertView) {
-                    convertView = inflater.inflate(R.layout.list_item_dynamic, parent, false);
-                }
-                return convertView;
-            }
-
-            @Override
-            public void bindData(int position, View convertView, DynamicVo.DataBeanX.DataBean itemData) {
-                ImageView dynamic_image = JuneViewHolder.get(convertView, R.id.dynamic_image);
-                TextView praise_name = JuneViewHolder.get(convertView, R.id.praise_name);
-                TextView praise_time = JuneViewHolder.get(convertView, R.id.praise_time);
-                TextView praise_content = JuneViewHolder.get(convertView, R.id.praise_content);
-                TextView praise_count = JuneViewHolder.get(convertView, R.id.praise_count);
-
-                LinearLayout reply_layout = JuneViewHolder.get(convertView, R.id.reply_layout);
-                TextView reply_content = JuneViewHolder.get(convertView, R.id.reply_content);
-
-                if (null == itemData.getUser().getWeb_url() || itemData.getUser().getWeb_url().isEmpty()) {
-                    Picasso.with(mActivity).load(R.mipmap.user_default_image).transform(new CircleTransform()).into(dynamic_image);
-                } else {
-                    Picasso.with(mActivity).load(itemData.getUser().getWeb_url()).transform(new CircleTransform()).into(dynamic_image);
-                }
-
-                if (null != itemData.getQuote() && null != itemData.getTouser()) {
-                    //存在评论
-                    reply_layout.setVisibility(View.VISIBLE);
-                    reply_content.setText(itemData.getTouser().getUser_name() + " : " + itemData.getQuote());
-                } else {
-                    //不存在评论
-                    reply_layout.setVisibility(View.GONE);
-                }
-
-                praise_name.setText(itemData.getUser().getUser_name());
-                praise_time.setText(itemData.getCreated_at());
-                praise_content.setText(itemData.getContent());
-                praise_count.setText(itemData.getPraisenum() + "");
-            }
-        };
+        adapter = new DynamicAdapter(mActivity);
         list_view.setAdapter(adapter);
     }
 
@@ -293,7 +253,7 @@ public class QuestionDetailActivity extends BaseActivity {
             recommend_2_layout.setVisibility(View.GONE);
         }
 
-        if ("0".equals(vo.getPrevious_id()) && "0".equals(vo.getNext_id())){
+        if ("0".equals(vo.getPrevious_id()) && "0".equals(vo.getNext_id())) {
             recommend_layout.setVisibility(View.GONE);
         }
     }

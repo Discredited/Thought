@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.activity.ShowImageActivity;
+import com.project.june.thought.activity.detail.QuestionDetailActivity;
+import com.project.june.thought.activity.detail.ReadingDetailActivity;
+import com.project.june.thought.activity.index.ImageTextActivity;
 import com.project.june.thought.activity.index.ToListActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexVo;
@@ -233,21 +236,28 @@ public class IndexOneFragment extends BaseFragment {
                 }
 
                 Picasso.with(mActivity).load(itemData.getImg_url()).error(R.mipmap.opening_monday).into(image);
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ShowImageActivity.startThis(mActivity, itemData.getImg_url());
-                    }
-                });
             }
         };
         list_view.setAdapter(adapter);
         list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == (adapter.getCount())){
+                if (position == (adapter.getCount())) {
                     //最后一个item,前往往期列表
                     ToListActivity.startThis(mActivity);
+                } else {
+                    OneIndexVo.DataBean.ContentListBean bean = adapter.getItems().get(position);
+                    switch (bean.getCategory()) {
+                        case "0":
+                            ImageTextActivity.startThis(mActivity, bean.getItem_id());
+                            break;
+                        case "1":
+                            ReadingDetailActivity.startThis(mActivity, bean.getItem_id());
+                            break;
+                        case "3":
+                            QuestionDetailActivity.startThis(mActivity, bean.getItem_id());
+                            break;
+                    }
                 }
             }
         });
