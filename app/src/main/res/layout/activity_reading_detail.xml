@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <include layout="@layout/layout_title_view" />
-
-    <View
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/common_depart_line_1_px" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <include layout="@layout/layout_praise_share_bottom"/>
+    </FrameLayout>
 
-    <include
-        android:id="@+id/header_view"
-        layout="@layout/activity_reading_detail_header" />
-
-    <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/list_ptr"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1000"
-        android:background="@color/white"
-        cube_ptr:ptr_duration_to_close_either="1000"
-        cube_ptr:ptr_keep_header_when_refresh="true"
-        cube_ptr:ptr_pull_to_fresh="false"
-        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
-        cube_ptr:ptr_resistance="1.7">
+        android:layout_above="@id/bottom_layout"
+        android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/list_view"
+        <include layout="@layout/layout_title_view" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/common_depart_line_1_px" />
+
+        <include
+            android:id="@+id/header_view"
+            layout="@layout/activity_reading_detail_header" />
+
+        <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/list_ptr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="#f5f5f5"
-            android:dividerHeight="10dp"
-            android:headerDividersEnabled="false"
-            android:scrollbars="none" />
-    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
-</LinearLayout>
+            android:layout_weight="1000"
+            android:background="@color/white"
+            cube_ptr:ptr_duration_to_close_either="1000"
+            cube_ptr:ptr_keep_header_when_refresh="true"
+            cube_ptr:ptr_pull_to_fresh="false"
+            cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+            cube_ptr:ptr_resistance="1.7">
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#f5f5f5"
+                android:dividerHeight="10dp"
+                android:headerDividersEnabled="false"
+                android:scrollbars="none" />
+        </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+    </LinearLayout>
+</RelativeLayout>

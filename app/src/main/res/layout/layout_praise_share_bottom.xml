@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/common_depart_line_1_px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/collect_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_transparent_press_gray"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/collect" />
+
+        <ImageButton
+            android:id="@+id/laud_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_transparent_press_gray"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/laud" />
+
+        <ImageButton
+            android:id="@+id/comment_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_transparent_press_gray"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/diary" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"/>
+
+        <TextView
+            android:id="@+id/praise_comment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:paddingRight="14dp"
+            android:textSize="@dimen/common_text"
+            android:textColor="#999999"/>
+    </LinearLayout>
+</LinearLayout>

@@ -61,9 +61,22 @@
             android:name=".activity.index.MusicListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
-        <activity android:name=".activity.detail.ReadingDetailActivity" />
-        <activity android:name=".activity.detail.SerializeDetailActivity" />
-        <activity android:name=".activity.detail.QuestionDetailActivity"></activity>
+        <activity
+            android:name=".activity.detail.ReadingDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NonTransActivity" />
+        <activity
+            android:name=".activity.detail.SerializeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NonTransActivity" />
+        <activity
+            android:name=".activity.detail.QuestionDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NonTransActivity" />
+        <activity
+            android:name=".activity.ShowImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NonTransActivity" />
     </application>
 
 </manifest>

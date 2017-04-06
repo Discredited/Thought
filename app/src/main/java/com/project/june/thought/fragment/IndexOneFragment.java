@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.ShowImageActivity;
 import com.project.june.thought.activity.index.ToListActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexVo;
@@ -232,6 +233,12 @@ public class IndexOneFragment extends BaseFragment {
                 }
 
                 Picasso.with(mActivity).load(itemData.getImg_url()).error(R.mipmap.opening_monday).into(image);
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ShowImageActivity.startThis(mActivity, itemData.getImg_url());
+                    }
+                });
             }
         };
         list_view.setAdapter(adapter);

@@ -55,6 +55,8 @@ public class ReadingDetailActivity extends BaseActivity {
     TextView author_name;
     @InjectView(R.id.author_des)
     TextView author_des;
+    @InjectView(R.id.praise_comment_text)
+    TextView praise_comment_text;
     @InjectView(R.id.list_ptr)
     PtrClassicFrameLayout list_ptr;
     @InjectView(R.id.list_view)
@@ -274,6 +276,8 @@ public class ReadingDetailActivity extends BaseActivity {
                 Picasso.with(mActivity).load(R.mipmap.user_default_image).into(author_image);
             }
         }
+
+        praise_comment_text.setText(vo.getPraisenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
 
         String string1 = vo.getHp_content();
         String string2 = string1.replace("width:394px", "width:100%");
