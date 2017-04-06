@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +31,9 @@ import okhttp3.Call;
  * 往期列表连载
  */
 public class SerializeListActivity extends BaseActivity {
+
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.list_view)
@@ -66,6 +70,8 @@ public class SerializeListActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_center_text.setText(title);
+        title_img_left.setImageResource(R.mipmap.return_image_arrow);
+
         initListView();
         requestData();
     }
@@ -86,10 +92,12 @@ public class SerializeListActivity extends BaseActivity {
                 TextView text_title = JuneViewHolder.get(convertView, R.id.text_title);
                 TextView text_author = JuneViewHolder.get(convertView, R.id.text_author);
                 TextView text_content = JuneViewHolder.get(convertView, R.id.text_content);
+                TextView text_type = JuneViewHolder.get(convertView, R.id.text_type);
 
                 text_title.setText(itemData.getTitle());
                 text_author.setText(itemData.getAuthor().getUser_name());
                 text_content.setText(itemData.getExcerpt());
+                text_type.setText("连载");
             }
         };
         list_view.setAdapter(adapter);

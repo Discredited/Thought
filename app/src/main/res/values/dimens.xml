@@ -23,4 +23,8 @@
     <dimen name="text_content_normal">14sp</dimen>
     <dimen name="text_content_tips">12sp</dimen>
     <dimen name="text_content_small">10sp</dimen>
+
+
+    <!-- 文本详情条目之间的间距 -->
+    <dimen name="text_column_depart">20dp</dimen>
 </resources>

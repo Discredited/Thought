@@ -8,117 +8,118 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/serialize_title"
+            style="@style/textContentTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/title_color"
-            android:textSize="@dimen/common_text_20" />
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"/>
+            android:layout_marginTop="10dp"
+            android:background="#000" />
     </LinearLayout>
 
     <!-- 作者 章节列表 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/serialize_author"
+            style="@style/textContentSubTitle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:text="木匠仙问答"
-            android:textColor="@color/small_color"
-            android:textSize="@dimen/common_text" />
+            android:layout_weight="1"
+            android:padding="10dp" />
 
         <ImageView
             android:id="@+id/serialize_list"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:padding="14dp"
-            android:src="@mipmap/serial_list_icon"/>
+            android:src="@mipmap/serial_list_icon" />
     </LinearLayout>
 
     <!-- 内容 -->
     <TextView
         android:id="@+id/serialize_content"
+        style="@style/textContentTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="4dp"
         android:lineSpacingMultiplier="1.2"
-        android:padding="10dp"
-        android:text="内容"
-        android:textColor="@color/content_color"
-        android:textSize="@dimen/common_text" />
+        android:padding="10dp" />
 
     <!-- 编辑 -->
     <TextView
         android:id="@+id/charge_edt"
+        style="@style/textContentTips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="责任编辑"
-        android:textColor="@color/small_color"
-        android:textSize="@dimen/common_text" />
+        android:layout_marginTop="10dp"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/copyright"
+        style="@style/textContentTips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="责任编辑"
-        android:textColor="@color/small_color"
-        android:textSize="@dimen/common_text" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
 
     <!-- 下一期 上一期 -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/return_image_gray"/>
+                android:src="@mipmap/return_image_gray" />
 
             <TextView
+                android:id="@+id/pre_serialize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text"
+                android:text="前一张"
                 android:textColor="@color/small_color"
-                android:text="前一张"/>
+                android:textSize="@dimen/common_text" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/next_serialize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text"
+                android:text="后一张"
                 android:textColor="@color/small_color"
-                android:text="后一张"/>
+                android:textSize="@dimen/common_text" />
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/forward"/>
+                android:src="@mipmap/forward" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -126,93 +127,100 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <TextView
+                style="@style/textContentSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text_16"
-                android:textColor="@color/title_color"
-                android:text="作者"/>
+                android:text="作者" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:background="#000"/>
+                android:background="#000" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
+
             <ImageView
                 android:id="@+id/author_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/user_default_image"/>
+                android:src="@mipmap/user_default_image" />
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/author_name"
+                    style="@style/textContentAuthor"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="慢三"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/author_des"
+                    style="@style/textContentAuthorDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="巴拉巴拉巴拉巴拉"/>
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_stroke_black_1_dp"
+                android:paddingBottom="2dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="关注"/>
+                android:paddingTop="2dp"
+                android:text="关注" />
         </LinearLayout>
     </LinearLayout>
 
 
     <!-- 推荐内容 -->
     <LinearLayout
+        android:id="@+id/recommend_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <TextView
+                style="@style/textContentSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text_16"
-                android:textColor="@color/title_color"
-                android:text="推荐内容"/>
+                android:text="推荐内容" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:background="#000"/>
+                android:background="#000" />
         </LinearLayout>
 
 
@@ -222,33 +230,35 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text"
-                android:text="连载"/>
+                android:text="连载"
+                android:textSize="@dimen/common_text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/recommend_1_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/common_text"
+                    android:text="暖气 · 第二十一章"
                     android:textColor="@color/content_color"
-                    android:text="暖气 · 第二十一章"/>
+                    android:textSize="@dimen/common_text" />
 
                 <TextView
                     android:id="@+id/recommend_1_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="@dimen/common_text"
+                    android:text="文 / 慢三"
                     android:textColor="@color/content_color"
-                    android:text="文 / 慢三"/>
+                    android:textSize="@dimen/small_text" />
             </LinearLayout>
         </LinearLayout>
 
@@ -258,33 +268,35 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/common_text"
-                android:text="连载"/>
+                android:text="连载"
+                android:textSize="@dimen/common_text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/recommend_2_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/common_text"
+                    android:text="暖气 · 第二十一章"
                     android:textColor="@color/content_color"
-                    android:text="暖气 · 第二十一章"/>
+                    android:textSize="@dimen/common_text" />
 
                 <TextView
                     android:id="@+id/recommend_2_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="@dimen/common_text"
+                    android:text="文 / 慢三"
                     android:textColor="@color/content_color"
-                    android:text="文 / 慢三"/>
+                    android:textSize="@dimen/small_text" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -294,14 +306,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:padding="10dp">
 
         <TextView
+            style="@style/textContentSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全部评论"
-            android:textColor="@color/title_color"
-            android:textSize="@dimen/common_text_16" />
+            android:text="全部评论" />
 
         <View
             android:layout_width="match_parent"

@@ -31,6 +31,8 @@ public class HttpUtils {
     public static String READING_DETAIL = HEADER + "/essay/{0}?source=channel_reading&source_id=10683&version=4.0.7&platform=android";
     //连载详情
     public static String SERIALIZE_DETAIL = HEADER + "/serialcontent/{0}?source=summary&source_id=10668&version=4.0.7&platform=android";
+    //连载章节列表
+    public static String SERIALIZE_LIST = HEADER + "/serial/list/{0}?version=4.0.7&platform=android";
     //问答详情
     public static String QUESTION_DETAIL = HEADER + "/question/{0}?source=summary&source_id=10666&version=4.0.7&platform=android";
     //音乐详情

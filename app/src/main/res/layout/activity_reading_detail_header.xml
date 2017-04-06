@@ -31,17 +31,14 @@
         style="@style/textContentSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:padding="10dp" />
 
     <!-- 内容正文 -->
     <WebView
         android:id="@+id/text_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:minHeight="400dp"
         android:scrollbars="none" />
 
@@ -51,12 +48,15 @@
         style="@style/textContentTips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:padding="10dp" />
 
     <!-- 作者介绍 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:orientation="vertical">
 
         <LinearLayout
@@ -131,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:padding="10dp">
 
         <TextView

@@ -205,7 +205,7 @@ public class QuestionDetailActivity extends BaseActivity {
     private void fillData(QuestionDetailVo.DataBean vo) {
         question_title.setText(vo.getQuestion_title());
         question_content.setText(vo.getQuestion_content());
-        question_ask.setText("——" + vo.getAsker().getUser_name());
+        question_ask.setText("——" + vo.getAsker().getUser_name() + "问答");
         question_answer.setText(vo.getAnswerer().getUser_name());
         answer_content.setText(Html.fromHtml(vo.getAnswer_content()));
         charge_edt.setText(vo.getCharge_edt());

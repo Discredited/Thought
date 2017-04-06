@@ -6,24 +6,21 @@
 
     <TextView
         android:id="@+id/question_title"
+        style="@style/textContentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="历史上出现过哪些现代人看起来无法理解的法律制度"
-        android:textColor="@color/title_color"
-        android:textSize="@dimen/common_text_20" />
+        android:layout_marginTop="10dp"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/question_content"
+        style="@style/textContentTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:lineSpacingExtra="4dp"
         android:lineSpacingMultiplier="1.2"
-        android:padding="10dp"
-        android:text="过去几日，辱母案中的判决已发了许多人的争议。。。。。。。。。。。。。。。。"
-        android:textColor="@color/content_color"
-        android:textSize="@dimen/common_text" />
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/question_ask"
@@ -31,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:text="—— 木匠仙问答"
         android:textColor="@color/small_color"
         android:textSize="@dimen/common_text" />
 
@@ -54,49 +50,43 @@
 
     <TextView
         android:id="@+id/question_answer"
+        style="@style/textContentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="豆子问答："
-        android:textColor="@color/title_color"
-        android:textSize="@dimen/common_text_20" />
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/answer_content"
+        style="@style/textContentTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="4dp"
         android:lineSpacingMultiplier="1.2"
-        android:padding="10dp"
-        android:text="内容"
-        android:textColor="@color/content_color"
-        android:textSize="@dimen/common_text" />
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/charge_edt"
+        style="@style/textContentTips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="责任编辑"
-        android:textColor="@color/small_color"
-        android:textSize="@dimen/common_text" />
+        android:padding="10dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_column_depart"
         android:orientation="vertical"
         android:padding="10dp">
 
         <TextView
+            style="@style/textContentSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全部评论"
-            android:textColor="@color/title_color"
-            android:textSize="@dimen/common_text_16" />
+            android:text="评论列表" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="2dp"
             android:layout_marginTop="10dp"
             android:background="#000" />
     </LinearLayout>

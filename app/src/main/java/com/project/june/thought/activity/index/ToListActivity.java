@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
@@ -25,6 +26,8 @@ import butterknife.OnClick;
  */
 public class ToListActivity extends BaseActivity {
 
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.tab_layout)
@@ -58,6 +61,7 @@ public class ToListActivity extends BaseActivity {
 
     private void initUi() {
         title_center_text.setText("往期列表");
+        title_img_left.setImageResource(R.mipmap.return_image_arrow);
 
         tabStringList.add("图文");
         tabStringList.add("阅读");

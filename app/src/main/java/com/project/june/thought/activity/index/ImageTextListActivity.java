@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import okhttp3.Call;
  */
 public class ImageTextListActivity extends BaseActivity {
 
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.recycle_view)
@@ -64,6 +67,7 @@ public class ImageTextListActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_center_text.setText(title_text);
+        title_img_left.setImageResource(R.mipmap.return_image_arrow);
 
         initRecycleView();
         requestData();

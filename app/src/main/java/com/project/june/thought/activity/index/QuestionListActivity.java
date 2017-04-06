@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +31,9 @@ import okhttp3.Call;
  * 问答往期列表
  */
 public class QuestionListActivity extends BaseActivity {
+
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.list_view)
@@ -66,6 +70,7 @@ public class QuestionListActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_center_text.setText(title);
+        title_img_left.setImageResource(R.mipmap.return_image_arrow);
 
         initListView();
         requestData();
@@ -87,8 +92,10 @@ public class QuestionListActivity extends BaseActivity {
                 TextView text_title = JuneViewHolder.get(convertView, R.id.text_title);
                 TextView text_author = JuneViewHolder.get(convertView, R.id.text_author);
                 TextView text_content = JuneViewHolder.get(convertView, R.id.text_content);
+                TextView text_type = JuneViewHolder.get(convertView, R.id.text_type);
 
                 text_title.setText(itemData.getQuestion_title());
+                text_type.setText("问答");
                 text_author.setVisibility(View.GONE);
                 text_content.setVisibility(View.GONE);
 

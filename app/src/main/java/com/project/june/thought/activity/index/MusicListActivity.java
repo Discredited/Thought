@@ -32,6 +32,8 @@ import okhttp3.Call;
  */
 public class MusicListActivity extends BaseActivity {
 
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.title_img_right)
@@ -70,6 +72,7 @@ public class MusicListActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_center_text.setText(title);
+        title_img_left.setImageResource(R.mipmap.return_image_arrow);
 
         initListView();
         requestData();

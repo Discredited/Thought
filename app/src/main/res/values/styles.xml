@@ -34,6 +34,12 @@
         <item name="android:textSize">@dimen/text_content_sub_title</item>
     </style>
 
+    <!-- 文本内容详情页副标题 -->
+    <style name="textContentTxt">
+        <item name="android:textColor">@color/content_color</item>
+        <item name="android:textSize">@dimen/common_text</item>
+    </style>
+
     <!-- 文本内容详情页提示 -->
     <style name="textContentTips">
         <item name="android:textColor">@color/small_color</item>
