@@ -13,6 +13,10 @@ public class HttpUtils {
     public static String INDEX_LIST = HEADER + "/onelist/idlist/?version=4.0.7&platform=android";
     //首页数据详情
     public static String INDEX = HEADER + "/onelist/{0}/%E6%88%90%E9%83%BD?version=4.0.7&platform=android";
+    //阅读模块
+    public static String READING = HEADER + "/channel/reading/more/{0}?version=4.0.7&platform=android";
+    //阅读模块banner
+    public static String READING_BANNER = HEADER + "/reading/carousel/?platform=android";
 
     //往期图文列表
     public static String TO_LIST_IMAGE_TEXT = HEADER + "/hp/bymonth/{0}%2000:00:00?version=4.0.7&platform=android";

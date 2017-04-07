@@ -6,17 +6,17 @@ import com.project.june.thought.R;
 import com.project.june.thought.base.BaseFragment;
 
 /**
- * Created by June on 2017/4/6.
+ * Created by June on 2017/4/7.
  */
-public class MusicFragment extends BaseFragment {
+
+public class MovieFragment extends BaseFragment {
     @Override
     protected int getContentViewId() {
         return R.layout.fragment_music;
     }
 
-
-    public static MusicFragment newInstance(Bundle bundle){
-        MusicFragment fragment = new MusicFragment();
+    public static MovieFragment newInstance(Bundle bundle){
+        MovieFragment fragment = new MovieFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
