@@ -229,7 +229,7 @@ public class ReadingDetailActivity extends BaseActivity {
                 author_des.setText(authorBean.getDesc() + "    " + authorBean.getWb_name());
                 author_name.setText(authorBean.getUser_name());
             }
-            if (null != authorBean.getWeb_url()){
+            if (null != authorBean.getWeb_url() && !"".equals(authorBean.getWeb_url())){
                 Picasso.with(mActivity).load(authorBean.getWeb_url()).transform(new CircleTransform()).into(author_image);
             }else {
                 Picasso.with(mActivity).load(R.mipmap.user_default_image).into(author_image);
