@@ -17,6 +17,10 @@ public class HttpUtils {
     public static String READING = HEADER + "/channel/reading/more/{0}?version=4.0.7&platform=android";
     //阅读模块banner
     public static String READING_BANNER = HEADER + "/reading/carousel/?platform=android";
+    //音乐模块
+    public static String MUSIC = HEADER + "/channel/music/more/{0}?version=4.0.7&platform=android";
+    //视频
+    public static String MOVIE = HEADER + "/channel/movie/more/0?version=4.0.7&platform=android";
 
     //往期图文列表
     public static String TO_LIST_IMAGE_TEXT = HEADER + "/hp/bymonth/{0}%2000:00:00?version=4.0.7&platform=android";

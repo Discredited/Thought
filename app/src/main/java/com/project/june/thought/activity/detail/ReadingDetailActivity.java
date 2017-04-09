@@ -28,6 +28,11 @@ import com.project.xujun.juneutils.listview.JuneViewHolder;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
@@ -238,7 +243,13 @@ public class ReadingDetailActivity extends BaseActivity {
 
         praise_comment_text.setText(vo.getPraisenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
 
-        String string1 = vo.getHp_content();
+        Document document = Jsoup.parse(vo.getHp_content());
+        Elements elements=document.getElementsByTag("img");
+        for (Element element : elements) {
+            element.attr("width","100%").attr("height","auto");
+        }
+
+        String string1 = document.toString();
         String string2 = string1.replace("width:394px", "width:100%");
         String string3 = string2.replace("w/394", "w/344");
         String string4 = string3.replace("<br>", "<br><br>");
