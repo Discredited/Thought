@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-120dp"
+        android:layout_marginLeft="-120dp">
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/detail_music"/>
+
+        <ImageView
+            android:id="@+id/music_image"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:padding="30dp"
+            android:scaleType="fitXY"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/music_play"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/detail_play"/>
+    </RelativeLayout>
+
+    <!-- 内容标题 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/music_sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/small_color"/>
+
+        <TextView
+            android:id="@+id/music_title"
+            style="@style/textContentTitle"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- 内容作者 -->
+    <TextView
+        android:id="@+id/music_author"
+        style="@style/textContentSubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp" />
+
+    <!-- 内容正文 -->
+    <WebView
+        android:id="@+id/music_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:minHeight="400dp"
+        android:scrollbars="none" />
+
+    <!-- 责任编辑 -->
+    <TextView
+        android:id="@+id/copyright"
+        style="@style/textContentTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/charge_edt"
+        style="@style/textContentTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
+
+    <!-- 作者介绍 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_column_depart"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/textContentSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="作者" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/author_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/user_default_image" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author_name"
+                    style="@style/textContentAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/author_des"
+                    style="@style/textContentAuthorDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:ellipsize="end" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_stroke_black_1_dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="4dp"
+                android:text="关注" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 评论列表 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/text_column_depart"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/textContentSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论列表" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/title_color" />
+    </LinearLayout>
+</LinearLayout>

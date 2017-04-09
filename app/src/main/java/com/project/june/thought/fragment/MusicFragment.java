@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.detail.MusicDetailActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.DisplayGatherVo;
 import com.project.june.thought.utils.HttpUtils;
@@ -103,12 +104,8 @@ public class MusicFragment extends BaseFragment {
         list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    //跳转banner的页面
-                } else {
-                    DisplayGatherVo.DataBean bean = adapter.getItems().get(position - 1);
-                    //ReadingDetailActivity.startThis(mActivity, bean.getItem_id());
-                }
+                DisplayGatherVo.DataBean bean = adapter.getItems().get(position);
+                MusicDetailActivity.startThis(mActivity, bean.getItem_id());
             }
         });
     }

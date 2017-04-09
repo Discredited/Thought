@@ -77,6 +77,7 @@
             android:name=".activity.ShowImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
+        <activity android:name=".activity.detail.MusicDetailActivity"></activity>
     </application>
 
 </manifest>
