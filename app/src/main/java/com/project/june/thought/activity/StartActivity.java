@@ -1,13 +1,12 @@
 package com.project.june.thought.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.june.thought.R;
 import com.project.june.thought.base.BaseActivity;
-import com.project.june.thought.utils.HttpUtils;
+import com.project.xujun.juneutils.activity.*;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;

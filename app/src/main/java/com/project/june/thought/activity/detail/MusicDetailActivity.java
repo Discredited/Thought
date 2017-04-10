@@ -117,8 +117,6 @@ public class MusicDetailActivity extends BaseActivity {
     }
 
     private void initWebView() {
-        WebSettings settings = music_content.getSettings();
-        settings.setJavaScriptEnabled(false);
     }
 
     private void initListView() {
@@ -231,7 +229,6 @@ public class MusicDetailActivity extends BaseActivity {
     private void fillData(MusicDetailVo.DataBean vo) {
         music_title.setText(vo.getStory_title());
         music_sub_title.setText("· " + vo.getTitle() + " ·" + "\n" + vo.getAlbum());
-        //text_content.setText(Html.fromHtml(vo.getHp_content()));
         if (null != vo.getAuthor()) {
             music_author.setText("文 / " + vo.getStory_author().getUser_name());
             author_des.setText(vo.getStory_author().getDesc());

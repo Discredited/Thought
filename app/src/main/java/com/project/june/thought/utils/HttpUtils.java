@@ -46,7 +46,7 @@ public class HttpUtils {
     //音乐详情
     public static String MUSIC_DETAIL = HEADER + "/music/detail/{0}?version=4.0.7&platform=android";
     //影视详情
-    public static String VIDEO_DETAIL = HEADER + "";
+    public static String MOVIE_DETAIL = HEADER + "/movie/detail/{0}?source=channel_movie&source_id=10686&version=4.0.7&platform=android";
 
     //阅读动态
     public static String READING_DYNAMIC = HEADER + "/comment/praiseandtime/essay/{0}/{1}?version=4.0.7&platform=android";
@@ -57,5 +57,5 @@ public class HttpUtils {
     //音乐动态
     public static String MUSIC_DYNAMIC = HEADER + "/comment/praiseandtime/music/{0}/{1}?version=4.0.7&platform=android";
     //视频动态
-    public static String VIDEO_DYNAMIC = HEADER + "/comment/praiseandtime/serial/{0}/{1}?version=4.0.7&platform=android";
+    public static String MOVIE_DYNAMIC = HEADER + "/comment/praiseandtime/movie/{0}/{1}?version=4.0.7&platform=android";
 }

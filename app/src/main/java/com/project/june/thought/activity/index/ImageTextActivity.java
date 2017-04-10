@@ -3,14 +3,12 @@ package com.project.june.thought.activity.index;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.base.BaseActivity;
-import com.project.june.thought.model.ImageTextListVo;
 import com.project.june.thought.model.ImageTextVo;
 import com.project.june.thought.utils.DateTools;
 import com.project.june.thought.utils.HttpUtils;
@@ -37,7 +35,7 @@ public class ImageTextActivity extends BaseActivity {
     @InjectView(R.id.one_position)
     TextView one_position;
     @InjectView(R.id.one_img)
-    ScaleImageView one_img;
+    ImageView one_img;
     @InjectView(R.id.one_number)
     TextView one_number;
     @InjectView(R.id.one_draw)

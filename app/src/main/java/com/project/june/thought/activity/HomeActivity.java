@@ -3,7 +3,6 @@ package com.project.june.thought.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;

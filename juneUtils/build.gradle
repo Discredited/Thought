@@ -26,4 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile files('libs/txrtmpsdk.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }

@@ -37,14 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.project.xujun.juneutils.customview.ScaleImageView
+        <ImageView
             android:id="@+id/one_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            app:fix_mode="fix_width"
-            app:height_scale="450"
-            app:width_scale="690" />
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/one_number"
