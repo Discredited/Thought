@@ -16,16 +16,28 @@ import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.adapter.list.DynamicAdapter;
+import com.project.june.thought.adapter.pager.ReadingPagerAdapter;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.MovieDetailVo;
+import com.project.june.thought.model.MovieStoryVo;
+import com.project.june.thought.model.ReadingBannerListVo;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
+import com.project.xujun.juneutils.imageutils.CircleTransform;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
+import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.InjectView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -76,6 +88,7 @@ public class MovieDetailActivity extends BaseActivity {
 
     private String movieId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
+    private ReadingPagerAdapter pagerAdapter;
 
     public static void startThis(Context context, String movieId) {
         Intent intent = new Intent(context, MovieDetailActivity.class);
@@ -107,10 +120,37 @@ public class MovieDetailActivity extends BaseActivity {
     protected void logicProgress() {
         title_center_text.setText("影视详情");
 
+        initViewPager();
         initListView();
         initPtr();
         requestData();
+        requestStory();
         requestDynamic("0");
+    }
+
+    private void initViewPager() {
+        pagerAdapter = new ReadingPagerAdapter();
+        view_pager.setAdapter(pagerAdapter);
+        view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position != 0) {
+                    video_player.setVisibility(View.GONE);
+                } else {
+                    video_player.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void initListView() {
@@ -222,25 +262,93 @@ public class MovieDetailActivity extends BaseActivity {
                 });
     }
 
-    private void fillData(MovieDetailVo.DataBean vo) {
+    //请求故事
+    private void requestStory() {
+        String path = MessageFormat.format(HttpUtils.MOVIE_STORY, movieId);
+        OkHttpUtils.get()
+                .url(path)
+                .build()
+                .execute(new ResultCallBack<MovieStoryVo>() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        super.onError(call, e, id);
+                    }
+
+                    @Override
+                    public void onResponse(MovieStoryVo response, int id) {
+                        super.onResponse(response, id);
+                        if (response.getRes() == 0) {
+                            if (null != response.getData()) {
+                                fillStory(response.getData().getData().get(0));
+                            }
+                        } else {
+                            //请求返回错误
+                        }
+                    }
+                });
+    }
+
+    private void fillStory(MovieStoryVo.DataBeanX.DataBean vo) {
         movie_title.setText(vo.getTitle());
-        movie_sub_title.setText("· " + vo.getTitle() + " ·");
+        movie_author.setText("文 /" + vo.getUser().getUser_name());
 
-        praise_comment_text.setText(vo.getPraisenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
+        Document document = Jsoup.parse(vo.getContent());
+        Elements elements = document.getElementsByTag("img");
+        for (Element element : elements) {
+            element.attr("width", "100%").attr("height", "auto");
+        }
 
-        //是否可以播放视频
-        if (null != vo.getVideo() && !"".equals(vo.getVideo())) {
-            video_player_layout.setVisibility(View.VISIBLE);
-            view_pager.setVisibility(View.GONE);
+        String string1 = document.toString();
+        String string2 = string1.replace("width:394px", "width:100%");
+        String string3 = string2.replace("w/394", "w/344");
+        String string4 = string3.replace("<br>", "<br><br>");
+        String hp_content = string4.replace("100%\"><img", "100%\"><br><br><img");
+        movie_content.loadDataWithBaseURL(null, hp_content, "text/html", "utf-8", null);
+        charge_edt.setText(vo.getCharge_edt() + "    " + vo.getEditor_email());
+        copyright.setText(vo.getCopyright());
 
-            initVideoPlayer(vo.getVideo());
-        } else {
-            video_player_layout.setVisibility(View.GONE);
-            view_pager.setVisibility(View.VISIBLE);
+        if (null != vo.getUser()) {
+            author_des.setText(vo.getUser().getDesc());
+            author_name.setText(vo.getUser().getUser_name() + "    " + vo.getUser().getWb_name());
+            if (null != vo.getUser().getWeb_url() && !"".equals(vo.getUser().getWeb_url())) {
+                Picasso.with(mActivity).load(vo.getUser().getWeb_url()).transform(new CircleTransform()).into(author_image);
+            } else {
+                Picasso.with(mActivity).load(R.mipmap.user_default_image).into(author_image);
+            }
         }
     }
 
-    private void initVideoPlayer(final String url) {
+    private void fillData(final MovieDetailVo.DataBean vo) {
+        movie_sub_title.setText("· " + vo.getTitle() + " ·");
+        praise_comment_text.setText(vo.getSharenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
+
+        if (null != vo.getPhoto() && vo.getPhoto().size() > 0) {
+            List<ReadingBannerListVo.DataBean> list = new ArrayList<>(0);
+            ReadingBannerListVo.DataBean bean = new ReadingBannerListVo.DataBean();
+            bean.setCover(vo.getDetailcover());
+            list.add(bean);
+            for (String url : vo.getPhoto()) {
+                bean = new ReadingBannerListVo.DataBean();
+                bean.setCover(url);
+                list.add(bean);
+            }
+            pagerAdapter.setImages(list);
+        } else {
+            view_pager.setVisibility(View.GONE);
+        }
+
+        if (null == vo.getVideo() || "".equals(vo.getVideo())) {
+            //当前没有视频
+            video_player.setVisibility(View.GONE);
+        } else {
+            video_player.setVisibility(View.VISIBLE);
+            video_player.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MoviePlayActivity.startThis(mActivity, vo.getVideo(), vo.getTitle());
+                }
+            });
+        }
     }
 
     @Override

@@ -3,23 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/video_player_layout"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="200dp">
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#ff0"
-            android:visibility="gone" />
+            android:layout_height="match_parent"/>
 
         <ImageView
             android:id="@+id/video_player"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/detail_play"/>
+            android:src="@mipmap/detail_play"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <!-- 内容标题 -->

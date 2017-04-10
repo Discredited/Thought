@@ -4,23 +4,11 @@
         "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\indicator_arrow.png"
     },
     {
-        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
-        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
-    },
-    {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
         "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
     },
     {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
         "source": "C:\\Users\\June\\Desktop\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
-    },
-    {
-        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\indicator_arrow.png",
-        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\indicator_arrow.png"
-    },
-    {
-        "merged": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
-        "source": "F:\\AllRice\\mine\\MyAndroidProject\\Thought\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\Thought\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
     }
 ]
