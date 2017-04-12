@@ -2,6 +2,7 @@ package com.project.june.thought.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,6 +15,11 @@ import com.project.june.thought.fragment.IndexFragment;
 import com.project.june.thought.fragment.MovieFragment;
 import com.project.june.thought.fragment.MusicFragment;
 import com.project.june.thought.fragment.ReadFragment;
+import com.project.june.thought.model.UserTable;
+import com.project.june.thought.utils.ThoughtConfig;
+
+import org.xutils.JuneToolsApp;
+import org.xutils.ex.DbException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +78,25 @@ public class HomeActivity extends BaseActivity {
                 }
             }
         });
+
+        UserTable userTable = new UserTable();
+        userTable.setId(1l);
+        userTable.setAccount("95925");
+        userTable.setPassword("111111");
+        userTable.setAvatar(ThoughtConfig.USER_PHOTO);
+
+        try {
+            JuneToolsApp.getDbManager().saveOrUpdate(userTable);
+        } catch (DbException e) {
+            Log.e("sherry", "数据库存储失败");
+        }
+
+        try {
+            List<UserTable> all = JuneToolsApp.getDbManager().findAll(UserTable.class);
+            Log.e("sherry", "数据库表的长度：" + all.size());
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
     }
 
 

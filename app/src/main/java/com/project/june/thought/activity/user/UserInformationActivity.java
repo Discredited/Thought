@@ -2,24 +2,27 @@ package com.project.june.thought.activity.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.ThoughtApplication;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.UserEntry;
+import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.customview.ObservableScrollView;
 import com.project.xujun.juneutils.customview.ScaleImageView;
 import com.project.xujun.juneutils.imageutils.CircleTransform;
 import com.project.xujun.juneutils.otherutils.ViewUtils;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -41,6 +44,12 @@ public class UserInformationActivity extends BaseActivity {
     ImageView music_image;
     @InjectView(R.id.scroll_view)
     ObservableScrollView scroll_view;
+    @InjectView(R.id.user_like_layout)
+    LinearLayout user_like_layout;
+    @InjectView(R.id.user_information_layout)
+    LinearLayout user_information_layout;
+    @InjectView(R.id.user_collect_layout)
+    LinearLayout user_collect_layout;
 
     public static void startThis(Context context, String userId) {
         Intent intent = new Intent(context, UserInformationActivity.class);
@@ -61,13 +70,31 @@ public class UserInformationActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_layout.setBackgroundColor(Color.TRANSPARENT);
-        title_center_text.setText("野生Android程序猿");
-        title_center_text.setVisibility(View.GONE);
-        title_center_text.setTextColor(Color.parseColor("#999999"));
 
-        Picasso.with(mActivity).load(R.mipmap.default_indi_bg).transform(new CircleTransform()).into(user_image);
-        user_name.setText("野生Android程序猿");
-
+        UserEntry userEntry = ThoughtApplication.getUserEntry();
+        if (null == userEntry) {
+            //暂未登录
+            title_center_text.setText("未登录");
+            title_center_text.setVisibility(View.GONE);
+            title_center_text.setTextColor(Color.parseColor("#999999"));
+            user_name.setText("未登录");
+            user_like_layout.setVisibility(View.GONE);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, ViewUtils.dp2px(mActivity, 200));
+            user_information_layout.setLayoutParams(params);
+            user_collect_layout.setVisibility(View.GONE);
+            Picasso.with(mActivity).load(R.mipmap.logo).transform(new CircleTransform()).into(user_image);
+        } else {
+            //已登录
+            title_center_text.setText(userEntry.getName());
+            title_center_text.setVisibility(View.GONE);
+            title_center_text.setTextColor(Color.parseColor("#999999"));
+            user_name.setText(userEntry.getName());
+            user_like_layout.setVisibility(View.VISIBLE);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, ViewUtils.dp2px(mActivity, 420));
+            user_information_layout.setLayoutParams(params);
+            user_collect_layout.setVisibility(View.VISIBLE);
+            Picasso.with(mActivity).load(ThoughtConfig.USER_PHOTO).transform(new CircleTransform()).into(user_image);
+        }
         preInit();
     }
 
@@ -102,6 +129,7 @@ public class UserInformationActivity extends BaseActivity {
 
     @OnClick({R.id.title_img_left,
             R.id.my_focus_layout,
+            R.id.user_image,
             R.id.collect_img_txt_layout,
             R.id.collect_article_layout,
             R.id.collect_music_layout,
@@ -111,6 +139,15 @@ public class UserInformationActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.title_img_left:
                 onBackPressed();
+                break;
+            case R.id.user_image:
+                if (null == ThoughtApplication.getUserEntry()){
+                    //登录
+                    LoginActivity.startThis(mActivity);
+                }else {
+                    //更换头像
+                    Toast.makeText(mActivity, "暂不支持更换头像", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.my_focus_layout:
                 break;
