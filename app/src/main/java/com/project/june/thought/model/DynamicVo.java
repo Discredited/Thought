@@ -90,6 +90,15 @@ public class DynamicVo implements Serializable {
             private UserBean user;
             private TouserBean touser;
             private int type;
+            private Boolean isLaud = false;
+
+            public Boolean getLaud() {
+                return isLaud;
+            }
+
+            public void setLaud(Boolean laud) {
+                isLaud = laud;
+            }
 
             public String getId() {
                 return id;

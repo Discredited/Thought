@@ -2,29 +2,30 @@ package com.project.june.thought.activity.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AbsListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.adapter.list.DynamicAdapter;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.ReadingDetailVo;
+import com.project.june.thought.utils.ButtomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.imageutils.CircleTransform;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
-import com.project.xujun.juneutils.listview.JuneViewHolder;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
@@ -35,6 +36,7 @@ import org.jsoup.select.Elements;
 
 import java.text.MessageFormat;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
@@ -61,12 +63,18 @@ public class ReadingDetailActivity extends BaseActivity {
     TextView author_name;
     @InjectView(R.id.author_des)
     TextView author_des;
-    @InjectView(R.id.praise_comment_text)
-    TextView praise_comment_text;
     @InjectView(R.id.list_ptr)
     PtrClassicFrameLayout list_ptr;
     @InjectView(R.id.list_view)
     ListView list_view;
+    @InjectView(R.id.praise_comment_text)
+    TextView praise_comment_text;
+    @InjectView(R.id.collect_image)
+    ImageButton collect_image;
+    @InjectView(R.id.laud_image)
+    ImageButton laud_image;
+    @InjectView(R.id.comment_image)
+    ImageButton comment_image;
 
     private String essayId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
@@ -134,6 +142,7 @@ public class ReadingDetailActivity extends BaseActivity {
         list_ptr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                adapter.getItems().clear();
                 requestDynamic("0");
             }
 
@@ -234,9 +243,9 @@ public class ReadingDetailActivity extends BaseActivity {
                 author_des.setText(authorBean.getDesc() + "    " + authorBean.getWb_name());
                 author_name.setText(authorBean.getUser_name());
             }
-            if (null != authorBean.getWeb_url() && !"".equals(authorBean.getWeb_url())){
+            if (null != authorBean.getWeb_url() && !"".equals(authorBean.getWeb_url())) {
                 Picasso.with(mActivity).load(authorBean.getWeb_url()).transform(new CircleTransform()).into(author_image);
-            }else {
+            } else {
                 Picasso.with(mActivity).load(R.mipmap.user_default_image).into(author_image);
             }
         }
@@ -244,9 +253,9 @@ public class ReadingDetailActivity extends BaseActivity {
         praise_comment_text.setText(vo.getPraisenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
 
         Document document = Jsoup.parse(vo.getHp_content());
-        Elements elements=document.getElementsByTag("img");
+        Elements elements = document.getElementsByTag("img");
         for (Element element : elements) {
-            element.attr("width","100%").attr("height","auto");
+            element.attr("width", "100%").attr("height", "auto");
         }
 
         String string1 = document.toString();
@@ -256,6 +265,15 @@ public class ReadingDetailActivity extends BaseActivity {
         String hp_content = string4.replace("100%\"><img", "100%\"><br><br><img");
         text_content.loadDataWithBaseURL(null, hp_content, "text/html", "utf-8", null);
         charge_edt.setText(vo.getHp_author_introduce() + "    " + vo.getEditor_email());
+
+        CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setCollect(vo.getCollect());
+        bean.setLaud(vo.getLaud());
+        bean.setTitle(vo.getHp_title());
+        bean.setSummary(vo.getHp_author());
+        bean.setLaudNumber(vo.getPraisenum());
+        bean.setCommentNumber(vo.getCommentnum());
+        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override

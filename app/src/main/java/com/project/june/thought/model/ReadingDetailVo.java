@@ -61,6 +61,24 @@ public class ReadingDetailVo{
         private List<AuthorBean> author;
         private List<AuthorListBean> author_list;
         private List<?> tag_list;
+        private Boolean isLaud = false;
+        private Boolean isCollect = false;
+
+        public Boolean getLaud() {
+            return isLaud;
+        }
+
+        public void setLaud(Boolean laud) {
+            isLaud = laud;
+        }
+
+        public Boolean getCollect() {
+            return isCollect;
+        }
+
+        public void setCollect(Boolean collect) {
+            isCollect = collect;
+        }
 
         public String getContent_id() {
             return content_id;

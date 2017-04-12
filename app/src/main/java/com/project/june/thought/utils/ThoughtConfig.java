@@ -25,6 +25,8 @@ public class ThoughtConfig {
     //网络异常提示
     public static String NETWORK_ERROR = "网络异常，请重试";
 
+
+    public static String USER_PHOTO = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491986466834&di=3eab41ad07684f5e377e847581676923&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201510%2F17%2F20151017181934_inLRh.thumb.224_0.jpeg";
     //banner
     //http://v3.wufazhuce.com:8000/api/reading/carousel/?platform=android
     //banner详情

@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.project.june.thought.R;
 import com.project.june.thought.adapter.list.DynamicAdapter;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.MusicDetailVo;
+import com.project.june.thought.utils.ButtomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -43,8 +45,6 @@ public class MusicDetailActivity extends BaseActivity {
 
     @InjectView(R.id.header_view)
     View header_view;
-    @InjectView(R.id.praise_comment_text)
-    TextView praise_comment_text;
     @InjectView(R.id.title_img_left)
     ImageButton title_img_left;
     @InjectView(R.id.title_center_text)
@@ -75,6 +75,14 @@ public class MusicDetailActivity extends BaseActivity {
     ListView list_view;
     @InjectView(R.id.list_ptr)
     PtrClassicFrameLayout list_ptr;
+    @InjectView(R.id.praise_comment_text)
+    TextView praise_comment_text;
+    @InjectView(R.id.collect_image)
+    ImageButton collect_image;
+    @InjectView(R.id.laud_image)
+    ImageButton laud_image;
+    @InjectView(R.id.comment_image)
+    ImageButton comment_image;
 
     private String musicId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
@@ -136,6 +144,7 @@ public class MusicDetailActivity extends BaseActivity {
         list_ptr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                adapter.getItems().clear();
                 requestDynamic("0");
             }
 
@@ -258,6 +267,15 @@ public class MusicDetailActivity extends BaseActivity {
         music_content.loadDataWithBaseURL(null, hp_content, "text/html", "utf-8", null);
         charge_edt.setText(vo.getCharge_edt() + "    " + vo.getEditor_email());
         copyright.setText(vo.getCopyright());
+
+        CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setCollect(vo.getCollect());
+        bean.setLaud(vo.getLaud());
+        bean.setTitle(vo.getTitle());
+        bean.setSummary(vo.getStory_summary());
+        bean.setLaudNumber(vo.getPraisenum());
+        bean.setCommentNumber(vo.getCommentnum());
+        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override

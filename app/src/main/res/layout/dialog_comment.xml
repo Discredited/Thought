@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_radius_10"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/comment_button"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:background="@drawable/shape_black_radius_5"
+        android:gravity="center"
+        android:text="回复"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_text" />
+
+    <TextView
+        android:id="@+id/comment_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="june"
+        android:textColor="@color/sub_content_color"
+        android:textSize="@dimen/common_title" />
+
+    <TextView
+        android:id="@+id/comment_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="观后感什么的最可怕"
+        android:textColor="@color/sub_content_color"
+        android:textSize="@dimen/common_text" />
+
+    <EditText
+        android:id="@+id/comment_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_stroke_black_1_dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:gravity="top"
+        android:hint="在这里写下你想说的"
+        android:lines="5"
+        android:textColorHint="#ccc"
+        android:textColor="@color/content_color"
+        android:textSize="@dimen/common_text" />
+</LinearLayout>

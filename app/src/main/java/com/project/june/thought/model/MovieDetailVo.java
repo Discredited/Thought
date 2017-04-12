@@ -48,7 +48,7 @@ public class MovieDetailVo implements Serializable {
          * keywords : 父权;反抗;生日;谋杀;走出阴影
          * movie_id :
          * info : 导演、编剧：Sophie Kavouridis、Manon Lazzari、Marion Louw、Simon Pannetrat、Thomas Ricquier
-         音乐：Thomas Ricquier
+         * 音乐：Thomas Ricquier
          * officialstory : 生日：凶杀现场
          * hide_flag : 0
          * charge_edt : 责任编辑：王素
@@ -116,6 +116,24 @@ public class MovieDetailVo implements Serializable {
         private int servertime;
         private List<String> photo;
         private List<TagListBean> tag_list;
+        private Boolean isLaud = false;
+        private Boolean isCollect = false;
+
+        public Boolean getLaud() {
+            return isLaud;
+        }
+
+        public void setLaud(Boolean laud) {
+            isLaud = laud;
+        }
+
+        public Boolean getCollect() {
+            return isCollect;
+        }
+
+        public void setCollect(Boolean collect) {
+            isCollect = collect;
+        }
 
         public String getId() {
             return id;

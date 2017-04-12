@@ -139,6 +139,7 @@ public class SerializeDetailActivity extends BaseActivity {
         list_ptr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                adapter.getItems().clear();
                 requestDynamic("0");
             }
 

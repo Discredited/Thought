@@ -171,6 +171,24 @@ public class MusicDetailVo implements Serializable {
         private int commentnum;
         private List<AuthorListBean> author_list;
         private List<?> tag_list;
+        private Boolean isCollect = false;
+        private Boolean isLaud = false;
+
+        public Boolean getCollect() {
+            return isCollect;
+        }
+
+        public void setCollect(Boolean collect) {
+            isCollect = collect;
+        }
+
+        public Boolean getLaud() {
+            return isLaud;
+        }
+
+        public void setLaud(Boolean laud) {
+            isLaud = laud;
+        }
 
         public String getId() {
             return id;

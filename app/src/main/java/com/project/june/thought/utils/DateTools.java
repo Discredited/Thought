@@ -1,5 +1,7 @@
 package com.project.june.thought.utils;
 
+import java.util.Calendar;
+
 /**
  * 日期工具类
  * Created by June on 2017/3/25.
@@ -38,5 +40,31 @@ public class DateTools {
         }else {
             return "";
         }
+    }
+
+    public static String getCommentDate(String date){
+        if (null != date){
+            String[] split = date.split(" ");
+            String string = split[0];
+            String[] strings = string.split("-");
+            if (null != strings && strings.length > 0){
+                return  strings[2] + "  " +monthList[Integer.parseInt(strings[1]) - 1] + strings[0] + "    " + split[1];
+            }
+            return "";
+        }else {
+            return "";
+        }
+    }
+
+    public static String getNowDate(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+
+        return year + "-" + (month + 1) + "-" + day + " " + hour + ":" + minute + ":" + second;
     }
 }

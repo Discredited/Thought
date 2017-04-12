@@ -18,10 +18,12 @@ import com.project.june.thought.R;
 import com.project.june.thought.adapter.list.DynamicAdapter;
 import com.project.june.thought.adapter.pager.ReadingPagerAdapter;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.MovieDetailVo;
 import com.project.june.thought.model.MovieStoryVo;
 import com.project.june.thought.model.ReadingBannerListVo;
+import com.project.june.thought.utils.ButtomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -49,18 +51,10 @@ public class MovieDetailActivity extends BaseActivity {
 
     @InjectView(R.id.header_view)
     View header_view;
-    @InjectView(R.id.praise_comment_text)
-    TextView praise_comment_text;
-    @InjectView(R.id.title_img_left)
-    ImageButton title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
-    @InjectView(R.id.title_img_right)
-    ImageButton title_img_right;
     @InjectView(R.id.view_pager)
     ViewPager view_pager;
-    @InjectView(R.id.video_player_layout)
-    RelativeLayout video_player_layout;
     @InjectView(R.id.video_player)
     ImageView video_player;
     @InjectView(R.id.movie_sub_title)
@@ -85,6 +79,14 @@ public class MovieDetailActivity extends BaseActivity {
     ListView list_view;
     @InjectView(R.id.list_ptr)
     PtrClassicFrameLayout list_ptr;
+    @InjectView(R.id.praise_comment_text)
+    TextView praise_comment_text;
+    @InjectView(R.id.collect_image)
+    ImageButton collect_image;
+    @InjectView(R.id.laud_image)
+    ImageButton laud_image;
+    @InjectView(R.id.comment_image)
+    ImageButton comment_image;
 
     private String movieId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
@@ -170,6 +172,7 @@ public class MovieDetailActivity extends BaseActivity {
         list_ptr.setPtrHandler(new PtrDefaultHandler2() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                adapter.getItems().clear();
                 requestDynamic("0");
             }
 
@@ -349,6 +352,15 @@ public class MovieDetailActivity extends BaseActivity {
                 }
             });
         }
+
+        CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setCollect(vo.getCollect());
+        bean.setLaud(vo.getLaud());
+        bean.setTitle(vo.getShare_list().getQq().getTitle());
+        bean.setSummary(vo.getShare_list().getQq().getDesc());
+        bean.setLaudNumber(vo.getPraisenum());
+        bean.setCommentNumber(vo.getCommentnum());
+        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override

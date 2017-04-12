@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.activity.detail.ReadingDetailActivity;
+import com.project.june.thought.activity.user.UserInformationActivity;
 import com.project.june.thought.adapter.pager.ReadingPagerAdapter;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.ReadingBannerListVo;
@@ -30,6 +31,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -42,6 +44,8 @@ import okhttp3.Call;
 
 public class ReadFragment extends BaseFragment {
 
+    @InjectView(R.id.title_img_left)
+    ImageView title_img_left;
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
     @InjectView(R.id.list_view)
@@ -59,12 +63,16 @@ public class ReadFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        title_center_text.setText("阅读");
-
+        preInit();
         initListView();
         initPtr();
         requestBanner();
         requestData("0");
+    }
+
+    private void preInit() {
+        title_img_left.setImageResource(R.mipmap.icon_user);
+        title_center_text.setText("阅读");
     }
 
     private void initListView() {
@@ -206,6 +214,11 @@ public class ReadFragment extends BaseFragment {
                         super.onError(call, e, id);
                     }
                 });
+    }
+
+    @OnClick({R.id.title_img_left})
+    public void OnClikc(){
+        UserInformationActivity.startThis(mActivity, "123");
     }
 
     public static ReadFragment newInstance(Bundle bundle) {

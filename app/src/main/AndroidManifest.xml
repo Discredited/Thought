@@ -92,9 +92,11 @@
             android:name=".activity.detail.MovieDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
-        <activity android:name=".activity.detail.MoviePlayActivity"
+        <activity
+            android:name=".activity.detail.MoviePlayActivity"
             android:screenOrientation="landscape"
             android:theme="@style/NonTransActivity" />
+        <activity android:name=".activity.user.UserInformationActivity"></activity>
     </application>
 
 </manifest>
