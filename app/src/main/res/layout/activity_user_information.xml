@@ -54,6 +54,7 @@
                     android:padding="10dp">
 
                     <LinearLayout
+                        android:id="@+id/user_diary_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -96,6 +97,7 @@
                         android:layout_height="match_parent" />
 
                     <LinearLayout
+                        android:id="@+id/user_music_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

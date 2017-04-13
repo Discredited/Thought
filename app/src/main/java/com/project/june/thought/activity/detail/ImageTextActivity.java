@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.common.EditDiaryActivity;
+import com.project.june.thought.activity.common.ShowImageActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.ImageTextVo;
 import com.project.june.thought.utils.DateTools;
@@ -50,6 +52,7 @@ public class ImageTextActivity extends BaseActivity {
 
     private String id;
     private boolean laud = false;
+    private ImageTextVo.DataBean imageText;
 
     public static void startThis(Context context, String id) {
         Intent intent = new Intent(context, ImageTextActivity.class);
@@ -106,6 +109,8 @@ public class ImageTextActivity extends BaseActivity {
     }
 
     private void fillData(ImageTextVo.DataBean vo) {
+        imageText = vo;
+
         one_date.setText(DateTools.dateString(vo.getWeather().getDate()));
         one_position.setText(vo.getWeather().getClimate() + "    " + vo.getWeather().getCity_name());
 
@@ -118,21 +123,24 @@ public class ImageTextActivity extends BaseActivity {
         Picasso.with(mActivity).load(vo.getImg_url()).into(one_img);
     }
 
-    @OnClick({R.id.title_img_left, R.id.diary_layout, R.id.laud_layout, R.id.share_layout})
+    @OnClick({R.id.title_img_left, R.id.one_img, R.id.diary_layout, R.id.laud_layout, R.id.share_layout})
     public void viewOnClick(View view) {
         switch (view.getId()) {
             case R.id.title_img_left:
                 onBackPressed();
                 break;
+            case R.id.one_img:
+                ShowImageActivity.startThis(mActivity, imageText.getImg_url());
+                break;
             case R.id.diary_layout:
-                Toast.makeText(mActivity, "打开小记", Toast.LENGTH_SHORT).show();
+                EditDiaryActivity.startThis(mActivity,imageText.getItem_id());
                 break;
             case R.id.laud_layout:
-                if (laud){
+                if (laud) {
                     laud_img.setImageResource(R.mipmap.laud);
                     laud_count.setText((Integer.parseInt(laud_count.getText().toString()) - 1) + "");
                     laud = false;
-                }else {
+                } else {
                     laud_img.setImageResource(R.mipmap.laud_selected);
                     laud_count.setText((Integer.parseInt(laud_count.getText().toString()) + 1) + "");
                     laud = true;

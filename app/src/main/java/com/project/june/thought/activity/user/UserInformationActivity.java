@@ -58,6 +58,10 @@ public class UserInformationActivity extends BaseActivity {
     ImageView music_image;
     @InjectView(R.id.scroll_view)
     ObservableScrollView scroll_view;
+    @InjectView(R.id.user_diary_layout)
+    LinearLayout user_diary_layout;
+    @InjectView(R.id.user_music_layout)
+    LinearLayout user_music_layout;
     @InjectView(R.id.user_like_layout)
     LinearLayout user_like_layout;
     @InjectView(R.id.user_information_layout)
@@ -244,6 +248,8 @@ public class UserInformationActivity extends BaseActivity {
     @OnClick({R.id.title_img_left,
             R.id.my_focus_layout,
             R.id.user_image,
+            R.id.user_diary_layout,
+            R.id.user_music_layout,
             R.id.collect_img_txt_layout,
             R.id.collect_article_layout,
             R.id.collect_music_layout,
@@ -264,6 +270,12 @@ public class UserInformationActivity extends BaseActivity {
                 }
                 break;
             case R.id.my_focus_layout:
+                break;
+            case R.id.user_diary_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.DIARY_CATEGORY);
+                break;
+            case R.id.user_music_layout:
+                Toast.makeText(mActivity, "暂未开启歌单，敬请期待", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.collect_img_txt_layout:
                 CollectionListActivity.startThis(mActivity, ThoughtConfig.IMAGE_TEXT_CATEGORY);

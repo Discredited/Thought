@@ -1,4 +1,4 @@
-package com.project.june.thought.activity;
+package com.project.june.thought.activity.common;
 
 import android.content.Context;
 import android.content.Intent;

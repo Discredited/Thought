@@ -75,7 +75,7 @@ public class ImageTextVo implements Serializable {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         private String id;
         private String category;
         private int display_category;
@@ -137,8 +137,6 @@ public class ImageTextVo implements Serializable {
          */
 
         private WeatherBean weather;
-        private List<?> serial_list;
-        private List<?> tag_list;
         private boolean isLaud = false;
 
         public boolean isLaud() {
@@ -445,23 +443,8 @@ public class ImageTextVo implements Serializable {
             this.weather = weather;
         }
 
-        public List<?> getSerial_list() {
-            return serial_list;
-        }
 
-        public void setSerial_list(List<?> serial_list) {
-            this.serial_list = serial_list;
-        }
-
-        public List<?> getTag_list() {
-            return tag_list;
-        }
-
-        public void setTag_list(List<?> tag_list) {
-            this.tag_list = tag_list;
-        }
-
-        public static class ShareInfoBean {
+        public static class ShareInfoBean implements Serializable{
             private String url;
             private String image;
             private String title;
@@ -500,7 +483,7 @@ public class ImageTextVo implements Serializable {
             }
         }
 
-        public static class ShareListBean {
+        public static class ShareListBean implements Serializable{
             /**
              * title :
              * desc :
@@ -668,7 +651,7 @@ public class ImageTextVo implements Serializable {
             }
         }
 
-        public static class WeatherBean {
+        public static class WeatherBean implements Serializable{
             private String city_name;
             private String date;
             private String temperature;

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_view" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <!-- 日期·地区 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/one_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/common_title" />
+
+                <TextView
+                    android:id="@+id/one_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/small_text" />
+            </LinearLayout>
+
+            <!-- 信息 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/one_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/one_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/small_text" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/one_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_layout_size"
+                android:gravity="center"
+                android:textColor="@color/small_color"
+                android:textSize="@dimen/small_text" />
+
+            <EditText
+                android:id="@+id/one_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:background="@drawable/shape_stroke_gray_1_px"
+                android:lineSpacingExtra="2dp"
+                android:lineSpacingMultiplier="1.2"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:textColor="@color/content_color"
+                android:textSize="@dimen/common_text" />
+
+            <TextView
+                android:id="@+id/one_author"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_layout_size"
+                android:gravity="center"
+                android:textColor="@color/small_color"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

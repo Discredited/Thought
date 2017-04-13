@@ -13,11 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.common.EditDiaryActivity;
 import com.project.june.thought.activity.detail.QuestionDetailActivity;
 import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.activity.detail.ImageTextActivity;
 import com.project.june.thought.activity.index.ToListActivity;
 import com.project.june.thought.base.BaseFragment;
+import com.project.june.thought.model.ImageTextVo;
 import com.project.june.thought.model.OneIndexVo;
 import com.project.june.thought.utils.DateTools;
 import com.project.june.thought.utils.HttpUtils;
@@ -152,7 +154,7 @@ public class IndexOneFragment extends BaseFragment {
                         @Override
                         public void onClick(View view) {
                             //小记页面
-                            Toast.makeText(mActivity, "打开小记", Toast.LENGTH_SHORT).show();
+                            EditDiaryActivity.startThis(mActivity,itemData.getItem_id());
                         }
                     });
 

@@ -82,7 +82,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
         <activity
-            android:name=".activity.ShowImageActivity"
+            android:name=".activity.common.ShowImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NonTransActivity" />
         <activity
@@ -99,7 +99,8 @@
             android:theme="@style/NonTransActivity" />
         <activity android:name=".activity.user.UserInformationActivity" />
         <activity android:name=".activity.user.LoginActivity" />
-        <activity android:name=".activity.user.CollectionListActivity"></activity>
+        <activity android:name=".activity.user.CollectionListActivity" />
+        <activity android:name=".activity.common.EditDiaryActivity"></activity>
     </application>
 
 </manifest>

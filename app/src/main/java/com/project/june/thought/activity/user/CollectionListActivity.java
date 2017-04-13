@@ -17,6 +17,7 @@ import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.activity.detail.ImageTextActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.CollectAndLaudVo;
+import com.project.june.thought.model.DiaryEntry;
 import com.project.june.thought.rx.RxCollectListChange;
 import com.project.xujun.juneutils.listview.JuneBaseAdapter;
 import com.project.xujun.juneutils.listview.JuneViewHolder;
@@ -46,6 +47,7 @@ public class CollectionListActivity extends BaseActivity {
     PtrClassicFrameLayout list_ptr;
     private String category;
     private JuneBaseAdapter<CollectAndLaudVo> adapter;
+    private JuneBaseAdapter<DiaryEntry> diaryAdapter;
 
     public static void startThis(Context context, String category) {
         Intent intent = new Intent(context, CollectionListActivity.class);
@@ -107,92 +109,150 @@ public class CollectionListActivity extends BaseActivity {
             case "5":
                 title_center_text.setText("影视收藏");
                 break;
+            case "100":
+                title_center_text.setText("我的小记");
+                break;
+            case "200":
+                title_center_text.setText("关注收藏");
+                break;
         }
     }
 
     private void requestData() {
-        adapter.getItems().clear();
-        //查询本地数据库
-        try {
-            Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
-            WhereBuilder whereBuilder = WhereBuilder.b().and("category", "=", this.category);
-            selector.where(whereBuilder);
-            List<CollectAndLaudVo> all = selector.findAll();
-            if (null != all && all.size() > 0) {
-                adapter.getItems().addAll(all);
-                adapter.notifyDataSetChanged();
-            } else {
-                Toast.makeText(mActivity, "暂无收藏", Toast.LENGTH_SHORT).show();
+        if (category.equals("100")) {
+            diaryAdapter.getItems().clear();
+            //查询本地数据库
+            try {
+                List<DiaryEntry> all = JuneToolsApp.getDbManager().findAll(DiaryEntry.class);
+                if (null != all && all.size() > 0) {
+                    diaryAdapter.getItems().addAll(all);
+                    diaryAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
+                }
+            } catch (DbException e) {
+                Toast.makeText(mActivity, "数据库查找小记失败", Toast.LENGTH_SHORT).show();
             }
-        } catch (DbException e) {
-        }
+        } else if (category.equals("200")) {
 
+        } else {
+            adapter.getItems().clear();
+            //查询本地数据库
+            try {
+                Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
+                WhereBuilder whereBuilder = WhereBuilder.b().and("category", "=", this.category);
+                selector.where(whereBuilder);
+                List<CollectAndLaudVo> all = selector.findAll();
+                if (null != all && all.size() > 0) {
+                    adapter.getItems().addAll(all);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
+                }
+            } catch (DbException e) {
+                Toast.makeText(mActivity, "数据库查找收藏失败", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void initListView() {
-        adapter = new JuneBaseAdapter<CollectAndLaudVo>(mActivity) {
+        if (category.equals("100")) {
+            diaryAdapter = new JuneBaseAdapter<DiaryEntry>(mActivity) {
 
-            @Override
-            public View getConvertView(int position, View convertView, ViewGroup parent) {
-                if (null == convertView) {
-                    convertView = inflater.inflate(R.layout.list_item_collect, parent, false);
+                @Override
+                public View getConvertView(int position, View convertView, ViewGroup parent) {
+                    if (null == convertView) {
+                        convertView = inflater.inflate(R.layout.list_item_collect, parent, false);
+                    }
+                    return convertView;
                 }
-                return convertView;
-            }
 
-            @Override
-            public void bindData(int position, View convertView, CollectAndLaudVo itemData) {
-                ImageView collect_image = JuneViewHolder.get(convertView, R.id.collect_image);
-                TextView collect_type = JuneViewHolder.get(convertView, R.id.collect_type);
-                TextView collect_title = JuneViewHolder.get(convertView, R.id.collect_title);
+                @Override
+                public void bindData(int position, View convertView, DiaryEntry itemData) {
+                    ImageView collect_image = JuneViewHolder.get(convertView, R.id.collect_image);
+                    TextView collect_type = JuneViewHolder.get(convertView, R.id.collect_type);
+                    TextView collect_title = JuneViewHolder.get(convertView, R.id.collect_title);
 
-                collect_title.setText(itemData.getTitle());
-                switch (itemData.getCategory()) {
-                    case "0":
-                        collect_image.setImageResource(R.mipmap.icon_home);
-                        collect_type.setText("图文");
-                        break;
-                    case "1":
-                        collect_image.setImageResource(R.mipmap.icon_read);
-                        collect_type.setText("阅读");
-                        break;
-                    case "4":
-                        collect_image.setImageResource(R.mipmap.icon_music);
-                        collect_type.setText("音乐");
-                        break;
-                    case "5":
-                        collect_image.setImageResource(R.mipmap.icon_movie);
-                        collect_type.setText("影视");
-                        break;
+                    collect_image.setImageResource(R.mipmap.diary);
+                    collect_type.setText(itemData.getDate());
+                    collect_title.setText(itemData.getContent());
                 }
-            }
-        };
-
-        list_view.setAdapter(adapter);
-        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CollectAndLaudVo vo = adapter.getItems().get(position);
-                switch (vo.getCategory()) {
-                    case "0":
-                        ImageTextActivity.startThis(mActivity, vo.getItemId());
-                        break;
-                    case "1":
-                        ReadingDetailActivity.startThis(mActivity, vo.getItemId());
-                        break;
-                    case "4":
-                        MusicDetailActivity.startThis(mActivity, vo.getItemId());
-                        break;
-                    case "5":
-                        MovieDetailActivity.startThis(mActivity, vo.getItemId());
-                        break;
+            };
+            list_view.setAdapter(diaryAdapter);
+            list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    DiaryEntry entry = diaryAdapter.getItems().get(position);
+                    //跳转展示页面
                 }
-            }
-        });
+            });
+        } else if (category.equals("200")) {
+
+        } else {
+            adapter = new JuneBaseAdapter<CollectAndLaudVo>(mActivity) {
+
+                @Override
+                public View getConvertView(int position, View convertView, ViewGroup parent) {
+                    if (null == convertView) {
+                        convertView = inflater.inflate(R.layout.list_item_collect, parent, false);
+                    }
+                    return convertView;
+                }
+
+                @Override
+                public void bindData(int position, View convertView, CollectAndLaudVo itemData) {
+                    ImageView collect_image = JuneViewHolder.get(convertView, R.id.collect_image);
+                    TextView collect_type = JuneViewHolder.get(convertView, R.id.collect_type);
+                    TextView collect_title = JuneViewHolder.get(convertView, R.id.collect_title);
+
+                    collect_title.setText(itemData.getTitle());
+                    switch (itemData.getCategory()) {
+                        case "0":
+                            collect_image.setImageResource(R.mipmap.icon_home);
+                            collect_type.setText("图文");
+                            break;
+                        case "1":
+                            collect_image.setImageResource(R.mipmap.icon_read);
+                            collect_type.setText("阅读");
+                            break;
+                        case "4":
+                            collect_image.setImageResource(R.mipmap.icon_music);
+                            collect_type.setText("音乐");
+                            break;
+                        case "5":
+                            collect_image.setImageResource(R.mipmap.icon_movie);
+                            collect_type.setText("影视");
+                            break;
+                    }
+                }
+            };
+
+            list_view.setAdapter(adapter);
+            list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    CollectAndLaudVo vo = adapter.getItems().get(position);
+                    switch (vo.getCategory()) {
+                        case "0":
+                            ImageTextActivity.startThis(mActivity, vo.getItemId());
+                            break;
+                        case "1":
+                            ReadingDetailActivity.startThis(mActivity, vo.getItemId());
+                            break;
+                        case "4":
+                            MusicDetailActivity.startThis(mActivity, vo.getItemId());
+                            break;
+                        case "5":
+                            MovieDetailActivity.startThis(mActivity, vo.getItemId());
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     @OnClick(R.id.title_img_left)
-    public void viewOnClick(){
+    public void viewOnClick() {
         onBackPressed();
     }
 
