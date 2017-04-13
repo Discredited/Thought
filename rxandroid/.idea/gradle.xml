@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../app" />
+            <option value="$PROJECT_DIR$/../autoplayimage" />
+            <option value="$PROJECT_DIR$/../baidumaptool" />
+            <option value="$PROJECT_DIR$/../bottomnavigation" />
+            <option value="$PROJECT_DIR$/../carousel" />
+            <option value="$PROJECT_DIR$/../jgpush" />
+            <option value="$PROJECT_DIR$/../livepub" />
+            <option value="$PROJECT_DIR$/../multiimageselector" />
+            <option value="$PROJECT_DIR$/../nineboximage" />
+            <option value="$PROJECT_DIR$/../pay" />
+            <option value="$PROJECT_DIR$/../pickerview" />
+            <option value="$PROJECT_DIR$/../ptrl" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../scanbarcodelib" />
+            <option value="$PROJECT_DIR$/../seattable" />
+            <option value="$PROJECT_DIR$/../selectimagelayout" />
+            <option value="$PROJECT_DIR$/../shareym" />
+            <option value="$PROJECT_DIR$/../swipebacklayout" />
+            <option value="$PROJECT_DIR$/../swipemenulistview" />
+            <option value="$PROJECT_DIR$/../tecentvideo" />
+            <option value="$PROJECT_DIR$/../tuwenzhibo" />
+            <option value="$PROJECT_DIR$/../ucrop" />
+            <option value="$PROJECT_DIR$/../updateapp" />
+            <option value="$PROJECT_DIR$/../xqtools" />
+            <option value="$PROJECT_DIR$/../ymanalytics" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

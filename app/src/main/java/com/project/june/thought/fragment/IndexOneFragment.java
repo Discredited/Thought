@@ -13,10 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
-import com.project.june.thought.activity.ShowImageActivity;
 import com.project.june.thought.activity.detail.QuestionDetailActivity;
 import com.project.june.thought.activity.detail.ReadingDetailActivity;
-import com.project.june.thought.activity.index.ImageTextActivity;
+import com.project.june.thought.activity.detail.ImageTextActivity;
 import com.project.june.thought.activity.index.ToListActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.OneIndexVo;

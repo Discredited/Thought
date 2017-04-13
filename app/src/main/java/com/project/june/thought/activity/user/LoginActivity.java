@@ -11,7 +11,9 @@ import com.project.june.thought.R;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.UserEntry;
 import com.project.june.thought.model.UserTable;
+import com.project.june.thought.rx.RxUserLogin;
 import com.project.xujun.juneutils.customview.JuneButton;
+import com.project.xujun.juneutils.otherutils.RxBus;
 
 import org.xutils.JuneToolsApp;
 import org.xutils.db.Selector;
@@ -68,14 +70,15 @@ public class LoginActivity extends BaseActivity {
                         if (null == userTable){
                             Toast.makeText(mActivity, "账号或者密码错误", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(mActivity, "登录成功", Toast.LENGTH_SHORT).show();
                             UserEntry userEntry = new UserEntry();
                             userEntry.setId(userTable.getId());
                             userEntry.setName(userTable.getName());
                             userEntry.setAvatar(userTable.getAvatar());
                             userEntry.setAccount(userTable.getAccount());
                             userEntry.setPassword(userTable.getPassword());
-                            JuneToolsApp.getDbManager().saveOrUpdate(userEntry);
+                            JuneToolsApp.getDbManager().save(userEntry);
+                            Toast.makeText(mActivity, "登录成功", Toast.LENGTH_SHORT).show();
+                            RxBus.get().post(new RxUserLogin());
                             finish();
                         }
                     } catch (DbException e) {

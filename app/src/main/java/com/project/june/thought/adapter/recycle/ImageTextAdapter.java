@@ -7,10 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.project.june.thought.R;
-import com.project.june.thought.activity.index.ImageTextActivity;
+import com.project.june.thought.activity.detail.ImageTextActivity;
 import com.project.june.thought.model.ImageTextListVo;
 import com.squareup.picasso.Picasso;
 

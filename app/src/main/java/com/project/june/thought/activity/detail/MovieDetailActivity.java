@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +22,7 @@ import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.MovieDetailVo;
 import com.project.june.thought.model.MovieStoryVo;
 import com.project.june.thought.model.ReadingBannerListVo;
-import com.project.june.thought.utils.ButtomUtils;
+import com.project.june.thought.utils.BottomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -323,7 +322,6 @@ public class MovieDetailActivity extends BaseActivity {
 
     private void fillData(final MovieDetailVo.DataBean vo) {
         movie_sub_title.setText("· " + vo.getTitle() + " ·");
-        praise_comment_text.setText(vo.getSharenum() + " 喜欢    ·    " + vo.getCommentnum() + " 评论");
 
         if (null != vo.getPhoto() && vo.getPhoto().size() > 0) {
             List<ReadingBannerListVo.DataBean> list = new ArrayList<>(0);
@@ -354,13 +352,15 @@ public class MovieDetailActivity extends BaseActivity {
         }
 
         CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setItemId(vo.getId());
+        bean.setCategory(ThoughtConfig.VIDEO_CATEGORY);
         bean.setCollect(vo.getCollect());
         bean.setLaud(vo.getLaud());
         bean.setTitle(vo.getShare_list().getQq().getTitle());
         bean.setSummary(vo.getShare_list().getQq().getDesc());
         bean.setLaudNumber(vo.getPraisenum());
         bean.setCommentNumber(vo.getCommentnum());
-        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
+        BottomUtils.bottomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override

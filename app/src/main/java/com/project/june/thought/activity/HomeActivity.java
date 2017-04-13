@@ -86,7 +86,7 @@ public class HomeActivity extends BaseActivity {
         userTable.setAvatar(ThoughtConfig.USER_PHOTO);
 
         try {
-            JuneToolsApp.getDbManager().saveOrUpdate(userTable);
+            JuneToolsApp.getDbManager().save(userTable);
         } catch (DbException e) {
             Log.e("sherry", "数据库存储失败");
         }

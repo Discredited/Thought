@@ -1,19 +1,57 @@
 package com.project.june.thought.model;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.io.Serializable;
 
 /**
  * Created by June on 2017/4/12.
  */
-
-public class CollectAndLaudVo implements Serializable{
-
+@Table(name = "collect_entry")
+public class CollectAndLaudVo implements Serializable {
+    @Column(name = "id", isId = true)
+    private Long id;
+    @Column(name = "itemId")
+    private String itemId;
+    @Column(name = "category")
+    private String category;
+    @Column(name = "title")
     private String title;
+    @Column(name = "summary")
     private String summary;
+    @Column(name = "commentNumber")
     private int commentNumber;
+    @Column(name = "laudNumber")
     private int laudNumber;
+    @Column(name = "isCollect")
     private Boolean isCollect;
+    @Column(name = "isLaud")
     private Boolean isLaud;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public int getCommentNumber() {
         return commentNumber;

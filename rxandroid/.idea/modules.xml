@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../autoplayimage/autoplayimage.iml" filepath="$PROJECT_DIR$/../autoplayimage/autoplayimage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../baidumaptool/baidumaptool.iml" filepath="$PROJECT_DIR$/../baidumaptool/baidumaptool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bossapp_android.iml" filepath="$PROJECT_DIR$/../bossapp_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bottomnavigation/bottomnavigation.iml" filepath="$PROJECT_DIR$/../bottomnavigation/bottomnavigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../carousel/carousel.iml" filepath="$PROJECT_DIR$/../carousel/carousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jgpush/jgpush.iml" filepath="$PROJECT_DIR$/../jgpush/jgpush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../livepub/livepub.iml" filepath="$PROJECT_DIR$/../livepub/livepub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../multiimageselector/multiimageselector.iml" filepath="$PROJECT_DIR$/../multiimageselector/multiimageselector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../nineboximage/nineboximage.iml" filepath="$PROJECT_DIR$/../nineboximage/nineboximage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pay/pay.iml" filepath="$PROJECT_DIR$/../pay/pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pickerview/pickerview.iml" filepath="$PROJECT_DIR$/../pickerview/pickerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ptrl/ptrl.iml" filepath="$PROJECT_DIR$/../ptrl/ptrl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxandroid.iml" filepath="$PROJECT_DIR$/rxandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../scanbarcodelib/scanbarcodelib.iml" filepath="$PROJECT_DIR$/../scanbarcodelib/scanbarcodelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../seattable/seattable.iml" filepath="$PROJECT_DIR$/../seattable/seattable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../selectimagelayout/selectimagelayout.iml" filepath="$PROJECT_DIR$/../selectimagelayout/selectimagelayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../shareym/shareym.iml" filepath="$PROJECT_DIR$/../shareym/shareym.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../swipebacklayout/swipebacklayout.iml" filepath="$PROJECT_DIR$/../swipebacklayout/swipebacklayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../swipemenulistview/swipemenulistview.iml" filepath="$PROJECT_DIR$/../swipemenulistview/swipemenulistview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tecentvideo/tecentvideo.iml" filepath="$PROJECT_DIR$/../tecentvideo/tecentvideo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tuwenzhibo/tuwenzhibo.iml" filepath="$PROJECT_DIR$/../tuwenzhibo/tuwenzhibo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ucrop/ucrop.iml" filepath="$PROJECT_DIR$/../ucrop/ucrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../updateapp/updateapp.iml" filepath="$PROJECT_DIR$/../updateapp/updateapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../xqtools/xqtools.iml" filepath="$PROJECT_DIR$/../xqtools/xqtools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ymanalytics/ymanalytics.iml" filepath="$PROJECT_DIR$/../ymanalytics/ymanalytics.iml" />
+    </modules>
+  </component>
+</project>

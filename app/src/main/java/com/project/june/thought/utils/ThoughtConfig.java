@@ -12,7 +12,7 @@ public class ThoughtConfig {
     public static String SERIALIZE_CATEGORY = "2";  //图文
     public static String QUESTION_CATEGORY = "3";  //图文
     public static String MUSIC_CATEGORY = "4";  //图文
-    public static String VIDEO_CATEGORY = "5";  //图文
+    public static String VIDEO_CATEGORY = "5";  //视频
 
     public static String IMAGE_TEXT = "image_text";  //图文
     public static String READING = "reading";  //阅读

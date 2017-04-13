@@ -1,4 +1,4 @@
-package com.project.june.thought.activity.index;
+package com.project.june.thought.activity.detail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import com.project.june.thought.model.ImageTextVo;
 import com.project.june.thought.utils.DateTools;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
-import com.project.xujun.juneutils.customview.ScaleImageView;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 

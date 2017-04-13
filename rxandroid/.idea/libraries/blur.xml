@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="blur">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../xqtools/libs/blur.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -230,6 +230,7 @@
                             android:textSize="@dimen/common_text" />
 
                         <TextView
+                            android:id="@+id/image_text_number"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
                             android:gravity="center_vertical"
@@ -280,6 +281,7 @@
                             android:textSize="@dimen/common_text" />
 
                         <TextView
+                            android:id="@+id/article_number"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
                             android:gravity="center_vertical"
@@ -330,6 +332,7 @@
                             android:textSize="@dimen/common_text" />
 
                         <TextView
+                            android:id="@+id/music_number"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
                             android:gravity="center_vertical"
@@ -380,6 +383,7 @@
                             android:textSize="@dimen/common_text" />
 
                         <TextView
+                            android:id="@+id/movie_number"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
                             android:gravity="center_vertical"

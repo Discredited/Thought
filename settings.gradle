@@ -3,4 +3,4 @@ include ':app',
         ':swipebacklayout',
         ':ptrl',
         ':library',
-        ':pullToRefreshViewPager'
+        ':pullToRefreshViewPager', ':rxandroid'

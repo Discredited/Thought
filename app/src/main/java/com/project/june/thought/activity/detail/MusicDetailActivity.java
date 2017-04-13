@@ -3,7 +3,6 @@ package com.project.june.thought.activity.detail;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
@@ -19,7 +18,7 @@ import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.MusicDetailVo;
-import com.project.june.thought.utils.ButtomUtils;
+import com.project.june.thought.utils.BottomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -269,13 +268,15 @@ public class MusicDetailActivity extends BaseActivity {
         copyright.setText(vo.getCopyright());
 
         CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setItemId(vo.getId());
+        bean.setCategory(ThoughtConfig.MUSIC_CATEGORY);
         bean.setCollect(vo.getCollect());
         bean.setLaud(vo.getLaud());
         bean.setTitle(vo.getTitle());
         bean.setSummary(vo.getStory_summary());
         bean.setLaudNumber(vo.getPraisenum());
         bean.setCommentNumber(vo.getCommentnum());
-        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
+        BottomUtils.bottomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override

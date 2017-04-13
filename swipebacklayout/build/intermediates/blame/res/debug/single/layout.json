@@ -60,16 +60,16 @@
         "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
-        "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_media_cancel_action.xml"
-    },
-    {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
         "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_media_cancel_action.xml"
     },
     {
         "merged": "C:\\Users\\June\\Desktop\\Thought\\swipebacklayout\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",

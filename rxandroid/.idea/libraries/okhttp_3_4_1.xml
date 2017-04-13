@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="okhttp-3.4.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../xqtools/libs/okhttp-3.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../xqtools/libsrc/okhttp-3.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

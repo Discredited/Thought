@@ -1,9 +1,11 @@
 package com.project.june.thought.activity.user;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,19 +16,31 @@ import android.widget.Toast;
 import com.project.june.thought.R;
 import com.project.june.thought.ThoughtApplication;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.UserEntry;
+import com.project.june.thought.rx.RxCollectListChange;
+import com.project.june.thought.rx.RxUserLogin;
+import com.project.june.thought.rx.RxUserLogout;
 import com.project.june.thought.utils.ThoughtConfig;
 import com.project.xujun.juneutils.customview.ObservableScrollView;
 import com.project.xujun.juneutils.customview.ScaleImageView;
 import com.project.xujun.juneutils.imageutils.CircleTransform;
+import com.project.xujun.juneutils.otherutils.RxBus;
 import com.project.xujun.juneutils.otherutils.ViewUtils;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
+import org.xutils.JuneToolsApp;
+import org.xutils.db.Selector;
+import org.xutils.db.sqlite.WhereBuilder;
+import org.xutils.ex.DbException;
 
-import butterknife.ButterKnife;
+import java.util.List;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 public class UserInformationActivity extends BaseActivity {
 
@@ -50,6 +64,14 @@ public class UserInformationActivity extends BaseActivity {
     LinearLayout user_information_layout;
     @InjectView(R.id.user_collect_layout)
     LinearLayout user_collect_layout;
+    @InjectView(R.id.image_text_number)
+    TextView image_text_number;
+    @InjectView(R.id.article_number)
+    TextView article_number;
+    @InjectView(R.id.music_number)
+    TextView music_number;
+    @InjectView(R.id.movie_number)
+    TextView movie_number;
 
     public static void startThis(Context context, String userId) {
         Intent intent = new Intent(context, UserInformationActivity.class);
@@ -69,8 +91,66 @@ public class UserInformationActivity extends BaseActivity {
 
     @Override
     protected void logicProgress() {
-        title_layout.setBackgroundColor(Color.TRANSPARENT);
+        bindRx();
 
+        title_layout.setBackgroundColor(Color.TRANSPARENT);
+        preInit();
+
+        login();
+    }
+
+    private Observable<RxUserLogin> userLoginObservable;
+    private Observable<RxUserLogout> userLogoutObservable;
+    private Observable<RxCollectListChange> collectListChangeObservable;
+
+    private void bindRx() {
+        userLoginObservable = RxBus.get().register(RxUserLogin.class);
+        userLoginObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<RxUserLogin>() {
+            @Override
+            public void call(RxUserLogin rxUserLogin) {
+                login();
+            }
+        });
+
+        userLogoutObservable = RxBus.get().register(RxUserLogout.class);
+        userLogoutObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<RxUserLogout>() {
+            @Override
+            public void call(RxUserLogout rxUserLogout) {
+                login();
+            }
+        });
+
+        collectListChangeObservable = RxBus.get().register(RxCollectListChange.class);
+        collectListChangeObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<RxCollectListChange>() {
+            @Override
+            public void call(RxCollectListChange rx) {
+                collectChange(rx.getCategory());
+            }
+        });
+    }
+
+    private void collectChange(String category) {
+        switch (category) {
+            case "0":
+                //图文
+                image_text_number.setText(getCollectCount(category));
+                break;
+            case "1":
+                //阅读
+                article_number.setText(getCollectCount(category));
+                break;
+            case "4":
+                //音乐
+                music_number.setText(getCollectCount(category));
+                break;
+            case "5":
+                //影视
+                movie_number.setText(getCollectCount(category));
+                break;
+        }
+    }
+
+    private void login() {
         UserEntry userEntry = ThoughtApplication.getUserEntry();
         if (null == userEntry) {
             //暂未登录
@@ -95,7 +175,6 @@ public class UserInformationActivity extends BaseActivity {
             user_collect_layout.setVisibility(View.VISIBLE);
             Picasso.with(mActivity).load(ThoughtConfig.USER_PHOTO).transform(new CircleTransform()).into(user_image);
         }
-        preInit();
     }
 
     private void preInit() {
@@ -125,6 +204,41 @@ public class UserInformationActivity extends BaseActivity {
                 }
             }
         });
+
+        image_text_number.setText(getCollectCount("0"));
+        article_number.setText(getCollectCount("1"));
+        music_number.setText(getCollectCount("4"));
+        movie_number.setText(getCollectCount("5"));
+    }
+
+    private void logout() {
+        //退出登录，清楚数据库表
+        try {
+            JuneToolsApp.getDbManager().delete(UserEntry.class);
+            RxBus.get().post(new RxUserLogout());
+        } catch (DbException e) {
+            Log.d("sherry", "删除用户数据异常");
+        }
+    }
+
+    private String getCollectCount(String category) {
+        if (null != category && !"".equals(category)) {
+            try {
+                Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
+                WhereBuilder wb = WhereBuilder.b().and("category", "=", category);
+                selector.where(wb);
+                List<CollectAndLaudVo> all = selector.findAll();
+
+                if (null != all && all.size() >= 0) {
+                    return all.size() + "";
+                } else {
+                    return "0";
+                }
+            } catch (DbException e) {
+                return "GG";
+            }
+        }
+        return "0";
     }
 
     @OnClick({R.id.title_img_left,
@@ -141,10 +255,10 @@ public class UserInformationActivity extends BaseActivity {
                 onBackPressed();
                 break;
             case R.id.user_image:
-                if (null == ThoughtApplication.getUserEntry()){
+                if (null == ThoughtApplication.getUserEntry()) {
                     //登录
                     LoginActivity.startThis(mActivity);
-                }else {
+                } else {
                     //更换头像
                     Toast.makeText(mActivity, "暂不支持更换头像", Toast.LENGTH_SHORT).show();
                 }
@@ -152,14 +266,36 @@ public class UserInformationActivity extends BaseActivity {
             case R.id.my_focus_layout:
                 break;
             case R.id.collect_img_txt_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.IMAGE_TEXT_CATEGORY);
                 break;
             case R.id.collect_article_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.READING_CATEGORY);
                 break;
             case R.id.collect_music_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.MUSIC_CATEGORY);
                 break;
             case R.id.collect_movie_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.VIDEO_CATEGORY);
                 break;
             case R.id.collect_config_layout:
+                //暂时座位退出登录
+                AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                dialog.setTitle("退出提示");
+                dialog.setMessage("确定要退出登录？");
+                dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //退出登录
+                        logout();
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //取消
+                        dialog.dismiss();
+                    }
+                }).show();
                 break;
         }
     }
@@ -168,5 +304,13 @@ public class UserInformationActivity extends BaseActivity {
     protected boolean enableSwipeBack() {
         super.enableSwipeBack();
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister(RxUserLogin.class, userLoginObservable);
+        RxBus.get().unregister(RxUserLogout.class, userLogoutObservable);
+        RxBus.get().unregister(RxCollectListChange.class, collectListChangeObservable);
     }
 }

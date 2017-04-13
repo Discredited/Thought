@@ -2,7 +2,6 @@ package com.project.june.thought.activity.detail;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -20,7 +19,7 @@ import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DynamicVo;
 import com.project.june.thought.model.ReadingDetailVo;
-import com.project.june.thought.utils.ButtomUtils;
+import com.project.june.thought.utils.BottomUtils;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
 import com.project.june.thought.utils.ThoughtConfig;
@@ -36,7 +35,6 @@ import org.jsoup.select.Elements;
 
 import java.text.MessageFormat;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
@@ -267,13 +265,15 @@ public class ReadingDetailActivity extends BaseActivity {
         charge_edt.setText(vo.getHp_author_introduce() + "    " + vo.getEditor_email());
 
         CollectAndLaudVo bean = new CollectAndLaudVo();
+        bean.setItemId(vo.getContent_id());
         bean.setCollect(vo.getCollect());
+        bean.setCategory(ThoughtConfig.READING_CATEGORY);
         bean.setLaud(vo.getLaud());
         bean.setTitle(vo.getHp_title());
         bean.setSummary(vo.getHp_author());
         bean.setLaudNumber(vo.getPraisenum());
         bean.setCommentNumber(vo.getCommentnum());
-        ButtomUtils.buttomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
+        BottomUtils.bottomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
     }
 
     @Override
