@@ -2,7 +2,13 @@ package com.project.june.thought.activity.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.RotateAnimation;
 import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
@@ -32,6 +38,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
@@ -54,6 +64,8 @@ public class MusicDetailActivity extends BaseActivity {
     ImageView music_image;
     @InjectView(R.id.music_sub_title)
     TextView music_sub_title;
+    @InjectView(R.id.music_play)
+    ImageView music_play;
     @InjectView(R.id.music_title)
     TextView music_title;
     @InjectView(R.id.music_author)
@@ -85,6 +97,9 @@ public class MusicDetailActivity extends BaseActivity {
 
     private String musicId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
+    private boolean isPlayMusic = false;
+    private Animation animation;
+    private MediaPlayer player;
 
     public static void startThis(Context context, String musicId) {
         Intent intent = new Intent(context, MusicDetailActivity.class);
@@ -116,14 +131,11 @@ public class MusicDetailActivity extends BaseActivity {
     protected void logicProgress() {
         title_center_text.setText("音乐详情");
 
-        initWebView();
         initListView();
         initPtr();
         requestData();
         requestDynamic("0");
-    }
-
-    private void initWebView() {
+        initMusicPlay();
     }
 
     private void initListView() {
@@ -277,6 +289,61 @@ public class MusicDetailActivity extends BaseActivity {
         bean.setLaudNumber(vo.getPraisenum());
         bean.setCommentNumber(vo.getCommentnum());
         BottomUtils.bottomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
+    }
+
+    private void initMusicPlay() {
+        animation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(10 * 1000);
+        animation.setRepeatCount(-1);//动画的重复次数
+        animation.setFillAfter(true);//设置为true，动画转化结束后被应用
+        animation.setRepeatMode(Animation.RESTART);
+
+        player = MediaPlayer.create(this, R.raw.prisoner);
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        music_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPlayMusic) {
+                    //停止音乐
+                    music_play.setImageResource(R.mipmap.detail_play);
+                    animation.cancel();
+                    if (null != player && player.isPlaying()) {
+                        player.pause();
+                        isPlayMusic = false;
+                    }
+                } else {
+                    //开始播放音乐
+                    music_play.setImageResource(R.mipmap.detail_stop);
+                    music_image.startAnimation(animation);//开始动画
+                    //这句话很重要，不然MediaPlayer会报状态异常的错误
+                    if (null != player) {
+                        player.stop();
+                    }
+                    player.prepareAsync();
+                    player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mp) {
+                            if (null != player && !player.isPlaying()) {
+                                player.start();
+                                isPlayMusic = true;
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != player) {
+            if (player.isPlaying()) {
+                player.stop();
+            }
+            player.release();
+            player = null;
+        }
     }
 
     @Override

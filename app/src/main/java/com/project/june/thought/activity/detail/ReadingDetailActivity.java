@@ -36,6 +36,7 @@ import org.jsoup.select.Elements;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -76,6 +77,7 @@ public class ReadingDetailActivity extends BaseActivity {
 
     private String essayId;
     private JuneBaseAdapter<DynamicVo.DataBeanX.DataBean> adapter;
+    private String authorId;
 
     public static void startThis(Context context, String id) {
         Intent intent = new Intent(context, ReadingDetailActivity.class);
@@ -240,6 +242,7 @@ public class ReadingDetailActivity extends BaseActivity {
                 text_author.setText("文 / " + vo.getAuthor().get(0).getUser_name());
                 author_des.setText(authorBean.getDesc() + "    " + authorBean.getWb_name());
                 author_name.setText(authorBean.getUser_name());
+                authorId = vo.getAuthor().get(0).getUser_id();
             }
             if (null != authorBean.getWeb_url() && !"".equals(authorBean.getWeb_url())) {
                 Picasso.with(mActivity).load(authorBean.getWeb_url()).transform(new CircleTransform()).into(author_image);
@@ -274,6 +277,20 @@ public class ReadingDetailActivity extends BaseActivity {
         bean.setLaudNumber(vo.getPraisenum());
         bean.setCommentNumber(vo.getCommentnum());
         BottomUtils.bottomUtils(mActivity, collect_image, laud_image, bean, comment_image, praise_comment_text, adapter);
+    }
+
+    @OnClick({R.id.title_img_left, R.id.focus_layout})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_img_left:
+                onBackPressed();
+                break;
+            case R.id.focus_layout:
+                if (null != authorId) {
+                    AuthorDetailActivity.startThis(mActivity, authorId);
+                }
+                break;
+        }
     }
 
     @Override

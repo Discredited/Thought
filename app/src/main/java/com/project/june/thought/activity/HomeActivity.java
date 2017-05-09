@@ -15,6 +15,7 @@ import com.project.june.thought.fragment.IndexFragment;
 import com.project.june.thought.fragment.MovieFragment;
 import com.project.june.thought.fragment.MusicFragment;
 import com.project.june.thought.fragment.ReadFragment;
+import com.project.june.thought.model.AuthorEntry;
 import com.project.june.thought.model.UserTable;
 import com.project.june.thought.utils.ThoughtConfig;
 
@@ -79,24 +80,25 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-        UserTable userTable = new UserTable();
-        userTable.setId(1l);
-        userTable.setAccount("95925");
-        userTable.setPassword("111111");
-        userTable.setAvatar(ThoughtConfig.USER_PHOTO);
-
-        try {
-            JuneToolsApp.getDbManager().save(userTable);
-        } catch (DbException e) {
-            Log.e("sherry", "数据库存储失败");
-        }
-
-        try {
-            List<UserTable> all = JuneToolsApp.getDbManager().findAll(UserTable.class);
-            Log.e("sherry", "数据库表的长度：" + all.size());
-        } catch (DbException e) {
-            e.printStackTrace();
-        }
+//        UserTable userTable = new UserTable();
+//        userTable.setId(1l);
+//        userTable.setName("阿西吧");
+//        userTable.setAccount("95925");
+//        userTable.setPassword("111111");
+//        userTable.setAvatar(ThoughtConfig.USER_PHOTO);
+//
+//        try {
+//            JuneToolsApp.getDbManager().save(userTable);
+//        } catch (DbException e) {
+//            Log.e("sherry", "数据库存储失败");
+//        }
+//
+//        try {
+//            List<UserTable> all = JuneToolsApp.getDbManager().findAll(UserTable.class);
+//            Log.e("sherry", "数据库表的长度：" + all.size());
+//        } catch (DbException e) {
+//            Log.e("sherry", "数据库存储查询");
+//        }
     }
 
 

@@ -8,8 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.ThoughtApplication;
 import com.project.june.thought.activity.common.EditDiaryActivity;
 import com.project.june.thought.activity.common.ShowImageActivity;
+import com.project.june.thought.activity.user.LoginActivity;
 import com.project.june.thought.base.BaseActivity;
 import com.project.june.thought.model.ImageTextVo;
 import com.project.june.thought.utils.DateTools;
@@ -133,7 +135,12 @@ public class ImageTextActivity extends BaseActivity {
                 ShowImageActivity.startThis(mActivity, imageText.getImg_url());
                 break;
             case R.id.diary_layout:
-                EditDiaryActivity.startThis(mActivity,imageText.getItem_id());
+                if (null != ThoughtApplication.getUserEntry()) {
+                    EditDiaryActivity.startThis(mActivity, imageText.getItem_id());
+                } else {
+                    //还未登录
+                    LoginActivity.startThis(this);
+                }
                 break;
             case R.id.laud_layout:
                 if (laud) {

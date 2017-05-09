@@ -60,4 +60,10 @@ public class HttpUtils {
     public static String MUSIC_DYNAMIC = HEADER + "/comment/praiseandtime/music/{0}/{1}?version=4.0.7&platform=android";
     //视频动态
     public static String MOVIE_DYNAMIC = HEADER + "/comment/praiseandtime/movie/{0}/{1}?version=4.0.7&platform=android";
+
+    //阅读页面ViewPager详情
+    public static String READING_PAGER = HEADER + "/reading/carousel/{0}";
+
+    //作者详情
+    public static String AUTHOR_DETAIL = HEADER + "/author/works?author_id={0}&version=4.2.1&platform=android";
 }

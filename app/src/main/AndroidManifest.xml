@@ -100,7 +100,9 @@
         <activity android:name=".activity.user.UserInformationActivity" />
         <activity android:name=".activity.user.LoginActivity" />
         <activity android:name=".activity.user.CollectionListActivity" />
-        <activity android:name=".activity.common.EditDiaryActivity"></activity>
+        <activity android:name=".activity.common.EditDiaryActivity" />
+        <activity android:name=".activity.detail.ReadingPageActivity" />
+        <activity android:name=".activity.detail.AuthorDetailActivity"></activity>
     </application>
 
 </manifest>

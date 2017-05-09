@@ -6,6 +6,7 @@ import org.xutils.db.annotation.Table;
 import java.io.Serializable;
 
 /**
+ * 用户信息表
  * Created by June on 2017/4/12.
  */
 @Table(name = "user_table")

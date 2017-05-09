@@ -33,7 +33,7 @@ public class LoginActivity extends BaseActivity {
     private String account;
     private String password;
 
-    public static void startThis(Context context){
+    public static void startThis(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
@@ -56,20 +56,20 @@ public class LoginActivity extends BaseActivity {
                 account = user_account.getText().toString();
                 password = user_password.getText().toString();
 
-                if (null == account || "".equals(account)){
+                if (null == account || "".equals(account)) {
                     Toast.makeText(mActivity, "账号不能为空", Toast.LENGTH_SHORT).show();
-                }else if (null == password || "".equals(password)){
+                } else if (null == password || "".equals(password)) {
                     Toast.makeText(mActivity, "密码不能为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     try {
                         Selector<UserTable> selector = JuneToolsApp.getDbManager().selector(UserTable.class);
-                        WhereBuilder wb = WhereBuilder.b().and("account","=",account);
+                        WhereBuilder wb = WhereBuilder.b().and("account", "=", account);
                         selector.where(wb);
                         UserTable userTable = selector.findFirst();
 
-                        if (null == userTable){
+                        if (null == userTable || !userTable.getPassword().equals(password)) {
                             Toast.makeText(mActivity, "账号或者密码错误", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             UserEntry userEntry = new UserEntry();
                             userEntry.setId(userTable.getId());
                             userEntry.setName(userTable.getName());
@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity {
                             finish();
                         }
                     } catch (DbException e) {
-                        Log.e("sherry","数据库操作失败");
+                        Log.e("sherry", "数据库操作失败");
                     }
 
                 }

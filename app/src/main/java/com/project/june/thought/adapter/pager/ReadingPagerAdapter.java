@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.project.june.thought.activity.detail.ReadingPageActivity;
 import com.project.june.thought.model.ReadingBannerListVo;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +26,17 @@ public class ReadingPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(final ViewGroup container, final int position) {
         ImageView imageView = new ImageView(container.getContext());
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Picasso.with(container.getContext()).load(images.get(position).getCover()).into(imageView);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReadingPageActivity.startThis(container.getContext(), images.get(position).getId(), images.get(position).getTitle(), images.get(position).getBottom_text(), images.get(position).getCover(), images.get(position).getBgcolor());
+            }
+        });
         container.addView(imageView);
         return imageView;
     }
@@ -44,7 +52,7 @@ public class ReadingPagerAdapter extends PagerAdapter {
         return view == object;
     }
 
-    public void setImages(List<ReadingBannerListVo.DataBean> list){
+    public void setImages(List<ReadingBannerListVo.DataBean> list) {
         images.addAll(list);
         notifyDataSetChanged();
     }

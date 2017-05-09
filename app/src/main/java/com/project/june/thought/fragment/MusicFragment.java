@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.project.june.thought.R;
 import com.project.june.thought.activity.detail.MusicDetailActivity;
+import com.project.june.thought.activity.user.UserInformationActivity;
 import com.project.june.thought.base.BaseFragment;
 import com.project.june.thought.model.DisplayGatherVo;
 import com.project.june.thought.utils.HttpUtils;
@@ -27,6 +28,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.text.MessageFormat;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -57,6 +59,7 @@ public class MusicFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        title_img_left.setImageResource(R.mipmap.icon_user);
         title_center_text.setText("音乐");
 
         initListView();
@@ -170,6 +173,11 @@ public class MusicFragment extends BaseFragment {
                         Toast.makeText(mActivity, ThoughtConfig.NETWORK_ERROR, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @OnClick({R.id.title_img_left})
+    public void OnClikc() {
+        UserInformationActivity.startThis(mActivity, "123");
     }
 
     public static MusicFragment newInstance(Bundle bundle) {

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.project.june.thought.R;
 import com.project.june.thought.ThoughtApplication;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.AuthorEntry;
 import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.UserEntry;
 import com.project.june.thought.rx.RxCollectListChange;
@@ -54,14 +55,8 @@ public class UserInformationActivity extends BaseActivity {
     TextView user_name;
     @InjectView(R.id.diary_image)
     ScaleImageView diary_image;
-    @InjectView(R.id.music_image)
-    ImageView music_image;
     @InjectView(R.id.scroll_view)
     ObservableScrollView scroll_view;
-    @InjectView(R.id.user_diary_layout)
-    LinearLayout user_diary_layout;
-    @InjectView(R.id.user_music_layout)
-    LinearLayout user_music_layout;
     @InjectView(R.id.user_like_layout)
     LinearLayout user_like_layout;
     @InjectView(R.id.user_information_layout)
@@ -72,6 +67,8 @@ public class UserInformationActivity extends BaseActivity {
     TextView image_text_number;
     @InjectView(R.id.article_number)
     TextView article_number;
+    @InjectView(R.id.focus_number)
+    TextView focus_number;
     @InjectView(R.id.music_number)
     TextView music_number;
     @InjectView(R.id.movie_number)
@@ -96,10 +93,8 @@ public class UserInformationActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         bindRx();
-
         title_layout.setBackgroundColor(Color.TRANSPARENT);
         preInit();
-
         login();
     }
 
@@ -150,6 +145,10 @@ public class UserInformationActivity extends BaseActivity {
             case "5":
                 //影视
                 movie_number.setText(getCollectCount(category));
+                break;
+            case ThoughtConfig.FOCUS_CATEGORY:
+                //关注
+                focus_number.setText(getCollectCount(category));
                 break;
         }
     }
@@ -213,10 +212,11 @@ public class UserInformationActivity extends BaseActivity {
         article_number.setText(getCollectCount("1"));
         music_number.setText(getCollectCount("4"));
         movie_number.setText(getCollectCount("5"));
+        focus_number.setText(getCollectCount("200"));
     }
 
     private void logout() {
-        //退出登录，清楚数据库表
+        //退出登录，清除数据库表
         try {
             JuneToolsApp.getDbManager().delete(UserEntry.class);
             RxBus.get().post(new RxUserLogout());
@@ -227,19 +227,32 @@ public class UserInformationActivity extends BaseActivity {
 
     private String getCollectCount(String category) {
         if (null != category && !"".equals(category)) {
-            try {
-                Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
-                WhereBuilder wb = WhereBuilder.b().and("category", "=", category);
-                selector.where(wb);
-                List<CollectAndLaudVo> all = selector.findAll();
-
-                if (null != all && all.size() >= 0) {
-                    return all.size() + "";
-                } else {
-                    return "0";
+            if (category.equals("200")) {
+                try {
+                    List<AuthorEntry> all = JuneToolsApp.getDbManager().findAll(AuthorEntry.class);
+                    if (null != all && all.size() >= 0) {
+                        return all.size() + "";
+                    } else {
+                        return "0";
+                    }
+                } catch (DbException e) {
+                    return "GG";
                 }
-            } catch (DbException e) {
-                return "GG";
+            } else {
+                try {
+                    Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
+                    WhereBuilder wb = WhereBuilder.b().and("category", "=", category);
+                    selector.where(wb);
+                    List<CollectAndLaudVo> all = selector.findAll();
+
+                    if (null != all && all.size() >= 0) {
+                        return all.size() + "";
+                    } else {
+                        return "0";
+                    }
+                } catch (DbException e) {
+                    return "GG";
+                }
             }
         }
         return "0";
