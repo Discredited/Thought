@@ -277,7 +277,7 @@ public class AuthorDetailActivity extends BaseActivity {
                 }
             }
             RxCollectListChange content = new RxCollectListChange();
-            content.setCategory("200");
+            content.setCategory(ThoughtConfig.FOCUS_CATEGORY);
             RxBus.get().post(content);
         }
     }

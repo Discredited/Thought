@@ -283,6 +283,7 @@ public class UserInformationActivity extends BaseActivity {
                 }
                 break;
             case R.id.my_focus_layout:
+                CollectionListActivity.startThis(mActivity, ThoughtConfig.FOCUS_CATEGORY);
                 break;
             case R.id.user_diary_layout:
                 CollectionListActivity.startThis(mActivity, ThoughtConfig.DIARY_CATEGORY);

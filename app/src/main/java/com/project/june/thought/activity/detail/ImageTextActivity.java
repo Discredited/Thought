@@ -13,12 +13,22 @@ import com.project.june.thought.activity.common.EditDiaryActivity;
 import com.project.june.thought.activity.common.ShowImageActivity;
 import com.project.june.thought.activity.user.LoginActivity;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.ImageTextVo;
+import com.project.june.thought.model.UserEntry;
+import com.project.june.thought.rx.RxCollectListChange;
 import com.project.june.thought.utils.DateTools;
 import com.project.june.thought.utils.HttpUtils;
 import com.project.june.thought.utils.ResultCallBack;
+import com.project.june.thought.utils.ThoughtConfig;
+import com.project.xujun.juneutils.otherutils.RxBus;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.xutils.JuneToolsApp;
+import org.xutils.db.Selector;
+import org.xutils.db.sqlite.WhereBuilder;
+import org.xutils.ex.DbException;
 
 import java.text.MessageFormat;
 
@@ -33,6 +43,8 @@ public class ImageTextActivity extends BaseActivity {
 
     @InjectView(R.id.title_center_text)
     TextView title_center_text;
+    @InjectView(R.id.title_img_right)
+    ImageView title_img_right;
     @InjectView(R.id.one_date)
     TextView one_date;
     @InjectView(R.id.one_position)
@@ -54,7 +66,9 @@ public class ImageTextActivity extends BaseActivity {
 
     private String id;
     private boolean laud = false;
+    private boolean isCollect = false;
     private ImageTextVo.DataBean imageText;
+    private CollectAndLaudVo first;
 
     public static void startThis(Context context, String id) {
         Intent intent = new Intent(context, ImageTextActivity.class);
@@ -82,8 +96,30 @@ public class ImageTextActivity extends BaseActivity {
     @Override
     protected void logicProgress() {
         title_center_text.setText("图文");
-
+        title_img_right.setVisibility(View.VISIBLE);
+        checkIsCollect(id);
         requestData();
+    }
+
+    private void checkIsCollect(String id) {
+        //在数据库中查找是否已收藏
+        try {
+            Selector<CollectAndLaudVo> selector = JuneToolsApp.getDbManager().selector(CollectAndLaudVo.class);
+            WhereBuilder wb = WhereBuilder.b().and("itemId", "=", id);
+            selector.where(wb);
+            this.first = selector.findFirst();
+            if (null == this.first) {
+                //未收藏
+                title_img_right.setImageResource(R.mipmap.save);
+                isCollect = false;
+            } else {
+                //已收藏
+                title_img_right.setImageResource(R.mipmap.icon_delete);
+                isCollect = true;
+            }
+        } catch (DbException e) {
+            Toast.makeText(this, "查询收藏失败", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void requestData() {
@@ -125,11 +161,14 @@ public class ImageTextActivity extends BaseActivity {
         Picasso.with(mActivity).load(vo.getImg_url()).into(one_img);
     }
 
-    @OnClick({R.id.title_img_left, R.id.one_img, R.id.diary_layout, R.id.laud_layout, R.id.share_layout})
+    @OnClick({R.id.title_img_left, R.id.title_img_right, R.id.one_img, R.id.diary_layout, R.id.laud_layout, R.id.share_layout})
     public void viewOnClick(View view) {
         switch (view.getId()) {
             case R.id.title_img_left:
                 onBackPressed();
+                break;
+            case R.id.title_img_right:
+                collectImageText();
                 break;
             case R.id.one_img:
                 ShowImageActivity.startThis(mActivity, imageText.getImg_url());
@@ -156,6 +195,45 @@ public class ImageTextActivity extends BaseActivity {
             case R.id.share_layout:
                 Toast.makeText(mActivity, "打开分享", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    private void collectImageText() {
+        if (null == ThoughtApplication.getUserEntry()) {
+            //请登录
+            LoginActivity.startThis(mActivity);
+        } else {
+            if (isCollect) {
+                //已收藏 删除
+                if (null != first) {
+                    try {
+                        JuneToolsApp.getDbManager().delete(this.first);
+                        title_img_right.setImageResource(R.mipmap.save);
+                        isCollect = false;
+                        Toast.makeText(mActivity, "删除图文成功", Toast.LENGTH_SHORT).show();
+                    } catch (DbException e) {
+                        Toast.makeText(mActivity, "删除收藏失败", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else {
+                //未收藏 保存
+                CollectAndLaudVo vo = new CollectAndLaudVo();
+                vo.setCategory(ThoughtConfig.IMAGE_TEXT_CATEGORY);
+                vo.setItemId(imageText.getItem_id());
+                vo.setTitle(imageText.getForward());
+                vo.setSummary(imageText.getWords_info());
+                try {
+                    JuneToolsApp.getDbManager().save(vo);
+                    title_img_right.setImageResource(R.mipmap.icon_delete);
+                    isCollect = true;
+                    Toast.makeText(mActivity, "保存图文成功", Toast.LENGTH_SHORT).show();
+                } catch (DbException e) {
+                    Toast.makeText(mActivity, "图文收藏失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+            RxCollectListChange content = new RxCollectListChange();
+            content.setCategory(ThoughtConfig.IMAGE_TEXT_CATEGORY);
+            RxBus.get().post(content);
         }
     }
 

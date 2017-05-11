@@ -11,11 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.june.thought.R;
+import com.project.june.thought.activity.detail.AuthorDetailActivity;
+import com.project.june.thought.activity.detail.DiaryDetailActivity;
 import com.project.june.thought.activity.detail.MovieDetailActivity;
 import com.project.june.thought.activity.detail.MusicDetailActivity;
 import com.project.june.thought.activity.detail.ReadingDetailActivity;
 import com.project.june.thought.activity.detail.ImageTextActivity;
 import com.project.june.thought.base.BaseActivity;
+import com.project.june.thought.model.AuthorEntry;
 import com.project.june.thought.model.CollectAndLaudVo;
 import com.project.june.thought.model.DiaryEntry;
 import com.project.june.thought.rx.RxCollectListChange;
@@ -48,6 +51,7 @@ public class CollectionListActivity extends BaseActivity {
     private String category;
     private JuneBaseAdapter<CollectAndLaudVo> adapter;
     private JuneBaseAdapter<DiaryEntry> diaryAdapter;
+    private JuneBaseAdapter<AuthorEntry> authorAdapter;
 
     public static void startThis(Context context, String category) {
         Intent intent = new Intent(context, CollectionListActivity.class);
@@ -113,7 +117,7 @@ public class CollectionListActivity extends BaseActivity {
                 title_center_text.setText("我的小记");
                 break;
             case "200":
-                title_center_text.setText("关注收藏");
+                title_center_text.setText("我的关注");
                 break;
         }
     }
@@ -126,15 +130,27 @@ public class CollectionListActivity extends BaseActivity {
                 List<DiaryEntry> all = JuneToolsApp.getDbManager().findAll(DiaryEntry.class);
                 if (null != all && all.size() > 0) {
                     diaryAdapter.getItems().addAll(all);
-                    diaryAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
                 }
             } catch (DbException e) {
                 Toast.makeText(mActivity, "数据库查找小记失败", Toast.LENGTH_SHORT).show();
             }
+            diaryAdapter.notifyDataSetChanged();
         } else if (category.equals("200")) {
-
+            authorAdapter.getItems().clear();
+            //查询本地数据库
+            try {
+                List<AuthorEntry> all = JuneToolsApp.getDbManager().findAll(AuthorEntry.class);
+                if (null != all && all.size() > 0) {
+                    authorAdapter.getItems().addAll(all);
+                } else {
+                    Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
+                }
+            } catch (DbException e) {
+                Toast.makeText(mActivity, "数据库查找关注失败", Toast.LENGTH_SHORT).show();
+            }
+            authorAdapter.notifyDataSetChanged();
         } else {
             adapter.getItems().clear();
             //查询本地数据库
@@ -145,10 +161,10 @@ public class CollectionListActivity extends BaseActivity {
                 List<CollectAndLaudVo> all = selector.findAll();
                 if (null != all && all.size() > 0) {
                     adapter.getItems().addAll(all);
-                    adapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
                 }
+                adapter.notifyDataSetChanged();
             } catch (DbException e) {
                 Toast.makeText(mActivity, "数据库查找收藏失败", Toast.LENGTH_SHORT).show();
             }
@@ -184,10 +200,40 @@ public class CollectionListActivity extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     DiaryEntry entry = diaryAdapter.getItems().get(position);
                     //跳转展示页面
+                    DiaryDetailActivity.startThis(mActivity, entry.getId());
                 }
             });
         } else if (category.equals("200")) {
+            authorAdapter = new JuneBaseAdapter<AuthorEntry>(mActivity) {
+                @Override
+                public View getConvertView(int position, View convertView, ViewGroup parent) {
+                    if (null == convertView) {
+                        convertView = inflater.inflate(R.layout.list_item_collect, parent, false);
+                    }
+                    return convertView;
+                }
 
+                @Override
+                public void bindData(int position, View convertView, AuthorEntry itemData) {
+                    ImageView collect_image = JuneViewHolder.get(convertView, R.id.collect_image);
+                    TextView collect_type = JuneViewHolder.get(convertView, R.id.collect_type);
+                    TextView collect_title = JuneViewHolder.get(convertView, R.id.collect_title);
+
+                    collect_image.setImageResource(R.mipmap.icon_user);
+                    collect_type.setText(itemData.getUserName());
+                    collect_title.setText(itemData.getDesc());
+                }
+            };
+            list_view.setAdapter(authorAdapter);
+            list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    AuthorEntry authorEntry = authorAdapter.getItems().get(position);
+                    if (null != authorEntry) {
+                        AuthorDetailActivity.startThis(mActivity, authorEntry.getUserId());
+                    }
+                }
+            });
         } else {
             adapter = new JuneBaseAdapter<CollectAndLaudVo>(mActivity) {
 
@@ -226,7 +272,6 @@ public class CollectionListActivity extends BaseActivity {
                     }
                 }
             };
-
             list_view.setAdapter(adapter);
             list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

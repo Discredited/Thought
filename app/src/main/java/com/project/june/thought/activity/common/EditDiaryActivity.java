@@ -168,4 +168,10 @@ public class EditDiaryActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    protected boolean enableSwipeBack() {
+        super.enableSwipeBack();
+        return true;
+    }
 }

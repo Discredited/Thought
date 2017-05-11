@@ -81,6 +81,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_layout_size">
 
